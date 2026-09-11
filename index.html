@@ -4,25 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASFALT-BETON d.o.o. | Gradnja prihodnosti</title>
+<title>ASFALT-BETON d.o.o. | Gradimo prihodnost</title>
 
-<meta name="description" content="ASFALT-BETON d.o.o. – asfaltiranje, gradnja, vzdrževanje cest in profesionalne gradbene rešitve.">
+<meta name="description" content="ASFALT-BETON d.o.o. – asfaltiranje, gradbena dela, priprava terena, vzdrževanje in celovite gradbene rešitve.">
+<meta name="theme-color" content="#07100b">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --green:#39ff88;
-    --green-dark:#18c964;
-    --black:#050706;
-    --black2:#0a0d0b;
-    --black3:#101512;
+    --green2:#18d96b;
+    --green-dark:#0ca94e;
+
+    --black:#030504;
+    --black2:#07100b;
+    --black3:#0c1510;
+
     --white:#f4f7f5;
-    --gray:#a5ada8;
-    --border:rgba(57,255,136,.15);
+    --gray:#9ba8a0;
+    --gray2:#68736d;
+
+    --glass:rgba(255,255,255,.045);
+    --border:rgba(57,255,136,.16);
+
+    --shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
 *{
@@ -36,10 +44,60 @@ html{
 }
 
 body{
-    font-family:'Inter',sans-serif;
+    font-family:"Inter",Arial,sans-serif;
     background:var(--black);
     color:var(--white);
     overflow-x:hidden;
+}
+
+body::selection{
+    background:var(--green);
+    color:#000;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* =========================
+   GLOBAL BACKGROUND
+========================= */
+
+.bg-grid{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-5;
+    opacity:.24;
+    background-image:
+        linear-gradient(rgba(57,255,136,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(57,255,136,.045) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+.bg-glow{
+    position:fixed;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(57,255,136,.12),transparent 68%);
+    top:-300px;
+    right:-250px;
+    pointer-events:none;
+    z-index:-4;
+}
+
+.bg-glow.two{
+    top:50%;
+    left:-400px;
+    background:radial-gradient(circle,rgba(24,217,107,.07),transparent 68%);
 }
 
 /* =========================
@@ -49,12 +107,12 @@ body{
 .loader{
     position:fixed;
     inset:0;
-    background:#030403;
+    background:#020302;
     z-index:9999;
     display:flex;
-    justify-content:center;
     align-items:center;
-    transition:opacity .8s, visibility .8s;
+    justify-content:center;
+    transition:.8s ease;
 }
 
 .loader.hide{
@@ -62,14 +120,14 @@ body{
     visibility:hidden;
 }
 
-.loader-content{
+.loader-box{
     text-align:center;
 }
 
 .loader-logo{
-    font-size:32px;
+    font-size:clamp(28px,5vw,55px);
     font-weight:900;
-    letter-spacing:5px;
+    letter-spacing:-2px;
 }
 
 .loader-logo span{
@@ -77,86 +135,86 @@ body{
 }
 
 .loader-line{
-    width:180px;
+    width:230px;
     height:3px;
-    background:#151a17;
+    background:#172019;
     margin:25px auto 0;
     overflow:hidden;
+    border-radius:20px;
 }
 
 .loader-line::after{
     content:"";
     display:block;
-    height:100%;
     width:50%;
+    height:100%;
     background:var(--green);
-    animation:loading 1.2s infinite;
+    animation:load 1.3s infinite;
 }
 
-@keyframes loading{
-    from{transform:translateX(-100%)}
-    to{transform:translateX(300%)}
-}
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.bg-grid{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.12;
-    background-image:
-        linear-gradient(rgba(57,255,136,.15) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(57,255,136,.15) 1px,transparent 1px);
-    background-size:70px 70px;
-    mask-image:linear-gradient(to bottom,black,transparent 85%);
-    z-index:-2;
-}
-
-.glow{
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:rgba(57,255,136,.08);
-    filter:blur(100px);
-    pointer-events:none;
-    z-index:-3;
+@keyframes load{
+    0%{transform:translateX(-100%)}
+    100%{transform:translateX(300%)}
 }
 
 /* =========================
    NAVBAR
 ========================= */
 
-nav{
+.navbar{
     position:fixed;
     top:0;
     left:0;
-    width:100%;
+    right:0;
     height:82px;
+    z-index:1000;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 6%;
-    z-index:1000;
-    transition:.4s;
+
+    background:rgba(3,5,4,.68);
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    transition:.35s ease;
 }
 
-nav.scrolled{
-    height:68px;
-    background:rgba(5,7,6,.85);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--border);
+.navbar.scrolled{
+    height:70px;
+    background:rgba(3,5,4,.92);
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
 }
 
 .logo{
-    color:white;
-    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    font-size:18px;
+    letter-spacing:-.5px;
+}
+
+.logo-mark{
+    width:38px;
+    height:38px;
+    border:1px solid rgba(57,255,136,.5);
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    color:var(--green);
+    background:rgba(57,255,136,.06);
+    box-shadow:0 0 25px rgba(57,255,136,.1);
+}
+
+.logo-mark::before{
+    content:"A";
     font-weight:900;
     font-size:20px;
-    letter-spacing:2px;
 }
 
 .logo span{
@@ -165,58 +223,61 @@ nav.scrolled{
 
 .nav-links{
     display:flex;
+    align-items:center;
     gap:35px;
-    list-style:none;
 }
 
 .nav-links a{
-    color:#cbd0cd;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:600;
-    transition:.3s;
     position:relative;
+    font-size:13px;
+    font-weight:700;
+    color:#c6cec9;
+    transition:.25s;
 }
 
 .nav-links a::after{
     content:"";
     position:absolute;
     left:0;
-    bottom:-8px;
+    bottom:-9px;
     width:0;
     height:2px;
     background:var(--green);
+    box-shadow:0 0 10px var(--green);
     transition:.3s;
 }
 
 .nav-links a:hover{
-    color:white;
+    color:#fff;
 }
 
 .nav-links a:hover::after{
     width:100%;
 }
 
-.nav-button{
-    text-decoration:none;
-    color:#041007;
-    background:var(--green);
-    padding:13px 21px;
+.nav-contact{
+    padding:12px 19px;
+    border:1px solid rgba(57,255,136,.35);
     border-radius:30px;
-    font-size:13px;
-    font-weight:800;
-    transition:.3s;
+    color:var(--green)!important;
 }
 
-.nav-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(57,255,136,.25);
+.nav-contact:hover{
+    background:var(--green);
+    color:#000!important;
+    box-shadow:0 0 30px rgba(57,255,136,.25);
+}
+
+.nav-contact::after{
+    display:none;
 }
 
 .menu-btn{
     display:none;
+    border:0;
+    background:none;
     color:white;
-    font-size:26px;
+    font-size:28px;
     cursor:pointer;
 }
 
@@ -229,281 +290,344 @@ nav.scrolled{
     position:relative;
     display:flex;
     align-items:center;
-    padding:130px 7% 70px;
+    padding:120px 6% 80px;
     overflow:hidden;
 }
 
 .hero-content{
-    width:52%;
     position:relative;
     z-index:5;
+    width:54%;
+    max-width:850px;
 }
 
 .eyebrow{
     display:inline-flex;
     align-items:center;
     gap:10px;
+    padding:8px 14px;
+    border:1px solid rgba(57,255,136,.2);
+    background:rgba(57,255,136,.04);
+    border-radius:30px;
     color:var(--green);
-    font-size:12px;
+    font-size:11px;
     font-weight:800;
     letter-spacing:2px;
     text-transform:uppercase;
-    margin-bottom:25px;
+    margin-bottom:28px;
 }
 
-.eyebrow::before{
-    content:"";
-    width:30px;
-    height:2px;
+.eyebrow-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
     background:var(--green);
+    box-shadow:0 0 15px var(--green);
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{opacity:.3;transform:scale(.7)}
 }
 
 .hero h1{
-    font-size:clamp(48px,6vw,92px);
-    line-height:.95;
-    letter-spacing:-5px;
+    font-size:clamp(48px,7vw,105px);
+    line-height:.91;
+    letter-spacing:-6px;
     font-weight:900;
+    max-width:900px;
 }
 
-.hero h1 span{
+.hero h1 .green{
     color:var(--green);
-    text-shadow:0 0 35px rgba(57,255,136,.2);
+    text-shadow:0 0 35px rgba(57,255,136,.12);
+}
+
+.hero h1 .outline{
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.45);
 }
 
 .hero-text{
-    max-width:600px;
-    color:#9da7a1;
+    margin-top:30px;
+    color:var(--gray);
+    font-size:17px;
     line-height:1.8;
-    margin:30px 0;
-    font-size:16px;
+    max-width:650px;
 }
 
-.hero-buttons{
+.hero-actions{
     display:flex;
-    gap:15px;
+    gap:14px;
+    margin-top:36px;
     flex-wrap:wrap;
 }
 
 .btn{
+    position:relative;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    text-decoration:none;
-    padding:16px 25px;
-    border-radius:8px;
+    gap:12px;
+    min-height:54px;
+    padding:0 25px;
+    border-radius:12px;
+    font-size:13px;
     font-weight:800;
-    font-size:14px;
-    transition:.35s;
+    transition:.3s ease;
+    overflow:hidden;
 }
 
 .btn-primary{
     background:var(--green);
-    color:#041007;
+    color:#031007;
+    box-shadow:0 10px 35px rgba(57,255,136,.18);
 }
 
 .btn-primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(57,255,136,.22);
+    transform:translateY(-4px);
+    box-shadow:0 18px 50px rgba(57,255,136,.3);
 }
 
 .btn-secondary{
-    color:white;
-    border:1px solid #28302b;
-    background:rgba(255,255,255,.02);
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.035);
+    color:#fff;
 }
 
 .btn-secondary:hover{
-    border-color:var(--green);
-    color:var(--green);
-    transform:translateY(-5px);
+    border-color:rgba(57,255,136,.4);
+    background:rgba(57,255,136,.05);
+    transform:translateY(-4px);
 }
 
-/* =========================
-   3D SCENE
-========================= */
+.btn-arrow{
+    font-size:18px;
+    transition:.3s;
+}
 
+.btn:hover .btn-arrow{
+    transform:translateX(5px);
+}
+
+.hero-scroll{
+    position:absolute;
+    bottom:35px;
+    left:6%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#718078;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.scroll-line{
+    width:45px;
+    height:1px;
+    background:var(--green);
+}
+
+/* 3D */
 #three-container{
     position:absolute;
-    right:0;
-    top:0;
-    width:55%;
-    height:100%;
+    inset:0;
     z-index:1;
+    opacity:.95;
 }
 
-.hero-overlay{
+.hero::after{
+    content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(90deg,#050706 0%,rgba(5,7,6,.75) 25%,rgba(5,7,6,.1) 70%,#050706 100%);
     z-index:2;
     pointer-events:none;
-}
-
-.hero-bottom{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:150px;
-    background:linear-gradient(transparent,var(--black));
-    z-index:3;
-    pointer-events:none;
+    background:
+        linear-gradient(90deg,var(--black) 0%,rgba(3,5,4,.75) 35%,rgba(3,5,4,.1) 75%,rgba(3,5,4,.45) 100%),
+        linear-gradient(0deg,var(--black) 0%,transparent 25%,transparent 75%,var(--black) 100%);
 }
 
 /* =========================
-   STATS
+   TRUST BAR
 ========================= */
 
-.stats{
+.trust{
     position:relative;
     z-index:10;
+    margin-top:-20px;
+    padding:0 6% 80px;
+}
+
+.trust-inner{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    margin:0 7%;
-    border:1px solid #1c241f;
-    background:#1c241f;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+    border-radius:20px;
+    overflow:hidden;
+    backdrop-filter:blur(20px);
 }
 
 .stat{
-    background:#090c0a;
-    padding:35px 25px;
-    text-align:center;
+    padding:30px;
+    border-right:1px solid rgba(255,255,255,.07);
+}
+
+.stat:last-child{
+    border-right:0;
 }
 
 .stat-number{
-    font-size:38px;
+    font-size:36px;
     font-weight:900;
-    color:white;
-}
-
-.stat-number span{
     color:var(--green);
+    letter-spacing:-2px;
 }
 
-.stat p{
-    color:#737d76;
+.stat-label{
+    margin-top:6px;
+    color:var(--gray);
     font-size:12px;
-    margin-top:8px;
-    text-transform:uppercase;
-    letter-spacing:1px;
 }
 
 /* =========================
-   SECTIONS
+   SECTION
 ========================= */
 
 section{
-    padding:130px 7%;
     position:relative;
+    padding:120px 6%;
 }
 
-.section-heading{
-    max-width:750px;
-    margin-bottom:65px;
+.section-top{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:40px;
+    margin-bottom:55px;
 }
 
 .section-tag{
     color:var(--green);
-    font-size:12px;
-    font-weight:800;
+    font-size:11px;
+    font-weight:900;
     letter-spacing:3px;
     text-transform:uppercase;
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
-.section-heading h2{
-    font-size:clamp(38px,5vw,68px);
-    line-height:1;
-    letter-spacing:-3px;
-    margin-bottom:22px;
+.section-title{
+    font-size:clamp(38px,5vw,72px);
+    line-height:.98;
+    letter-spacing:-4px;
+    font-weight:900;
 }
 
-.section-heading p{
-    color:#89928c;
+.section-title span{
+    color:var(--green);
+}
+
+.section-description{
+    max-width:500px;
+    color:var(--gray);
     line-height:1.8;
+    font-size:14px;
 }
 
 /* =========================
    SERVICES
 ========================= */
 
+.services{
+    background:
+        radial-gradient(circle at 80% 30%,rgba(57,255,136,.04),transparent 30%);
+}
+
 .services-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:18px;
 }
 
 .service-card{
     position:relative;
-    min-height:310px;
-    padding:35px;
-    background:
-        linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
-    border:1px solid #1c241f;
-    border-radius:15px;
+    min-height:330px;
+    padding:32px;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.08);
+    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
     overflow:hidden;
-    transition:.5s;
     transform-style:preserve-3d;
+    transition:border-color .35s,box-shadow .35s;
 }
 
 .service-card::before{
     content:"";
     position:absolute;
-    width:180px;
-    height:180px;
-    background:var(--green);
-    opacity:.04;
+    width:220px;
+    height:220px;
+    right:-100px;
+    top:-100px;
     border-radius:50%;
-    right:-60px;
-    top:-60px;
+    background:radial-gradient(circle,rgba(57,255,136,.14),transparent 70%);
     transition:.5s;
 }
 
 .service-card:hover{
-    transform:translateY(-12px) rotateX(3deg) rotateY(-3deg);
-    border-color:rgba(57,255,136,.4);
-    box-shadow:0 30px 70px rgba(0,0,0,.35);
+    border-color:rgba(57,255,136,.3);
+    box-shadow:0 25px 70px rgba(0,0,0,.35),0 0 40px rgba(57,255,136,.04);
 }
 
 .service-card:hover::before{
-    transform:scale(2);
-    opacity:.08;
+    transform:scale(1.5);
+}
+
+.service-number{
+    color:var(--green);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
 }
 
 .service-icon{
-    width:60px;
-    height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid rgba(57,255,136,.3);
-    color:var(--green);
-    border-radius:12px;
+    width:55px;
+    height:55px;
+    margin:50px 0 28px;
+    border:1px solid rgba(57,255,136,.22);
+    border-radius:15px;
+    display:grid;
+    place-items:center;
     font-size:25px;
-    margin-bottom:35px;
-    background:rgba(57,255,136,.04);
+    background:rgba(57,255,136,.045);
+    transform:translateZ(35px);
 }
 
 .service-card h3{
-    font-size:23px;
-    margin-bottom:15px;
+    font-size:21px;
+    margin-bottom:13px;
+    transform:translateZ(25px);
 }
 
 .service-card p{
-    color:#7f8982;
-    line-height:1.7;
-    font-size:14px;
+    color:var(--gray);
+    font-size:13px;
+    line-height:1.75;
+    transform:translateZ(20px);
 }
 
 .service-link{
     position:absolute;
-    bottom:30px;
+    right:30px;
+    bottom:28px;
     color:var(--green);
-    text-decoration:none;
-    font-size:13px;
-    font-weight:800;
+    font-size:18px;
+    transition:.3s;
+}
+
+.service-card:hover .service-link{
+    transform:translateX(7px);
 }
 
 /* =========================
@@ -511,11 +635,10 @@ section{
 ========================= */
 
 .about{
-    background:#080b09;
     overflow:hidden;
 }
 
-.about-container{
+.about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:90px;
@@ -523,92 +646,119 @@ section{
 }
 
 .about-visual{
-    min-height:500px;
     position:relative;
-    perspective:1000px;
-}
-
-.about-box{
-    position:absolute;
-    inset:30px;
-    border:1px solid rgba(57,255,136,.2);
+    min-height:520px;
+    border-radius:30px;
+    border:1px solid rgba(57,255,136,.12);
     background:
-        linear-gradient(135deg,rgba(57,255,136,.08),transparent 45%),
-        #0b0f0c;
-    transform:rotateY(-12deg) rotateX(5deg);
-    box-shadow:30px 40px 80px rgba(0,0,0,.5);
+        linear-gradient(145deg,rgba(57,255,136,.09),transparent 45%),
+        #08100b;
+    overflow:hidden;
 }
 
-.about-box::after{
-    content:"ASFALT";
+.about-visual::before{
+    content:"";
     position:absolute;
-    left:30px;
-    bottom:20px;
-    font-size:80px;
+    inset:35px;
+    border:1px solid rgba(57,255,136,.1);
+    border-radius:22px;
+}
+
+.about-visual::after{
+    content:"";
+    position:absolute;
+    width:330px;
+    height:330px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    border:1px solid rgba(57,255,136,.12);
+    box-shadow:
+        0 0 0 50px rgba(57,255,136,.025),
+        0 0 0 100px rgba(57,255,136,.018);
+}
+
+.about-center{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    z-index:2;
+}
+
+.about-logo{
+    width:150px;
+    height:150px;
+    border-radius:35px;
+    border:1px solid rgba(57,255,136,.3);
+    background:rgba(57,255,136,.05);
+    display:grid;
+    place-items:center;
+    font-size:65px;
     font-weight:900;
-    color:rgba(255,255,255,.025);
+    color:var(--green);
+    box-shadow:0 0 80px rgba(57,255,136,.08);
 }
 
 .about-floating{
     position:absolute;
-    right:0;
-    bottom:0;
-    width:230px;
-    padding:30px;
-    background:#101612;
-    border:1px solid rgba(57,255,136,.25);
-    box-shadow:0 30px 60px rgba(0,0,0,.4);
+    padding:13px 17px;
+    border-radius:12px;
+    background:rgba(4,8,5,.85);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    font-size:11px;
+    font-weight:800;
+    z-index:4;
 }
 
-.about-floating strong{
-    font-size:42px;
-    color:var(--green);
+.float-one{
+    top:80px;
+    left:50px;
 }
 
-.about-floating p{
-    color:#858f88;
-    font-size:13px;
-    margin-top:5px;
+.float-two{
+    right:50px;
+    top:150px;
 }
 
-.about-text h2{
-    font-size:55px;
-    line-height:1;
-    letter-spacing:-3px;
-    margin-bottom:25px;
+.float-three{
+    left:80px;
+    bottom:100px;
 }
 
-.about-text h2 span{
-    color:var(--green);
+.about-copy .section-title{
+    margin-bottom:28px;
 }
 
-.about-text p{
-    color:#89928c;
+.about-copy p{
+    color:var(--gray);
     line-height:1.9;
-    margin-bottom:18px;
+    font-size:15px;
+    margin-bottom:20px;
 }
 
 .check-list{
-    list-style:none;
+    display:grid;
+    gap:14px;
     margin-top:30px;
 }
 
-.check-list li{
-    margin-bottom:15px;
-    color:#cdd3cf;
+.check{
     display:flex;
-    align-items:center;
     gap:12px;
+    align-items:center;
+    color:#d8dfdb;
+    font-size:13px;
 }
 
-.check-list li::before{
-    content:"✓";
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:22px;
-    height:22px;
+.check-icon{
+    width:24px;
+    height:24px;
     border-radius:50%;
+    display:grid;
+    place-items:center;
     background:rgba(57,255,136,.1);
     color:var(--green);
     font-size:12px;
@@ -618,105 +768,142 @@ section{
    PROJECTS
 ========================= */
 
-.projects-grid{
+.projects{
+    background:#050805;
+}
+
+.project-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:1.5fr 1fr 1fr;
+    grid-auto-rows:300px;
+    gap:18px;
 }
 
 .project{
-    height:400px;
     position:relative;
     overflow:hidden;
-    border-radius:12px;
-    border:1px solid #1d2520;
-    background:#111;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.08);
+    background:
+        linear-gradient(135deg,#101b14,#050806);
+}
+
+.project:first-child{
+    grid-row:span 2;
 }
 
 .project-bg{
     position:absolute;
     inset:0;
+    opacity:.8;
+    transition:.7s;
     background:
-        linear-gradient(135deg,#202522,#080a09);
-    transition:.6s;
+        radial-gradient(circle at 70% 30%,rgba(57,255,136,.15),transparent 25%),
+        linear-gradient(145deg,#111b15,#040605);
 }
 
 .project:nth-child(2) .project-bg{
     background:
-        linear-gradient(135deg,#151a17,#252b27);
+        radial-gradient(circle at 30% 30%,rgba(57,255,136,.13),transparent 30%),
+        linear-gradient(145deg,#101612,#050706);
 }
 
 .project:nth-child(3) .project-bg{
     background:
-        linear-gradient(135deg,#252a27,#0b0d0c);
-}
-
-.project::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(transparent 30%,rgba(0,0,0,.9));
+        radial-gradient(circle at 70% 60%,rgba(57,255,136,.12),transparent 30%),
+        linear-gradient(145deg,#141a16,#050605);
 }
 
 .project:hover .project-bg{
-    transform:scale(1.1);
+    transform:scale(1.08);
 }
 
-.project-info{
+.project::before{
+    content:"";
     position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    padding:30px;
-    z-index:3;
+    inset:0;
+    background:
+        linear-gradient(0deg,rgba(0,0,0,.9),transparent 70%);
+    z-index:1;
 }
 
-.project-info span{
+.project-lines{
+    position:absolute;
+    left:12%;
+    right:12%;
+    top:50%;
+    height:2px;
+    background:rgba(57,255,136,.18);
+    box-shadow:
+        0 -35px rgba(57,255,136,.08),
+        0 35px rgba(57,255,136,.08);
+    transform:rotate(-12deg);
+}
+
+.project-content{
+    position:absolute;
+    left:28px;
+    right:28px;
+    bottom:25px;
+    z-index:2;
+}
+
+.project-tag{
     color:var(--green);
-    font-size:11px;
-    font-weight:800;
+    font-size:10px;
+    font-weight:900;
     letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:8px;
 }
 
-.project-info h3{
-    font-size:25px;
-    margin-top:10px;
+.project h3{
+    font-size:22px;
+}
+
+.project p{
+    color:#9ca79f;
+    font-size:12px;
+    margin-top:8px;
 }
 
 /* =========================
    PROCESS
 ========================= */
 
-.process{
-    background:#080b09;
-}
-
 .process-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    gap:1px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    overflow:hidden;
 }
 
-.process-item{
+.process{
+    background:var(--black2);
+    padding:35px 28px;
+    min-height:230px;
     position:relative;
-    padding:35px 25px;
-    border-top:1px solid #263029;
 }
 
 .process-number{
-    font-size:70px;
+    font-size:55px;
+    line-height:1;
     font-weight:900;
-    color:rgba(57,255,136,.08);
+    color:rgba(57,255,136,.14);
 }
 
-.process-item h3{
-    margin-top:-20px;
-    margin-bottom:12px;
+.process h3{
+    margin-top:35px;
+    font-size:17px;
 }
 
-.process-item p{
-    color:#7f8982;
-    font-size:14px;
+.process p{
+    margin-top:10px;
+    color:var(--gray);
+    font-size:12px;
     line-height:1.7;
 }
 
@@ -725,25 +912,38 @@ section{
 ========================= */
 
 .cta{
-    text-align:center;
-    overflow:hidden;
+    padding-top:80px;
 }
 
 .cta-box{
     position:relative;
-    padding:90px 30px;
-    border:1px solid rgba(57,255,136,.2);
-    border-radius:20px;
+    overflow:hidden;
+    border-radius:32px;
+    padding:75px;
     background:
-        radial-gradient(circle at center,rgba(57,255,136,.08),transparent 55%),
-        #090c0a;
+        radial-gradient(circle at 80% 30%,rgba(57,255,136,.16),transparent 30%),
+        linear-gradient(135deg,#0d1711,#050806);
+    border:1px solid rgba(57,255,136,.18);
+}
+
+.cta-box::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(57,255,136,.07);
+    border-radius:50%;
+    right:-150px;
+    top:-250px;
 }
 
 .cta-box h2{
-    font-size:clamp(40px,6vw,75px);
-    line-height:1;
+    position:relative;
+    z-index:2;
+    max-width:750px;
+    font-size:clamp(40px,5vw,75px);
+    line-height:.98;
     letter-spacing:-4px;
-    margin-bottom:25px;
 }
 
 .cta-box h2 span{
@@ -751,100 +951,104 @@ section{
 }
 
 .cta-box p{
-    color:#89928c;
-    max-width:600px;
-    margin:0 auto 35px;
+    position:relative;
+    z-index:2;
+    color:var(--gray);
+    max-width:550px;
     line-height:1.8;
+    margin:25px 0 30px;
 }
 
 /* =========================
    CONTACT
 ========================= */
 
+.contact{
+    padding-bottom:90px;
+}
+
 .contact-grid{
     display:grid;
     grid-template-columns:.8fr 1.2fr;
-    gap:70px;
+    gap:60px;
 }
 
-.contact-info h2{
-    font-size:55px;
-    line-height:1;
-    letter-spacing:-3px;
-    margin-bottom:25px;
-}
-
-.contact-info h2 span{
-    color:var(--green);
-}
-
-.contact-info > p{
-    color:#89928c;
-    line-height:1.8;
-    margin-bottom:35px;
-}
-
-.contact-detail{
-    display:flex;
+.contact-info{
+    display:grid;
     gap:15px;
-    margin-bottom:25px;
 }
 
-.contact-icon{
+.contact-card{
+    padding:23px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+    transition:.3s;
+}
+
+.contact-card:hover{
+    border-color:rgba(57,255,136,.25);
+    transform:translateX(5px);
+}
+
+.contact-label{
     color:var(--green);
-    font-size:20px;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.contact-detail strong{
-    display:block;
-    margin-bottom:4px;
-}
-
-.contact-detail span{
-    color:#7c867f;
+.contact-value{
+    margin-top:8px;
+    color:#e8eeea;
     font-size:14px;
 }
 
 .contact-form{
-    padding:35px;
-    background:#0a0e0b;
-    border:1px solid #1c241f;
-    border-radius:15px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
 }
 
-.input-group{
-    margin-bottom:20px;
+.field{
+    position:relative;
 }
 
-.input-group label{
-    display:block;
-    color:#aeb7b1;
-    font-size:12px;
-    margin-bottom:9px;
+.field.full{
+    grid-column:1/-1;
 }
 
-.input-group input,
-.input-group textarea{
+.field input,
+.field textarea{
     width:100%;
-    border:1px solid #202a24;
-    background:#050706;
-    color:white;
-    padding:15px;
-    border-radius:7px;
+    border:1px solid rgba(255,255,255,.1);
     outline:none;
+    background:rgba(255,255,255,.035);
+    color:white;
+    border-radius:12px;
+    padding:18px;
     font-family:inherit;
+    font-size:13px;
     transition:.3s;
 }
 
-.input-group textarea{
-    min-height:140px;
+.field textarea{
+    min-height:160px;
     resize:vertical;
 }
 
-.input-group input:focus,
-.input-group textarea:focus{
-    border-color:var(--green);
+.field input:focus,
+.field textarea:focus{
+    border-color:rgba(57,255,136,.45);
     box-shadow:0 0 0 3px rgba(57,255,136,.05);
+}
+
+.form-button{
+    grid-column:1/-1;
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
 }
 
 /* =========================
@@ -852,36 +1056,63 @@ section{
 ========================= */
 
 footer{
-    padding:50px 7%;
-    border-top:1px solid #161d19;
+    border-top:1px solid rgba(255,255,255,.07);
+    padding:35px 6%;
     display:flex;
     justify-content:space-between;
-    gap:30px;
-    color:#68716b;
-    font-size:12px;
+    align-items:center;
+    gap:20px;
+    color:#6f7a73;
+    font-size:11px;
 }
 
-footer strong{
-    color:white;
+.footer-logo{
+    color:#dbe1dd;
+    font-weight:900;
 }
 
-footer span{
+.footer-logo span{
+    color:var(--green);
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+}
+
+.footer-links a:hover{
     color:var(--green);
 }
 
 /* =========================
-   SCROLL REVEAL
+   MOUSE GLOW
+========================= */
+
+.mouse-glow{
+    position:fixed;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:999;
+    background:radial-gradient(circle,rgba(57,255,136,.07),transparent 65%);
+    transform:translate(-50%,-50%);
+    mix-blend-mode:screen;
+}
+
+/* =========================
+   REVEAL
 ========================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(50px);
+    transform:translateY(35px);
     transition:opacity .8s ease,transform .8s ease;
 }
 
 .reveal.visible{
     opacity:1;
-    transform:translateY(0);
+    transform:none;
 }
 
 /* =========================
@@ -890,452 +1121,574 @@ footer span{
 
 @media(max-width:1000px){
 
-    .nav-links{
-        position:fixed;
-        top:68px;
-        left:0;
-        right:0;
-        background:#070a08;
-        flex-direction:column;
-        padding:30px;
-        gap:25px;
-        transform:translateY(-150%);
-        transition:.4s;
-        border-bottom:1px solid #1c241f;
+    .hero-content{
+        width:70%;
     }
 
-    .nav-links.active{
-        transform:translateY(0);
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .project:first-child{
+        grid-row:auto;
+        grid-column:span 2;
+    }
+
+    .process-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:760px){
+
+    .navbar{
+        height:70px;
+        padding:0 5%;
+    }
+
+    .logo{
+        font-size:15px;
+    }
+
+    .logo-mark{
+        width:34px;
+        height:34px;
     }
 
     .menu-btn{
         display:block;
     }
 
-    .nav-button{
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:4%;
+        right:4%;
         display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:10px;
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:18px;
+        background:rgba(4,7,5,.96);
+        backdrop-filter:blur(20px);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:16px;
+        border-radius:10px;
+    }
+
+    .nav-links a:hover{
+        background:rgba(57,255,136,.06);
+    }
+
+    .nav-contact{
+        text-align:center;
+        margin:5px 0;
     }
 
     .hero{
-        padding-top:130px;
+        min-height:100svh;
+        padding:120px 5% 70px;
     }
 
     .hero-content{
         width:100%;
     }
 
-    #three-container{
-        width:100%;
-        opacity:.35;
-    }
-
-    .hero-overlay{
-        background:linear-gradient(90deg,#050706 20%,rgba(5,7,6,.6),#050706);
-    }
-
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .services-grid,
-    .projects-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .process-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .about-container,
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:650px){
-
-    nav{
-        padding:0 5%;
-    }
-
-    .hero{
-        padding-left:5%;
-        padding-right:5%;
-    }
-
     .hero h1{
-        font-size:48px;
-        letter-spacing:-3px;
+        font-size:clamp(48px,14vw,76px);
+        letter-spacing:-4px;
     }
 
     .hero-text{
         font-size:14px;
+        max-width:100%;
     }
 
-    section{
-        padding:90px 5%;
+    #three-container{
+        opacity:.5;
     }
 
-    .stats{
-        margin:0 5%;
+    .hero::after{
+        background:
+            linear-gradient(90deg,var(--black) 0%,rgba(3,5,4,.65) 100%),
+            linear-gradient(0deg,var(--black) 0%,transparent 35%,var(--black) 100%);
+    }
+
+    .trust{
+        padding:0 5% 50px;
+    }
+
+    .trust-inner{
         grid-template-columns:1fr 1fr;
     }
 
     .stat{
-        padding:25px 10px;
+        padding:22px;
+        border-bottom:1px solid rgba(255,255,255,.07);
     }
 
-    .stat-number{
-        font-size:28px;
+    .stat:nth-child(2){
+        border-right:0;
     }
 
-    .services-grid,
-    .projects-grid,
-    .process-grid{
+    section{
+        padding:80px 5%;
+    }
+
+    .section-top{
+        display:block;
+        margin-bottom:35px;
+    }
+
+    .section-description{
+        margin-top:20px;
+    }
+
+    .section-title{
+        letter-spacing:-2.5px;
+    }
+
+    .services-grid{
         grid-template-columns:1fr;
     }
 
-    .about-text h2,
-    .contact-info h2{
-        font-size:43px;
+    .service-card{
+        min-height:300px;
     }
 
     .about-visual{
         min-height:380px;
     }
 
-    .about-box{
-        inset:10px;
+    .about-floating{
+        font-size:9px;
+        padding:10px;
     }
 
-    .about-floating{
-        width:190px;
-        padding:20px;
+    .float-one{
+        top:50px;
+        left:25px;
+    }
+
+    .float-two{
+        right:25px;
+        top:90px;
+    }
+
+    .float-three{
+        left:30px;
+        bottom:50px;
+    }
+
+    .about-logo{
+        width:110px;
+        height:110px;
+        font-size:45px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+        grid-auto-rows:240px;
+    }
+
+    .project:first-child{
+        grid-column:auto;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process{
+        min-height:190px;
+    }
+
+    .cta-box{
+        padding:45px 25px;
+        border-radius:23px;
+    }
+
+    .cta-box h2{
+        letter-spacing:-2.5px;
     }
 
     .contact-form{
-        padding:22px;
+        grid-template-columns:1fr;
+    }
+
+    .field.full,
+    .form-button{
+        grid-column:auto;
     }
 
     footer{
         flex-direction:column;
+        text-align:center;
     }
 
-}
+    .hero-scroll{
+        display:none;
+    }
 
+    .mouse-glow{
+        display:none;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-
-<div class="loader" id="loader">
-    <div class="loader-content">
-        <div class="loader-logo">
-            ASFALT<span>BETON</span>
-        </div>
+<div class="loader">
+    <div class="loader-box">
+        <div class="loader-logo">ASFALT<span>-BETON</span></div>
         <div class="loader-line"></div>
     </div>
 </div>
 
 <div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow two"></div>
 
-<div class="glow" id="glow"></div>
+<div class="mouse-glow"></div>
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-<nav id="navbar">
+<header class="navbar" id="navbar">
 
     <a href="#home" class="logo">
-        ASFALT<span>-BETON</span>
+        <div class="logo-mark"></div>
+        <div>ASFALT<span>-BETON</span></div>
     </a>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Domov</a></li>
-        <li><a href="#storitve">Storitve</a></li>
-        <li><a href="#podjetje">Podjetje</a></li>
-        <li><a href="#projekti">Projekti</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-
-    <a href="#kontakt" class="nav-button">
-        POVPRAŠEVANJE
-    </a>
-
-    <div class="menu-btn" id="menuBtn">
+    <button class="menu-btn" id="menuBtn" aria-label="Odpri meni">
         ☰
-    </div>
+    </button>
 
-</nav>
+    <nav class="nav-links" id="navLinks">
+        <a href="#home">Domov</a>
+        <a href="#storitve">Storitve</a>
+        <a href="#podjetje">Podjetje</a>
+        <a href="#projekti">Projekti</a>
+        <a href="#kontakt" class="nav-contact">Kontakt →</a>
+    </nav>
 
-<!-- HERO -->
+</header>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
 
 <section class="hero" id="home">
 
     <div id="three-container"></div>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-bottom"></div>
-
     <div class="hero-content reveal">
 
         <div class="eyebrow">
-            ASFALT-BETON d.o.o.
+            <span class="eyebrow-dot"></span>
+            GRADIMO. USTVARJAMO. VZDRŽUJEMO.
         </div>
 
         <h1>
-            GRADIMO<br>
-            <span>TRDNE</span><br>
-            TEMELJE.
+            <span>GRADIMO</span><br>
+            <span class="green">TRDNE</span><br>
+            <span class="outline">TEMELJE.</span>
         </h1>
 
         <p class="hero-text">
-            Profesionalne rešitve na področju asfaltiranja,
-            gradbeništva in vzdrževanja. Od prve ideje do
-            končne izvedbe – natančno, kakovostno in zanesljivo.
+            Profesionalne gradbene rešitve, asfaltiranje, priprava terena
+            in vzdrževanje. Od ideje do izvedbe – natančno, učinkovito
+            in z mislijo na dolgoročno kakovost.
         </p>
 
-        <div class="hero-buttons">
+        <div class="hero-actions">
 
             <a href="#storitve" class="btn btn-primary">
-                NAŠE STORITVE →
+                Oglej si storitve
+                <span class="btn-arrow">→</span>
             </a>
 
             <a href="#kontakt" class="btn btn-secondary">
-                KONTAKT
+                Kontaktirajte nas
             </a>
 
         </div>
 
+    </div>
+
+    <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        SCROLL TO EXPLORE
     </div>
 
 </section>
 
-<!-- STATS -->
+<!-- =========================
+     STATS
+========================= -->
 
-<div class="stats reveal">
+<div class="trust">
 
-    <div class="stat">
-        <div class="stat-number">
-            20<span>+</span>
+    <div class="trust-inner">
+
+        <div class="stat reveal">
+            <div class="stat-number counter" data-target="20">0</div>
+            <div class="stat-label">Let izkušenj</div>
         </div>
-        <p>let izkušenj</p>
-    </div>
 
-    <div class="stat">
-        <div class="stat-number">
-            500<span>+</span>
+        <div class="stat reveal">
+            <div class="stat-number counter" data-target="500">0</div>
+            <div class="stat-label">Izvedenih projektov</div>
         </div>
-        <p>izvedenih projektov</p>
-    </div>
 
-    <div class="stat">
-        <div class="stat-number">
-            100<span>%</span>
+        <div class="stat reveal">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Predanost kakovosti</div>
         </div>
-        <p>zanesljivost</p>
-    </div>
 
-    <div class="stat">
-        <div class="stat-number">
-            24<span>/7</span>
+        <div class="stat reveal">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Odzivnost po dogovoru</div>
         </div>
-        <p>odzivnost</p>
+
     </div>
 
 </div>
 
-<!-- SERVICES -->
+<!-- =========================
+     SERVICES
+========================= -->
 
-<section id="storitve">
+<section class="services" id="storitve">
 
-    <div class="section-heading reveal">
+    <div class="section-top reveal">
 
-        <div class="section-tag">
-            STORITVE
+        <div>
+            <div class="section-tag">01 / STORITVE</div>
+
+            <h2 class="section-title">
+                VSE NA<br>
+                <span>ENEM MESTU.</span>
+            </h2>
         </div>
 
-        <h2>
-            REŠITVE ZA<br>
-            <span style="color:var(--green)">VSAK PROJEKT.</span>
-        </h2>
-
-        <p>
-            Združujemo izkušnje, sodobno mehanizacijo in
-            strokovno znanje za izvedbo zahtevnih projektov.
+        <p class="section-description">
+            Celovit pristop k gradbenim projektom omogoča boljšo organizacijo,
+            učinkovitejšo izvedbo in rezultat, na katerega se lahko zanesete.
         </p>
 
     </div>
 
     <div class="services-grid">
 
-        <div class="service-card reveal">
+        <article class="service-card reveal">
+
+            <div class="service-number">01</div>
 
             <div class="service-icon">▰</div>
 
             <h3>Asfaltiranje</h3>
 
             <p>
-                Kakovostna izvedba asfaltnih površin,
-                cest, dvorišč, parkirišč in drugih površin.
+                Izvedba asfaltnih površin za ceste, dvorišča, parkirišča
+                in druge prometne površine.
             </p>
 
-            <a href="#kontakt" class="service-link">
-                POVPRAŠEVANJE →
-            </a>
+            <div class="service-link">↗</div>
 
-        </div>
+        </article>
 
-        <div class="service-card reveal">
 
-            <div class="service-icon">⌂</div>
+        <article class="service-card reveal">
+
+            <div class="service-number">02</div>
+
+            <div class="service-icon">◆</div>
 
             <h3>Gradbena dela</h3>
 
             <p>
-                Celovite gradbene rešitve in priprava terena
-                za različne vrste projektov.
+                Organizirana izvedba gradbenih del z usmerjenostjo
+                v kakovost, natančnost in učinkovito izvedbo.
             </p>
 
-            <a href="#kontakt" class="service-link">
-                POVPRAŠEVANJE →
-            </a>
+            <div class="service-link">↗</div>
 
-        </div>
+        </article>
 
-        <div class="service-card reveal">
 
-            <div class="service-icon">◈</div>
+        <article class="service-card reveal">
+
+            <div class="service-number">03</div>
+
+            <div class="service-icon">⌂</div>
 
             <h3>Priprava terena</h3>
 
             <p>
-                Izkopi, utrjevanje, nivelacija in priprava
-                podlage za kakovostno končno izvedbo.
+                Izkopi, utrjevanje, priprava podlage in druga dela,
+                potrebna za kakovostno nadaljevanje projekta.
             </p>
 
-            <a href="#kontakt" class="service-link">
-                POVPRAŠEVANJE →
-            </a>
+            <div class="service-link">↗</div>
 
-        </div>
+        </article>
 
-        <div class="service-card reveal">
+
+        <article class="service-card reveal">
+
+            <div class="service-number">04</div>
 
             <div class="service-icon">⚙</div>
 
             <h3>Mehanizacija</h3>
 
             <p>
-                Sodobna gradbena mehanizacija omogoča hitro,
-                natančno in učinkovito izvedbo.
+                Uporaba ustrezne mehanizacije za učinkovito izvedbo
+                zahtevnejših terenskih in gradbenih del.
             </p>
 
-            <a href="#kontakt" class="service-link">
-                POVPRAŠEVANJE →
-            </a>
+            <div class="service-link">↗</div>
 
-        </div>
+        </article>
 
-        <div class="service-card reveal">
+
+        <article class="service-card reveal">
+
+            <div class="service-number">05</div>
 
             <div class="service-icon">↻</div>
 
             <h3>Vzdrževanje</h3>
 
             <p>
-                Dolgoročna skrb za cestne in druge zunanje
-                površine ter pravočasna sanacija.
+                Rešitve za vzdrževanje površin in objektov z namenom
+                podaljšanja njihove uporabnosti in življenjske dobe.
             </p>
 
-            <a href="#kontakt" class="service-link">
-                POVPRAŠEVANJE →
-            </a>
+            <div class="service-link">↗</div>
 
-        </div>
+        </article>
 
-        <div class="service-card reveal">
 
-            <div class="service-icon">◆</div>
+        <article class="service-card reveal">
+
+            <div class="service-number">06</div>
+
+            <div class="service-icon">✦</div>
 
             <h3>Celovite rešitve</h3>
 
             <p>
-                Od priprave in načrtovanja do izvedbe –
-                vse na enem mestu.
+                Od priprave do zaključka – usklajen pristop za projekte,
+                kjer je pomembna zanesljiva izvedba.
             </p>
 
-            <a href="#kontakt" class="service-link">
-                POVPRAŠEVANJE →
-            </a>
+            <div class="service-link">↗</div>
 
-        </div>
+        </article>
 
     </div>
 
 </section>
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section class="about" id="podjetje">
 
-    <div class="about-container">
+    <div class="about-grid">
 
         <div class="about-visual reveal">
 
-            <div class="about-box"></div>
+            <div class="about-floating float-one">
+                PRECIZNOST
+            </div>
 
-            <div class="about-floating">
-                <strong>20+</strong>
-                <p>let gradimo zaupanje</p>
+            <div class="about-floating float-two">
+                KAKOVOST
+            </div>
+
+            <div class="about-floating float-three">
+                ZANESLJIVOST
+            </div>
+
+            <div class="about-center">
+                <div class="about-logo">A</div>
             </div>
 
         </div>
 
-        <div class="about-text reveal">
 
-            <div class="section-tag">
-                O PODJETJU
-            </div>
+        <div class="about-copy reveal">
 
-            <h2>
-                TRDNO.<br>
-                <span>ZANESLJIVO.</span>
+            <div class="section-tag">02 / PODJETJE</div>
+
+            <h2 class="section-title">
+                MOČNA OSNOVA.<br>
+                <span>MOČNA IZVEDBA.</span>
             </h2>
 
             <p>
-                ASFALT-BETON d.o.o. temelji na izkušnjah,
-                strokovnosti in kakovostno opravljenem delu.
+                Pri vsakem projektu želimo združiti dobro organizacijo,
+                kakovostno izvedbo in praktične rešitve.
             </p>
 
             <p>
-                Naš cilj ni samo dokončati projekt.
-                Naš cilj je ustvariti rezultat, ki bo
-                služil še mnogo let.
+                Naš cilj ni samo zaključiti delo. Cilj je ustvariti rezultat,
+                ki bo dolgoročno služil svojemu namenu.
             </p>
 
-            <ul class="check-list">
+            <div class="check-list">
 
-                <li>
-                    Profesionalna izvedba
-                </li>
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Profesionalen pristop
+                </div>
 
-                <li>
-                    Kakovostni materiali
-                </li>
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Natančna izvedba
+                </div>
 
-                <li>
-                    Sodobna mehanizacija
-                </li>
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Zanesljiva organizacija
+                </div>
 
-                <li>
-                    Zanesljivi roki
-                </li>
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Dolgoročna kakovost
+                </div>
 
-            </ul>
+            </div>
 
         </div>
 
@@ -1343,278 +1696,319 @@ footer span{
 
 </section>
 
-<!-- PROJECTS -->
+<!-- =========================
+     PROJECTS
+========================= -->
 
-<section id="projekti">
+<section class="projects" id="projekti">
 
-    <div class="section-heading reveal">
+    <div class="section-top reveal">
 
-        <div class="section-tag">
-            PROJEKTI
+        <div>
+
+            <div class="section-tag">03 / PROJEKTI</div>
+
+            <h2 class="section-title">
+                DELA,<br>
+                KI <span>OSTANEJO.</span>
+            </h2>
+
         </div>
 
-        <h2>
-            DELO,<br>
-            KI <span style="color:var(--green)">OSTANE.</span>
-        </h2>
-
-        <p>
-            Nekaj primerov področij, kjer lahko uporabimo
-            naše znanje in izkušnje.
+        <p class="section-description">
+            Tukaj bomo dodali vaše dejanske projekte, fotografije,
+            reference in izvedena dela.
         </p>
 
     </div>
 
-    <div class="projects-grid">
 
-        <div class="project reveal">
+    <div class="project-grid">
+
+        <article class="project reveal">
 
             <div class="project-bg"></div>
+            <div class="project-lines"></div>
 
-            <div class="project-info">
-                <span>01 / ASFALTIRANJE</span>
+            <div class="project-content">
+
+                <div class="project-tag">
+                    ASFALTIRANJE
+                </div>
+
                 <h3>Cestne površine</h3>
+
+                <p>
+                    Profesionalna izvedba in ureditev prometnih površin.
+                </p>
+
             </div>
 
-        </div>
+        </article>
 
-        <div class="project reveal">
+
+        <article class="project reveal">
 
             <div class="project-bg"></div>
+            <div class="project-lines"></div>
 
-            <div class="project-info">
-                <span>02 / GRADBENIŠTVO</span>
+            <div class="project-content">
+
+                <div class="project-tag">
+                    TERENSKA DELA
+                </div>
+
                 <h3>Priprava terena</h3>
+
+                <p>
+                    Priprava in utrjevanje podlage.
+                </p>
+
             </div>
 
-        </div>
+        </article>
 
-        <div class="project reveal">
+
+        <article class="project reveal">
 
             <div class="project-bg"></div>
+            <div class="project-lines"></div>
 
-            <div class="project-info">
-                <span>03 / UREJANJE</span>
+            <div class="project-content">
+
+                <div class="project-tag">
+                    UREDITEV
+                </div>
+
                 <h3>Parkirišča in dvorišča</h3>
+
+                <p>
+                    Funkcionalne in urejene zunanje površine.
+                </p>
+
             </div>
 
-        </div>
+        </article>
 
     </div>
 
 </section>
 
-<!-- PROCESS -->
+<!-- =========================
+     PROCESS
+========================= -->
 
-<section class="process">
+<section>
 
-    <div class="section-heading reveal">
+    <div class="section-top reveal">
 
-        <div class="section-tag">
-            KAKO DELAMO
+        <div>
+
+            <div class="section-tag">04 / PROCES</div>
+
+            <h2 class="section-title">
+                OD IDEJE<br>
+                DO <span>REZULTATA.</span>
+            </h2>
+
         </div>
 
-        <h2>
-            OD IDEJE<br>
-            DO <span style="color:var(--green)">IZVEDBE.</span>
-        </h2>
+        <p class="section-description">
+            Preprost in pregleden proces omogoča, da se projekt razvija
+            učinkovito in brez nepotrebnih zapletov.
+        </p>
 
     </div>
+
 
     <div class="process-grid">
 
-        <div class="process-item reveal">
-
+        <div class="process reveal">
             <div class="process-number">01</div>
-
             <h3>Pogovor</h3>
-
             <p>
                 Spoznamo vaše potrebe, želje in zahteve projekta.
             </p>
-
         </div>
 
-        <div class="process-item reveal">
-
+        <div class="process reveal">
             <div class="process-number">02</div>
-
             <h3>Načrt</h3>
-
             <p>
-                Skupaj določimo optimalno rešitev in potek izvedbe.
+                Pripravimo način izvedbe in organizacijo potrebnih del.
             </p>
-
         </div>
 
-        <div class="process-item reveal">
-
+        <div class="process reveal">
             <div class="process-number">03</div>
-
             <h3>Izvedba</h3>
-
             <p>
-                Ekipa in mehanizacija poskrbita za kakovostno delo.
+                Delo izvedemo sistematično, natančno in učinkovito.
             </p>
-
         </div>
 
-        <div class="process-item reveal">
-
+        <div class="process reveal">
             <div class="process-number">04</div>
-
-            <h3>Končni rezultat</h3>
-
+            <h3>Rezultat</h3>
             <p>
-                Projekt zaključimo z mislijo na dolgoročno kakovost.
+                Končni rezultat preverimo in zaključimo po dogovoru.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-<!-- CTA -->
+<!-- =========================
+     CTA
+========================= -->
 
 <section class="cta">
 
     <div class="cta-box reveal">
 
-        <div class="section-tag">
-            IMATE PROJEKT?
-        </div>
-
         <h2>
-            NAREDIMO GA<br>
-            <span>SKUPAJ.</span>
+            IMATE <span>PROJEKT?</span><br>
+            NAREDIMO GA.
         </h2>
 
         <p>
-            Povejte nam, kaj potrebujete, in skupaj bomo
-            poiskali najboljšo rešitev.
+            Povejte nam, kaj potrebujete. Skupaj lahko poiščemo
+            najboljšo rešitev za vaš projekt.
         </p>
 
         <a href="#kontakt" class="btn btn-primary">
-            POŠLJI POVPRAŠEVANJE →
+            Začnimo pogovor
+            <span class="btn-arrow">→</span>
         </a>
 
     </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
-<section id="kontakt">
+<section class="contact" id="kontakt">
+
+    <div class="section-top reveal">
+
+        <div>
+
+            <div class="section-tag">05 / KONTAKT</div>
+
+            <h2 class="section-title">
+                POVEJTE NAM<br>
+                <span>KAJ POTREBUJETE.</span>
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Za povpraševanje nas kontaktirajte neposredno ali uporabite
+            kontaktni obrazec.
+        </p>
+
+    </div>
+
 
     <div class="contact-grid">
 
-        <div class="contact-info reveal">
+        <div class="contact-info">
 
-            <div class="section-tag">
-                KONTAKT
-            </div>
+            <!-- ZAMENJAJ S PRAVIMI PODATKI -->
 
-            <h2>
-                ZAČNIMO<br>
-                <span>PROJEKT.</span>
-            </h2>
+            <a href="tel:+386XXXXXXXX" class="contact-card reveal">
 
-            <p>
-                Za vprašanja, ponudbe ali informacije nas
-                kontaktirajte. Z veseljem bomo prisluhnili
-                vašemu projektu.
-            </p>
+                <div class="contact-label">Telefon</div>
 
-            <div class="contact-detail">
-
-                <div class="contact-icon">☎</div>
-
-                <div>
-                    <strong>Telefon</strong>
-                    <span>+386 XX XXX XX XX</span>
+                <div class="contact-value">
+                    +386 XX XXX XX XX
                 </div>
 
-            </div>
+            </a>
 
-            <div class="contact-detail">
 
-                <div class="contact-icon">✉</div>
+            <a href="mailto:info@asfalt-beton.si" class="contact-card reveal">
 
-                <div>
-                    <strong>E-pošta</strong>
-                    <span>info@asfalt-beton.si</span>
+                <div class="contact-label">E-mail</div>
+
+                <div class="contact-value">
+                    info@asfalt-beton.si
                 </div>
 
-            </div>
+            </a>
 
-            <div class="contact-detail">
 
-                <div class="contact-icon">⌖</div>
+            <div class="contact-card reveal">
 
-                <div>
-                    <strong>Lokacija</strong>
-                    <span>Slovenija</span>
+                <div class="contact-label">Lokacija</div>
+
+                <div class="contact-value">
+                    Slovenija
                 </div>
 
             </div>
 
         </div>
 
+
         <form class="contact-form reveal" id="contactForm">
 
-            <div class="input-group">
-
-                <label>IME IN PRIIMEK</label>
+            <div class="field">
 
                 <input
                     type="text"
-                    placeholder="Vaše ime"
+                    id="name"
+                    placeholder="Ime in priimek"
                     required
                 >
 
             </div>
 
-            <div class="input-group">
 
-                <label>E-POŠTA</label>
+            <div class="field">
 
                 <input
                     type="email"
-                    placeholder="vas@email.si"
+                    id="email"
+                    placeholder="E-mail"
                     required
                 >
 
             </div>
 
-            <div class="input-group">
 
-                <label>TELEFON</label>
+            <div class="field full">
 
                 <input
-                    type="tel"
-                    placeholder="+386 ..."
+                    type="text"
+                    id="subject"
+                    placeholder="Zadeva"
+                    required
                 >
 
             </div>
 
-            <div class="input-group">
 
-                <label>SPOROČILO</label>
+            <div class="field full">
 
                 <textarea
+                    id="message"
                     placeholder="Opišite vaš projekt..."
                     required
                 ></textarea>
 
             </div>
 
-            <button
-                type="submit"
-                class="btn btn-primary"
-                style="border:0;width:100%;cursor:pointer;"
-            >
-                POŠLJI POVPRAŠEVANJE →
+
+            <button class="btn btn-primary form-button" type="submit">
+
+                Pošlji povpraševanje
+
+                <span class="btn-arrow">→</span>
+
             </button>
 
         </form>
@@ -1623,22 +2017,34 @@ footer span{
 
 </section>
 
-<!-- FOOTER -->
+</main>
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <div>
-        © 2026 <strong>ASFALT<span>-BETON</span> d.o.o.</strong>
+    <div class="footer-logo">
+        © <span>ASFALT-BETON</span> d.o.o.
     </div>
 
     <div>
-        Profesionalne gradbene rešitve.
+        Gradimo trdne temelje.
+    </div>
+
+    <div class="footer-links">
+        <a href="#home">Domov</a>
+        <a href="#storitve">Storitve</a>
+        <a href="#kontakt">Kontakt</a>
     </div>
 
 </footer>
 
 
-<!-- THREE.JS -->
+<!-- =========================
+     THREE.JS
+========================= -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -1651,12 +2057,8 @@ footer span{
 window.addEventListener("load", () => {
 
     setTimeout(() => {
-
-        document
-            .getElementById("loader")
-            .classList.add("hide");
-
-    },700);
+        document.querySelector(".loader").classList.add("hide");
+    }, 700);
 
 });
 
@@ -1669,7 +2071,7 @@ const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 50){
+    if(window.scrollY > 40){
         navbar.classList.add("scrolled");
     }else{
         navbar.classList.remove("scrolled");
@@ -1689,13 +2091,18 @@ menuBtn.addEventListener("click", () => {
 
     navLinks.classList.toggle("active");
 
+    menuBtn.textContent =
+        navLinks.classList.contains("active") ? "×" : "☰";
+
 });
+
 
 document.querySelectorAll(".nav-links a").forEach(link => {
 
     link.addEventListener("click", () => {
 
         navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
 
     });
 
@@ -1703,11 +2110,10 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 
 
 /* =========================
-   SCROLL REVEAL
+   REVEAL
 ========================= */
 
-const observer = new IntersectionObserver(
-
+const revealObserver = new IntersectionObserver(
     entries => {
 
         entries.forEach(entry => {
@@ -1716,22 +2122,79 @@ const observer = new IntersectionObserver(
 
                 entry.target.classList.add("visible");
 
+                revealObserver.unobserve(entry.target);
+
             }
 
         });
 
     },
-
     {
         threshold:.12
     }
-
 );
 
 document.querySelectorAll(".reveal").forEach(el => {
 
-    observer.observe(el);
+    revealObserver.observe(el);
 
+});
+
+
+/* =========================
+   COUNTERS
+========================= */
+
+const counters = document.querySelectorAll(".counter");
+
+const counterObserver = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(!entry.isIntersecting) return;
+
+            const counter = entry.target;
+            const target = Number(counter.dataset.target);
+
+            let current = 0;
+
+            const duration = 1400;
+            const start = performance.now();
+
+            function animate(time){
+
+                const progress =
+                    Math.min((time-start)/duration,1);
+
+                const eased =
+                    1-Math.pow(1-progress,3);
+
+                current =
+                    Math.floor(target*eased);
+
+                counter.textContent = current + "+";
+
+                if(progress < 1){
+                    requestAnimationFrame(animate);
+                }
+
+            }
+
+            requestAnimationFrame(animate);
+
+            counterObserver.unobserve(counter);
+
+        });
+
+    },
+    {
+        threshold:.6
+    }
+);
+
+counters.forEach(counter => {
+    counterObserver.observe(counter);
 });
 
 
@@ -1739,18 +2202,18 @@ document.querySelectorAll(".reveal").forEach(el => {
    MOUSE GLOW
 ========================= */
 
-const glow = document.getElementById("glow");
+const mouseGlow = document.querySelector(".mouse-glow");
 
-document.addEventListener("mousemove", e => {
+window.addEventListener("mousemove", e => {
 
-    glow.style.left = (e.clientX - 250) + "px";
-    glow.style.top = (e.clientY - 250) + "px";
+    mouseGlow.style.left = e.clientX + "px";
+    mouseGlow.style.top = e.clientY + "px";
 
 });
 
 
 /* =========================
-   CARD 3D EFFECT
+   SERVICE CARD 3D
 ========================= */
 
 document.querySelectorAll(".service-card").forEach(card => {
@@ -1759,27 +2222,27 @@ document.querySelectorAll(".service-card").forEach(card => {
 
         const rect = card.getBoundingClientRect();
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const x =
+            e.clientX - rect.left;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX =
-            ((y - centerY) / centerY) * -5;
+        const y =
+            e.clientY - rect.top;
 
         const rotateY =
-            ((x - centerX) / centerX) * 5;
+            ((x / rect.width)-.5)*8;
+
+        const rotateX =
+            ((y / rect.height)-.5)*-8;
 
         card.style.transform =
-            `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
 
     });
 
     card.addEventListener("mouseleave", () => {
 
         card.style.transform =
-            "translateY(0) rotateX(0) rotateY(0)";
+            "perspective(900px) rotateX(0) rotateY(0) translateY(0)";
 
     });
 
@@ -1793,17 +2256,23 @@ document.querySelectorAll(".service-card").forEach(card => {
 const container =
     document.getElementById("three-container");
 
-const scene = new THREE.Scene();
+const scene =
+    new THREE.Scene();
+
+scene.fog =
+    new THREE.FogExp2(0x030504,.035);
+
 
 const camera =
     new THREE.PerspectiveCamera(
-        45,
-        container.clientWidth / container.clientHeight,
+        55,
+        window.innerWidth/window.innerHeight,
         .1,
-        100
+        1000
     );
 
-camera.position.set(0,2.5,8);
+camera.position.set(7,5,11);
+
 
 const renderer =
     new THREE.WebGLRenderer({
@@ -1816,16 +2285,14 @@ renderer.setPixelRatio(
 );
 
 renderer.setSize(
-    container.clientWidth,
-    container.clientHeight
+    window.innerWidth,
+    window.innerHeight
 );
 
 container.appendChild(renderer.domElement);
 
 
-/* =========================
-   LIGHTS
-========================= */
+/* LIGHT */
 
 const ambient =
     new THREE.AmbientLight(
@@ -1835,223 +2302,220 @@ const ambient =
 
 scene.add(ambient);
 
+
 const greenLight =
     new THREE.PointLight(
         0x39ff88,
         5,
-        15
+        35
     );
 
 greenLight.position.set(
-    3,
-    3,
-    4
+    2,5,2
 );
 
 scene.add(greenLight);
 
-const whiteLight =
+
+const greenLight2 =
     new THREE.PointLight(
-        0xffffff,
-        2,
-        15
+        0x18d96b,
+        3,
+        25
     );
 
-whiteLight.position.set(
-    -4,
-    2,
-    3
+greenLight2.position.set(
+    -7,3,-4
 );
 
-scene.add(whiteLight);
+scene.add(greenLight2);
 
 
-/* =========================
-   ROAD
-========================= */
-
-const roadGeometry =
-    new THREE.BoxGeometry(
-        8,
-        .25,
-        4
-    );
+/* MATERIALS */
 
 const roadMaterial =
     new THREE.MeshStandardMaterial({
-        color:0x151917,
-        metalness:.25,
-        roughness:.75
+        color:0x111512,
+        roughness:.8,
+        metalness:.15
     });
+
+
+const greenMaterial =
+    new THREE.MeshStandardMaterial({
+        color:0x39ff88,
+        emissive:0x0b6b38,
+        emissiveIntensity:1.5,
+        roughness:.4
+    });
+
+
+const buildingMaterial =
+    new THREE.MeshStandardMaterial({
+        color:0x17211b,
+        roughness:.7,
+        metalness:.25
+    });
+
+
+/* ROAD */
 
 const road =
     new THREE.Mesh(
-        roadGeometry,
+        new THREE.BoxGeometry(15,.25,30),
         roadMaterial
     );
 
-road.rotation.x = -.15;
+road.position.set(
+    2,-1.5,-2
+);
 
-road.position.y = -1;
+road.rotation.y = -.22;
 
 scene.add(road);
 
 
-/* =========================
-   GREEN ROAD LINES
-========================= */
+/* GREEN ROAD LINES */
 
-for(let i=-3;i<=3;i+=2){
-
-    const lineGeometry =
-        new THREE.BoxGeometry(
-            .08,
-            .04,
-            4
-        );
-
-    const lineMaterial =
-        new THREE.MeshBasicMaterial({
-            color:0x39ff88
-        });
+for(let i=0;i<9;i++){
 
     const line =
         new THREE.Mesh(
-            lineGeometry,
-            lineMaterial
+            new THREE.BoxGeometry(.12,.04,2.1),
+            greenMaterial
         );
 
     line.position.set(
-        i,
-        -.82,
-        0
+        2,
+        -1.34,
+        7-i*3.3
     );
 
-    line.rotation.x = -.15;
+    line.rotation.y = -.22;
 
     scene.add(line);
 
 }
 
 
-/* =========================
-   BUILDING BLOCKS
-========================= */
+/* BUILDINGS */
 
-const blocks = [];
-
-for(let i=0;i<14;i++){
-
-    const height =
-        .5 + Math.random()*2;
+for(let i=0;i<15;i++){
 
     const width =
-        .4 + Math.random()*.7;
+        .7+Math.random()*1.6;
+
+    const height =
+        .7+Math.random()*4;
 
     const depth =
-        .4 + Math.random()*.7;
+        .7+Math.random()*1.7;
 
-    const geometry =
-        new THREE.BoxGeometry(
-            width,
-            height,
-            depth
-        );
-
-    const material =
-        new THREE.MeshStandardMaterial({
-            color:
-                i % 3 === 0
-                ? 0x39ff88
-                : 0x252b27,
-
-            metalness:.5,
-            roughness:.4
-        });
-
-    const cube =
+    const building =
         new THREE.Mesh(
-            geometry,
-            material
+            new THREE.BoxGeometry(
+                width,
+                height,
+                depth
+            ),
+            buildingMaterial
         );
 
-    cube.position.x =
-        (Math.random()-.5)*7;
+    const side =
+        i%2===0 ? -1 : 1;
 
-    cube.position.y =
-        -0.65 + height/2;
+    building.position.set(
+        side*(3.5+Math.random()*3),
+        -1.35+height/2,
+        -8+Math.random()*18
+    );
 
-    cube.position.z =
-        (Math.random()-.5)*3;
+    building.rotation.y =
+        (Math.random()-.5)*.5;
 
-    cube.rotation.y =
-        Math.random();
+    scene.add(building);
 
-    scene.add(cube);
 
-    blocks.push(cube);
+    /* building green strip */
+
+    const strip =
+        new THREE.Mesh(
+            new THREE.BoxGeometry(
+                width+.02,
+                .035,
+                depth+.02
+            ),
+            greenMaterial
+        );
+
+    strip.position.set(
+        building.position.x,
+        building.position.y+height*.2,
+        building.position.z
+    );
+
+    strip.rotation.y =
+        building.rotation.y;
+
+    scene.add(strip);
 
 }
 
 
-/* =========================
-   FLOATING RINGS
-========================= */
+/* FLOATING RINGS */
 
-const rings = [];
-
-for(let i=0;i<4;i++){
-
-    const geometry =
-        new THREE.TorusGeometry(
-            .5 + i*.15,
-            .015,
-            12,
-            64
-        );
-
-    const material =
-        new THREE.MeshBasicMaterial({
-            color:0x39ff88
-        });
+for(let i=0;i<5;i++){
 
     const ring =
         new THREE.Mesh(
-            geometry,
-            material
+            new THREE.TorusGeometry(
+                .6+i*.18,
+                .018,
+                8,
+                80
+            ),
+            greenMaterial
         );
 
     ring.position.set(
-        1.8,
-        .8 + i*.6,
-        -1.5
+        -1+i*1.2,
+        2+i*.35,
+        -4-i*1.5
     );
 
-    scene.add(ring);
+    ring.rotation.x =
+        Math.PI/2;
 
-    rings.push(ring);
+    ring.rotation.y =
+        i*.4;
+
+    scene.add(ring);
 
 }
 
 
-/* =========================
-   PARTICLES
-========================= */
+/* PARTICLES */
 
 const particleGeometry =
     new THREE.BufferGeometry();
 
-const particleCount = 500;
+const particleCount = 650;
 
 const positions =
     new Float32Array(
-        particleCount * 3
+        particleCount*3
     );
 
-for(let i=0;i<particleCount*3;i++){
+for(let i=0;i<particleCount*3;i+=3){
 
     positions[i] =
-        (Math.random()-.5)*14;
+        (Math.random()-.5)*25;
+
+    positions[i+1] =
+        Math.random()*11-2;
+
+    positions[i+2] =
+        (Math.random()-.5)*28;
 
 }
 
@@ -2063,6 +2527,7 @@ particleGeometry.setAttribute(
     )
 );
 
+
 const particleMaterial =
     new THREE.PointsMaterial({
         color:0x39ff88,
@@ -2070,6 +2535,7 @@ const particleMaterial =
         transparent:true,
         opacity:.7
     });
+
 
 const particles =
     new THREE.Points(
@@ -2081,19 +2547,19 @@ scene.add(particles);
 
 
 /* =========================
-   MOUSE CONTROL
+   CAMERA MOUSE MOVEMENT
 ========================= */
 
 let mouseX = 0;
 let mouseY = 0;
 
-document.addEventListener("mousemove", e => {
+window.addEventListener("mousemove", e => {
 
     mouseX =
-        (e.clientX / window.innerWidth - .5);
+        (e.clientX/window.innerWidth-.5);
 
     mouseY =
-        (e.clientY / window.innerHeight - .5);
+        (e.clientY/window.innerHeight-.5);
 
 });
 
@@ -2102,7 +2568,8 @@ document.addEventListener("mousemove", e => {
    ANIMATION
 ========================= */
 
-const clock = new THREE.Clock();
+const clock =
+    new THREE.Clock();
 
 function animate(){
 
@@ -2111,50 +2578,26 @@ function animate(){
     const time =
         clock.getElapsedTime();
 
-    road.rotation.z =
-        Math.sin(time*.2)*.01;
-
-    blocks.forEach((block,i) => {
-
-        block.position.y +=
-            Math.sin(time*.8+i)*.0007;
-
-        block.rotation.y += .0008;
-
-    });
-
-    rings.forEach((ring,i) => {
-
-        ring.rotation.x =
-            time*.5 + i;
-
-        ring.rotation.y =
-            time*.3;
-
-    });
-
     particles.rotation.y =
-        time*.025;
-
-    /* 3D mouse movement */
-
-    camera.position.x +=
-        (mouseX*1.2 - camera.position.x)*.03;
-
-    camera.position.y +=
-        (2.5 - mouseY*.5 - camera.position.y)*.03;
-
-    camera.lookAt(
-        0,
-        .2,
-        0
-    );
+        time*.015;
 
     greenLight.position.x =
-        3 + Math.sin(time)*2;
+        Math.sin(time)*4;
 
     greenLight.position.z =
-        4 + Math.cos(time)*2;
+        Math.cos(time)*4;
+
+    camera.position.x +=
+        (7 + mouseX*1.8-camera.position.x)*.025;
+
+    camera.position.y +=
+        (5 - mouseY*1.1-camera.position.y)*.025;
+
+    camera.lookAt(
+        1,
+        0,
+        -2
+    );
 
     renderer.render(
         scene,
@@ -2173,14 +2616,13 @@ animate();
 window.addEventListener("resize", () => {
 
     camera.aspect =
-        container.clientWidth /
-        container.clientHeight;
+        window.innerWidth/window.innerHeight;
 
     camera.updateProjectionMatrix();
 
     renderer.setSize(
-        container.clientWidth,
-        container.clientHeight
+        window.innerWidth,
+        window.innerHeight
     );
 
 });
@@ -2191,31 +2633,36 @@ window.addEventListener("resize", () => {
 ========================= */
 
 document
-    .getElementById("contactForm")
-    .addEventListener("submit", function(e){
+.getElementById("contactForm")
+.addEventListener("submit", function(e){
 
-        e.preventDefault();
+    e.preventDefault();
 
-        alert(
-            "Hvala za povpraševanje! Kontaktni obrazec je trenutno predstavitveni. V naslednjem koraku ga lahko povežemo z vašim e-poštnim naslovom."
-        );
+    const name =
+        document.getElementById("name").value;
 
-        this.reset();
+    alert(
+        "Hvala, " +
+        name +
+        "! Kontaktni obrazec je trenutno v predstavitvenem načinu. V naslednjem koraku ga lahko povežemo z dejanskim e-mailom."
+    );
 
-    });
+    this.reset();
+
+});
 
 
 /* =========================
-   SMOOTH BUTTONS
+   SMOOTH BUTTON EFFECT
 ========================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll("a[href^='#']").forEach(link => {
 
-    anchor.addEventListener("click", function(e){
+    link.addEventListener("click", e => {
 
         const target =
             document.querySelector(
-                this.getAttribute("href")
+                link.getAttribute("href")
             );
 
         if(target){
