@@ -4,13 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Asfalt-beton d.o.o. | Gradbena dela, urejanje in storitve na ključ</title>
+<title>Asfalt-beton d.o.o. | Gradbena dela, ureditve in čiščenje</title>
 
-<meta name="description" content="Asfalt-beton d.o.o. – notranje ureditve, čiščenje in pranje, ureditev dvorišč in okolice, zemeljska in gradbena dela ter celovite storitve na ključ.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="description"
+content="Asfalt-beton d.o.o. – notranje ureditve, čiščenje, ureditev dvorišč, zemeljska in gradbena dela ter storitve na ključ.">
 
 <style>
 
@@ -18,73 +15,93 @@
    OSNOVNE NASTAVITVE
 ========================================================= */
 
-:root {
-    --green: #55d66b;
-    --green-dark: #22a944;
-    --green-light: #8cff9c;
+:root{
+    --green:#35d06f;
+    --green-dark:#159447;
+    --green-light:#72f09a;
 
-    --black: #070908;
-    --black-2: #0c100d;
-    --black-3: #111713;
+    --black:#070a08;
+    --black-2:#0c110e;
+    --black-3:#111813;
 
-    --white: #ffffff;
-    --gray: #a8b0aa;
-    --gray-dark: #737b76;
+    --white:#ffffff;
+    --text:#e9eee9;
+    --muted:#9ca79f;
 
-    --border: rgba(255,255,255,0.09);
+    --border:rgba(255,255,255,.09);
+    --glass:rgba(255,255,255,.045);
 
-    --shadow: 0 25px 80px rgba(0,0,0,0.45);
+    --shadow:0 25px 70px rgba(0,0,0,.45);
 
-    --radius: 24px;
-    --max: 1250px;
+    --radius:22px;
+    --max:1280px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: "Inter", sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    display: block;
-    width: 100%;
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(53,208,111,.08), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(53,208,111,.05), transparent 25%),
+        var(--black);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
 button,
-a {
-    -webkit-tap-highlight-color: transparent;
+a{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+.container{
+    width:min(92%,var(--max));
+    margin:auto;
 }
 
 
 /* =========================================================
-   OZADJE
+   SCROLLBAR
 ========================================================= */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 15% 10%, rgba(85,214,107,0.08), transparent 30%),
-        radial-gradient(circle at 85% 50%, rgba(85,214,107,0.05), transparent 30%);
-    z-index: -2;
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050705;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--green-dark);
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--green);
 }
 
 
@@ -92,508 +109,529 @@ body::before {
    HEADER
 ========================================================= */
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 82px;
-    z-index: 1000;
-
-    background: rgba(7,9,8,0.78);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid transparent;
-    transition: 0.3s ease;
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(7,10,8,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
 }
 
-header.scrolled {
-    background: rgba(7,9,8,0.94);
-    border-bottom-color: var(--border);
+.nav{
+    height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.nav {
-    max-width: var(--max);
-    height: 100%;
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 25px;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    letter-spacing:-.5px;
 }
 
-
-/* LOGO */
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 900;
-    letter-spacing: -0.8px;
+.logo-mark{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    display:grid;
+    place-items:center;
+    color:#061008;
+    font-size:21px;
+    box-shadow:0 10px 35px rgba(53,208,111,.22);
 }
 
-.logo-mark {
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-    place-items: center;
-
-    background: var(--green);
-    color: #061007;
-
-    border-radius: 12px;
-
-    font-size: 18px;
-    font-weight: 900;
-
-    box-shadow: 0 0 30px rgba(85,214,107,0.2);
+.logo-text{
+    line-height:1;
 }
 
-.logo-text {
-    line-height: 1;
+.logo-text strong{
+    display:block;
+    font-size:18px;
 }
 
-.logo-text strong {
-    display: block;
-    font-size: 16px;
+.logo-text span{
+    display:block;
+    margin-top:4px;
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.logo-text span {
-    display: block;
-    margin-top: 4px;
-    color: var(--green);
-    font-size: 10px;
-    letter-spacing: 2px;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-
-/* MENU */
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
+.nav-links button{
+    background:transparent;
+    color:#dfe7e0;
+    padding:11px 15px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:700;
+    transition:.25s;
 }
 
-.nav-links a {
-    position: relative;
-
-    font-size: 13px;
-    font-weight: 600;
-    color: #dfe5e0;
-
-    transition: 0.25s ease;
+.nav-links button:hover{
+    color:var(--green);
+    background:rgba(53,208,111,.07);
 }
 
-.nav-links a:hover {
-    color: var(--green);
+.nav-contact{
+    background:var(--green)!important;
+    color:#061008!important;
 }
 
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-
-    width: 0;
-    height: 2px;
-
-    background: var(--green);
-
-    transition: 0.25s ease;
+.nav-contact:hover{
+    background:var(--green-light)!important;
+    transform:translateY(-2px);
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-
-/* CONTACT BUTTON */
-
-.nav-button {
-    padding: 12px 18px;
-
-    border-radius: 12px;
-
-    background: var(--green);
-    color: #061007 !important;
-
-    font-size: 12px !important;
-    font-weight: 800 !important;
-
-    transition: 0.3s ease;
-}
-
-.nav-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(85,214,107,0.25);
-}
-
-.nav-button::after {
-    display: none !important;
-}
-
-
-/* MOBILE MENU */
-
-.menu-toggle {
-    display: none;
-
-    width: 45px;
-    height: 45px;
-
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.03);
-
-    border-radius: 12px;
-
-    color: white;
-    font-size: 22px;
-
-    cursor: pointer;
+.menu-toggle{
+    display:none;
+    background:transparent;
+    color:white;
+    font-size:26px;
 }
 
 
 /* =========================================================
-   HERO
+   APP / VIEWS
 ========================================================= */
 
-.hero {
-    min-height: 100vh;
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    overflow: hidden;
+main{
+    padding-top:82px;
 }
 
-.hero-bg {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(7,9,8,0.96) 0%,
-            rgba(7,9,8,0.82) 40%,
-            rgba(7,9,8,0.45) 75%,
-            rgba(7,9,8,0.72) 100%
-        ),
-        url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=85")
-        center/cover;
-
-    transform: scale(1.04);
+.view{
+    display:none;
+    min-height:calc(100vh - 82px);
+    animation:viewIn .45s ease;
 }
 
-.hero::after {
-    content: "";
+.view.active{
+    display:block;
+}
 
-    position: absolute;
-    inset: auto 0 0 0;
+@keyframes viewIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-    height: 220px;
 
-    background: linear-gradient(
-        transparent,
-        var(--black)
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.hero{
+    min-height:calc(100vh - 82px);
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:rgba(53,208,111,.08);
+    filter:blur(100px);
+    right:-250px;
+    top:-150px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:60px;
+    align-items:center;
+}
+
+.eyebrow{
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(44px,6vw,82px);
+    line-height:.95;
+    letter-spacing:-4px;
+    max-width:850px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
+    margin:28px 0;
+}
+
+.hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:15px 22px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:.5px;
+    transition:.25s;
+}
+
+.btn-green{
+    background:var(--green);
+    color:#061008;
+}
+
+.btn-green:hover{
+    background:var(--green-light);
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(53,208,111,.2);
+}
+
+.btn-dark{
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    color:white;
+}
+
+.btn-dark:hover{
+    border-color:rgba(53,208,111,.5);
+    transform:translateY(-3px);
+}
+
+.hero-image{
+    position:relative;
+}
+
+.hero-image img{
+    height:620px;
+    object-fit:cover;
+    border-radius:30px;
+    box-shadow:var(--shadow);
+}
+
+.hero-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.12);
+    pointer-events:none;
+}
+
+.hero-badge{
+    position:absolute;
+    left:-25px;
+    bottom:35px;
+    background:rgba(8,12,9,.92);
+    backdrop-filter:blur(14px);
+    border:1px solid var(--border);
+    padding:18px 22px;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+}
+
+.hero-badge strong{
+    color:var(--green);
+    display:block;
+    font-size:25px;
+}
+
+.hero-badge span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+
+/* =========================================================
+   SECTION HEAD
+========================================================= */
+
+.section{
+    padding:90px 0;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:end;
+    margin-bottom:35px;
+}
+
+.section-head h2{
+    font-size:clamp(32px,4vw,54px);
+    letter-spacing:-2px;
+}
+
+.section-head p{
+    color:var(--muted);
+    max-width:520px;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   CATEGORY SELECTOR
+========================================================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.category-card{
+    position:relative;
+    min-height:380px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:#0d120e;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.category-card:nth-child(5){
+    grid-column:span 2;
+    min-height:330px;
+}
+
+.category-card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.category-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.08) 10%,
+        rgba(0,0,0,.45) 50%,
+        rgba(0,0,0,.92) 100%
     );
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-
-    max-width: var(--max);
-    width: 100%;
-
-    margin: auto;
-    padding: 150px 25px 100px;
+.category-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1px solid transparent;
+    border-radius:var(--radius);
+    z-index:3;
+    transition:.3s;
 }
 
-.hero-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 9px 14px;
-
-    border: 1px solid rgba(85,214,107,0.25);
-    background: rgba(85,214,107,0.08);
-
-    border-radius: 100px;
-
-    color: var(--green);
-
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-
-    margin-bottom: 25px;
+.category-card:hover{
+    transform:translateY(-7px);
 }
 
-.hero-label i {
-    width: 7px;
-    height: 7px;
-
-    background: var(--green);
-    border-radius: 50%;
-
-    box-shadow: 0 0 15px var(--green);
+.category-card:hover img{
+    transform:scale(1.07);
 }
 
-.hero h1 {
-    max-width: 850px;
-
-    font-size: clamp(44px, 7vw, 88px);
-    line-height: 0.98;
-
-    letter-spacing: -4px;
-    font-weight: 900;
+.category-card:hover::after{
+    border-color:rgba(53,208,111,.5);
 }
 
-.hero h1 span {
-    color: var(--green);
+.category-content{
+    position:absolute;
+    z-index:2;
+    left:28px;
+    right:28px;
+    bottom:28px;
 }
 
-.hero-description {
-    max-width: 650px;
-
-    margin-top: 28px;
-
-    color: #c0c8c2;
-
-    font-size: 17px;
-    line-height: 1.8;
+.category-number{
+    color:var(--green);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:10px;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-
-    margin-top: 38px;
+.category-content h3{
+    font-size:30px;
+    letter-spacing:-1px;
+    margin-bottom:10px;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    padding: 15px 23px;
-
-    border-radius: 13px;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    transition: 0.3s ease;
-
-    cursor: pointer;
+.category-content p{
+    color:#c2cbc4;
+    line-height:1.6;
+    max-width:700px;
+    margin-bottom:18px;
 }
 
-.btn-primary {
-    background: var(--green);
-    color: #061007;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(85,214,107,0.25);
-}
-
-.btn-outline {
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.04);
-    color: white;
-}
-
-.btn-outline:hover {
-    border-color: var(--green);
-    color: var(--green);
-    transform: translateY(-3px);
+.category-open{
+    color:var(--green);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
 
 /* =========================================================
-   SECTION
+   CATEGORY VIEW
 ========================================================= */
 
-section {
-    position: relative;
-    padding: 110px 25px;
+.page-top{
+    padding:55px 0 30px;
 }
 
-.container {
-    max-width: var(--max);
-    margin: auto;
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:transparent;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+    padding:0;
+    transition:.2s;
 }
 
-.section-heading {
-    max-width: 750px;
-    margin-bottom: 55px;
+.back-btn:hover{
+    color:var(--green);
+    transform:translateX(-4px);
 }
 
-.section-number {
-    color: var(--green);
-
-    font-size: 11px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    margin-bottom: 14px;
+.category-intro{
+    display:grid;
+    grid-template-columns:1fr .9fr;
+    gap:45px;
+    align-items:center;
+    margin:25px 0 60px;
 }
 
-.section-heading h2 {
-    font-size: clamp(35px, 5vw, 62px);
-    line-height: 1;
-    letter-spacing: -2.5px;
+.category-intro h1{
+    font-size:clamp(40px,5vw,68px);
+    letter-spacing:-3px;
+    line-height:.98;
+    margin-bottom:20px;
 }
 
-.section-heading p {
-    margin-top: 20px;
-
-    color: var(--gray);
-
-    line-height: 1.8;
-    font-size: 15px;
+.category-intro h1 span{
+    color:var(--green);
 }
 
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-.services {
-    background: var(--black);
+.category-intro p{
+    color:var(--muted);
+    line-height:1.8;
+    font-size:16px;
+    max-width:650px;
 }
 
-.service-grid {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 20px;
+.category-intro-image{
+    height:390px;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid var(--border);
 }
 
-.service-card {
-    position: relative;
-
-    min-height: 450px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    background: var(--black-2);
-
-    cursor: pointer;
-
-    transition: 0.45s ease;
+.category-intro-image img{
+    height:100%;
+    object-fit:cover;
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(85,214,107,0.45);
-
-    box-shadow: var(--shadow);
+.select-label{
+    color:var(--green);
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:900;
+    margin-bottom:17px;
 }
 
-.service-image {
-    position: absolute;
-    inset: 0;
-
-    background-size: cover;
-    background-position: center;
-
-    transition: 0.7s ease;
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
 }
 
-.service-card:hover .service-image {
-    transform: scale(1.08);
+.service-card{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:20px;
+    padding:18px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:var(--glass);
+    cursor:pointer;
+    transition:.3s;
 }
 
-.service-overlay {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            transparent 20%,
-            rgba(5,8,6,0.25) 40%,
-            rgba(5,8,6,0.95) 100%
-        );
+.service-card:hover{
+    border-color:rgba(53,208,111,.45);
+    background:rgba(53,208,111,.05);
+    transform:translateY(-4px);
 }
 
-.service-content {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    padding: 32px;
+.service-card img{
+    width:120px;
+    height:120px;
+    border-radius:14px;
+    object-fit:cover;
 }
 
-.service-number {
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
+.service-card h3{
+    font-size:21px;
+    margin:5px 0 9px;
 }
 
-.service-content h3 {
-    margin-top: 10px;
-
-    font-size: 30px;
-    line-height: 1;
-
-    letter-spacing: -1px;
+.service-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
 }
 
-.service-content p {
-    max-width: 530px;
-
-    margin-top: 14px;
-
-    color: #c2c9c4;
-
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    margin-top: 20px;
-
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 900;
-}
-
-.service-link span {
-    transition: 0.3s;
-}
-
-.service-card:hover .service-link span {
-    transform: translateX(6px);
+.service-arrow{
+    color:var(--green);
+    font-weight:900;
+    margin-top:13px;
+    font-size:12px;
 }
 
 
@@ -601,327 +639,109 @@ section {
    SERVICE DETAIL
 ========================================================= */
 
-.detail {
-    background: var(--black-2);
-
-    border-top: 1px solid var(--border);
+.detail-hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    padding:45px 0 70px;
 }
 
-.detail-block {
-    padding: 80px 0;
-
-    border-bottom: 1px solid var(--border);
-
-    scroll-margin-top: 90px;
+.detail-image{
+    height:500px;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid var(--border);
 }
 
-.detail-block:last-child {
-    border-bottom: none;
+.detail-image img{
+    height:100%;
+    object-fit:cover;
 }
 
-.detail-top {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 70px;
-
-    align-items: center;
+.detail-content .eyebrow{
+    margin-bottom:15px;
 }
 
-.detail:nth-child(even) .detail-top {
-    direction: rtl;
+.detail-content h1{
+    font-size:clamp(40px,5vw,67px);
+    letter-spacing:-3px;
+    line-height:.98;
+    margin-bottom:22px;
 }
 
-.detail:nth-child(even) .detail-top > * {
-    direction: ltr;
+.detail-content p{
+    color:var(--muted);
+    line-height:1.8;
+    font-size:16px;
+    margin-bottom:25px;
 }
 
-.detail-image {
-    overflow: hidden;
-
-    border-radius: 22px;
-
-    border: 1px solid var(--border);
-
-    box-shadow: var(--shadow);
+.detail-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
 }
 
-.detail-image img {
-    height: 500px;
-    object-fit: cover;
-
-    transition: 0.6s ease;
+.info-box{
+    background:var(--glass);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
 }
 
-.detail-image:hover img {
-    transform: scale(1.04);
+.info-box h3{
+    font-size:21px;
+    margin-bottom:20px;
 }
 
-.detail-label {
-    color: var(--green);
-
-    font-size: 11px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.info-box h3 span{
+    color:var(--green);
 }
 
-.detail h3 {
-    margin-top: 13px;
-
-    font-size: clamp(32px, 4vw, 54px);
-    line-height: 1;
-
-    letter-spacing: -2px;
+.check-list{
+    list-style:none;
 }
 
-.detail-intro {
-    margin-top: 22px;
-
-    color: var(--gray);
-
-    line-height: 1.8;
+.check-list li{
+    padding:11px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    color:#cbd3cd;
+    font-size:14px;
 }
 
-.detail-list {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 10px;
-
-    margin-top: 28px;
+.check-list li:last-child{
+    border-bottom:0;
 }
 
-.detail-list div {
-    padding: 13px 15px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,0.025);
-
-    color: #dce2dd;
-
-    font-size: 12px;
+.check-list li::before{
+    content:"✓";
+    color:var(--green);
+    font-weight:900;
+    margin-right:11px;
 }
 
-.detail-list div::before {
-    content: "✓";
-
-    color: var(--green);
-
-    font-weight: 900;
-
-    margin-right: 8px;
-}
-
-
-/* =========================================================
-   STORITVE NA KLJUČ
-========================================================= */
-
-.turnkey {
+.detail-cta{
+    margin-top:25px;
+    padding:30px;
+    border-radius:22px;
     background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(85,214,107,0.1),
-            transparent 35%
-        ),
-        var(--black);
+        linear-gradient(135deg,rgba(53,208,111,.13),rgba(53,208,111,.025));
+    border:1px solid rgba(53,208,111,.2);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
 }
 
-.turnkey-intro {
-    max-width: 800px;
-    margin-bottom: 70px;
+.detail-cta h3{
+    font-size:24px;
+    margin-bottom:7px;
 }
 
-.turnkey-intro h2 {
-    font-size: clamp(40px, 6vw, 70px);
-    line-height: 0.98;
-
-    letter-spacing: -3px;
-}
-
-.turnkey-intro h2 span {
-    color: var(--green);
-}
-
-.turnkey-intro p {
-    max-width: 680px;
-
-    margin-top: 25px;
-
-    color: var(--gray);
-
-    line-height: 1.8;
-}
-
-.steps {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.step {
-    position: relative;
-
-    padding: 28px 22px;
-
-    min-height: 190px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.025);
-
-    transition: 0.3s ease;
-}
-
-.step:hover {
-    transform: translateY(-5px);
-
-    border-color: rgba(85,214,107,0.4);
-
-    background: rgba(85,214,107,0.04);
-}
-
-.step-number {
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-.step h4 {
-    margin-top: 15px;
-
-    font-size: 17px;
-}
-
-.step p {
-    margin-top: 10px;
-
-    color: var(--gray);
-
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-
-/* EXAMPLES */
-
-.project-examples {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-
-    margin-top: 35px;
-}
-
-.example {
-    padding: 30px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    background: var(--black-3);
-}
-
-.example-icon {
-    font-size: 30px;
-}
-
-.example h4 {
-    margin-top: 18px;
-
-    font-size: 20px;
-}
-
-.example p {
-    margin-top: 12px;
-
-    color: var(--gray);
-
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   WHY US
-========================================================= */
-
-.why {
-    background: var(--black-2);
-}
-
-.why-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-.why-card {
-    padding: 30px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.02);
-
-    transition: 0.3s ease;
-}
-
-.why-card:hover {
-    transform: translateY(-5px);
-
-    border-color: rgba(85,214,107,0.35);
-}
-
-.why-icon {
-    width: 45px;
-    height: 45px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 12px;
-
-    background: rgba(85,214,107,0.1);
-
-    color: var(--green);
-
-    font-size: 20px;
-}
-
-.why-card h3 {
-    margin-top: 20px;
-
-    font-size: 17px;
-}
-
-.why-card p {
-    margin-top: 10px;
-
-    color: var(--gray);
-
-    font-size: 13px;
-    line-height: 1.7;
+.detail-cta p{
+    color:var(--muted);
+    font-size:14px;
 }
 
 
@@ -929,140 +749,93 @@ section {
    GALERIJA
 ========================================================= */
 
-.gallery {
-    background: var(--black);
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    grid-auto-rows: 220px;
-
-    gap: 12px;
+.gallery-item{
+    height:280px;
+    overflow:hidden;
+    border-radius:18px;
+    border:1px solid var(--border);
+    cursor:pointer;
 }
 
-.gallery-item {
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius: 18px;
-
-    border: 1px solid var(--border);
-
-    cursor: pointer;
+.gallery-item img{
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
 }
 
-.gallery-item:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.gallery-item:nth-child(4) {
-    grid-column: span 2;
-}
-
-.gallery-item img {
-    height: 100%;
-    object-fit: cover;
-
-    transition: 0.6s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.08);
-}
-
-.gallery-overlay {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: flex-end;
-
-    padding: 20px;
-
-    background: linear-gradient(
-        transparent,
-        rgba(0,0,0,0.85)
-    );
-
-    opacity: 0;
-
-    transition: 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay {
-    opacity: 1;
-}
-
-.gallery-overlay span {
-    color: white;
-
-    font-size: 12px;
-    font-weight: 800;
+.gallery-item:hover img{
+    transform:scale(1.08);
 }
 
 
 /* =========================================================
-   CTA
+   O NAS
 ========================================================= */
 
-.cta {
-    padding: 120px 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(85,214,107,0.12),
-            transparent 55%
-        ),
-        var(--black-2);
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
 }
 
-.cta-box {
-    position: relative;
-
-    overflow: hidden;
-
-    padding: 70px;
-
-    border: 1px solid rgba(85,214,107,0.2);
-
-    border-radius: 30px;
-
-    background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(85,214,107,0.15),
-            transparent 35%
-        ),
-        #0c120e;
+.about-image{
+    height:520px;
+    overflow:hidden;
+    border-radius:25px;
 }
 
-.cta-box h2 {
-    max-width: 750px;
-
-    font-size: clamp(38px, 5vw, 65px);
-    line-height: 1;
-
-    letter-spacing: -3px;
+.about-image img{
+    height:100%;
+    object-fit:cover;
 }
 
-.cta-box h2 span {
-    color: var(--green);
+.about-content h1{
+    font-size:clamp(42px,5vw,66px);
+    letter-spacing:-3px;
+    line-height:1;
+    margin-bottom:25px;
 }
 
-.cta-box p {
-    max-width: 650px;
+.about-content h1 span{
+    color:var(--green);
+}
 
-    margin-top: 20px;
+.about-content p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:18px;
+}
 
-    color: var(--gray);
+.about-points{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:30px;
+}
 
-    line-height: 1.8;
+.about-point{
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:18px;
+    background:var(--glass);
+}
+
+.about-point strong{
+    display:block;
+    color:var(--green);
+    margin-bottom:7px;
+}
+
+.about-point span{
+    color:var(--muted);
+    font-size:13px;
 }
 
 
@@ -1070,148 +843,110 @@ section {
    KONTAKT
 ========================================================= */
 
-.contact {
-    background: var(--black);
+.contact-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:25px;
 }
 
-.contact-grid {
-    display: grid;
-
-    grid-template-columns: 0.8fr 1.2fr;
-
-    gap: 50px;
+.contact-box{
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
+    background:var(--glass);
 }
 
-.contact-info h3 {
-    font-size: 28px;
+.contact-box h2{
+    font-size:35px;
+    letter-spacing:-1px;
+    margin-bottom:15px;
 }
 
-.contact-info p {
-    margin-top: 15px;
-
-    color: var(--gray);
-
-    line-height: 1.7;
+.contact-box p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:25px;
 }
 
-.contact-item {
-    display: flex;
-    gap: 15px;
-
-    margin-top: 25px;
+.contact-item{
+    padding:18px 0;
+    border-bottom:1px solid var(--border);
 }
 
-.contact-icon {
-    width: 45px;
-    height: 45px;
-
-    flex-shrink: 0;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 12px;
-
-    background: rgba(85,214,107,0.1);
-
-    color: var(--green);
+.contact-item:last-child{
+    border-bottom:0;
 }
 
-.contact-item small {
-    display: block;
-
-    color: var(--gray-dark);
-
-    font-size: 10px;
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
+.contact-item small{
+    display:block;
+    color:var(--green);
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:6px;
 }
 
-.contact-item strong {
-    display: block;
+.contact-item span{
+    color:#e8eee9;
+}
 
-    margin-top: 4px;
+form{
+    display:grid;
+    gap:14px;
+}
 
-    font-size: 14px;
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    background:#090d0a;
+    color:white;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
+    outline:none;
+    font-family:inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:rgba(53,208,111,.6);
+}
+
+textarea{
+    min-height:160px;
+    resize:vertical;
 }
 
 
-/* FORM */
+/* =========================================================
+   TURNKEY
+========================================================= */
 
-.contact-form {
-    padding: 35px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 22px;
-
-    background: var(--black-2);
+.turnkey-banner{
+    padding:35px;
+    border-radius:24px;
+    border:1px solid rgba(53,208,111,.2);
+    background:
+        linear-gradient(120deg,rgba(53,208,111,.13),rgba(255,255,255,.02));
+    margin-bottom:30px;
 }
 
-.form-row {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 15px;
+.turnkey-banner h2{
+    font-size:38px;
+    margin-bottom:10px;
 }
 
-.input-group {
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #dce2dd;
-
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.input-group input,
-.input-group textarea,
-.input-group select {
-    width: 100%;
-
-    padding: 14px 15px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    outline: none;
-
-    background: rgba(255,255,255,0.035);
-
-    color: white;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    transition: 0.25s ease;
-}
-
-.input-group textarea {
-    min-height: 130px;
-
-    resize: vertical;
-}
-
-.input-group input:focus,
-.input-group textarea:focus,
-.input-group select:focus {
-    border-color: var(--green);
-
-    background: rgba(85,214,107,0.03);
-}
-
-.input-group select option {
-    background: #111;
+.turnkey-banner p{
+    color:var(--muted);
+    line-height:1.7;
+    max-width:850px;
 }
 
 
@@ -1219,69 +954,68 @@ section {
    FOOTER
 ========================================================= */
 
-footer {
-    padding: 40px 25px;
-
-    border-top: 1px solid var(--border);
-
-    background: #050705;
+footer{
+    border-top:1px solid var(--border);
+    margin-top:50px;
+    padding:30px 0;
+    color:var(--muted);
+    font-size:12px;
 }
 
-.footer-inner {
-    max-width: var(--max);
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
 }
 
-.footer-copy {
-    color: var(--gray-dark);
-
-    font-size: 11px;
-}
-
-.footer-links {
-    display: flex;
-
-    gap: 20px;
-}
-
-.footer-links a {
-    color: var(--gray);
-
-    font-size: 11px;
-}
-
-.footer-links a:hover {
-    color: var(--green);
+.footer-green{
+    color:var(--green);
 }
 
 
 /* =========================================================
-   ANIMACIJE
+   REVEAL
 ========================================================= */
 
-.reveal {
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+.reveal{
+    opacity:0;
+    transform:translateY(20px);
+    transition:.7s ease;
 }
 
-.reveal.visible {
-    opacity: 1;
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
 
-    transform: translateY(0);
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:2000;
+    background:#101711;
+    border:1px solid rgba(53,208,111,.4);
+    padding:17px 20px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    transform:translateY(120px);
+    opacity:0;
+    transition:.35s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.toast strong{
+    color:var(--green);
 }
 
 
@@ -1289,169 +1023,123 @@ footer {
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 1000px) {
+@media(max-width:950px){
 
-    .nav-links {
-        position: fixed;
-
-        top: 82px;
-        left: 15px;
-        right: 15px;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 20px;
-
-        border: 1px solid var(--border);
-
-        border-radius: 18px;
-
-        background: rgba(10,13,11,0.97);
-
-        box-shadow: var(--shadow);
+    .nav-links{
+        position:absolute;
+        top:82px;
+        left:0;
+        right:0;
+        background:#080c09;
+        border-bottom:1px solid var(--border);
+        padding:15px;
+        display:none;
+        flex-direction:column;
     }
 
-    .nav-links.active {
-        display: flex;
+    .nav-links.open{
+        display:flex;
     }
 
-    .nav-links a {
-        padding: 12px;
+    .nav-links button{
+        width:100%;
+        text-align:left;
     }
 
-    .menu-toggle {
-        display: block;
+    .menu-toggle{
+        display:block;
     }
 
-    .service-grid {
-        grid-template-columns: 1fr;
+    .hero-grid,
+    .category-intro,
+    .detail-hero,
+    .about-grid{
+        grid-template-columns:1fr;
     }
 
-    .detail-top {
-        grid-template-columns: 1fr;
-        gap: 35px;
+    .hero{
+        padding:70px 0;
     }
 
-    .detail:nth-child(even) .detail-top {
-        direction: ltr;
+    .hero-image img{
+        height:480px;
     }
 
-    .steps {
-        grid-template-columns: repeat(2, 1fr);
+    .hero-badge{
+        left:15px;
     }
 
-    .project-examples {
-        grid-template-columns: 1fr;
+    .detail-image{
+        height:420px;
     }
 
-    .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
+    .contact-grid{
+        grid-template-columns:1fr;
     }
 }
 
+@media(max-width:700px){
 
-@media (max-width: 650px) {
-
-    section {
-        padding: 80px 18px;
+    .nav{
+        height:72px;
     }
 
-    .nav {
-        padding: 0 18px;
+    main{
+        padding-top:72px;
     }
 
-    .logo-text strong {
-        font-size: 14px;
+    .view{
+        min-height:calc(100vh - 72px);
     }
 
-    .hero-content {
-        padding: 140px 18px 90px;
+    .hero h1{
+        letter-spacing:-2px;
     }
 
-    .hero h1 {
-        font-size: 47px;
-        letter-spacing: -2.5px;
+    .category-grid,
+    .service-grid,
+    .detail-layout,
+    .gallery-grid{
+        grid-template-columns:1fr;
     }
 
-    .hero-description {
-        font-size: 14px;
+    .category-card:nth-child(5){
+        grid-column:span 1;
     }
 
-    .service-card {
-        min-height: 390px;
+    .category-card{
+        min-height:330px;
     }
 
-    .service-content {
-        padding: 25px;
+    .service-card{
+        grid-template-columns:95px 1fr;
     }
 
-    .service-content h3 {
-        font-size: 26px;
+    .service-card img{
+        width:95px;
+        height:95px;
     }
 
-    .detail-block {
-        padding: 55px 0;
+    .detail-cta{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-    .detail-image img {
-        height: 330px;
+    .about-points{
+        grid-template-columns:1fr;
     }
 
-    .detail-list {
-        grid-template-columns: 1fr;
+    .form-row{
+        grid-template-columns:1fr;
     }
 
-    .steps {
-        grid-template-columns: 1fr;
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-    .why-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-
-        grid-auto-rows: 160px;
-    }
-
-    .gallery-item:first-child {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-
-    .gallery-item:nth-child(4) {
-        grid-column: span 1;
-    }
-
-    .cta-box {
-        padding: 40px 25px;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-        padding: 25px 18px;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-
-        text-align: center;
+    .section{
+        padding:65px 0;
     }
 }
 
@@ -1462,1257 +1150,1657 @@ footer {
 <body>
 
 
-<!-- =========================================================
+<!-- =======================================================
      HEADER
-========================================================= -->
+======================================================= -->
 
-<header id="header">
+<header>
 
-    <nav class="nav">
+<div class="container nav">
 
-        <a href="#domov" class="logo">
+    <button class="logo" onclick="showView('home')">
 
-            <div class="logo-mark">
-                AB
-            </div>
-
-            <div class="logo-text">
-                <strong>ASFALT-BETON</strong>
-                <span>D.O.O.</span>
-            </div>
-
-        </a>
-
-
-        <div class="nav-links" id="navLinks">
-
-            <a href="#domov">Domov</a>
-
-            <a href="#storitve">Storitve</a>
-
-            <a href="#na-kljuc">Na ključ</a>
-
-            <a href="#galerija">Galerija</a>
-
-            <a href="#o-nas">Zakaj mi</a>
-
-            <a href="#kontakt" class="nav-button">
-                Povpraševanje
-            </a>
-
+        <div class="logo-mark">
+            AB
         </div>
 
+        <div class="logo-text">
+            <strong>ASFALT-BETON</strong>
+            <span>d.o.o.</span>
+        </div>
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Odpri meni"
-        >
-            ☰
+    </button>
+
+
+    <button class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </button>
+
+
+    <nav class="nav-links" id="navLinks">
+
+        <button onclick="showView('home')">
+            DOMOV
+        </button>
+
+        <button onclick="showView('services')">
+            STORITVE
+        </button>
+
+        <button onclick="showView('gallery')">
+            GALERIJA
+        </button>
+
+        <button onclick="showView('about')">
+            O NAS
+        </button>
+
+        <button class="nav-contact" onclick="showView('contact')">
+            KONTAKT
         </button>
 
     </nav>
 
+</div>
+
 </header>
 
 
+<!-- =======================================================
+     MAIN APP
+======================================================= -->
 
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<main id="domov">
-
-<section class="hero">
-
-    <div class="hero-bg"></div>
-
-    <div class="hero-content reveal">
-
-        <div class="hero-label">
-            <i></i>
-            GRADNJA • UREDITEV • ČIŠČENJE
-        </div>
-
-        <h1>
-            Od prvega koraka
-            <span>do končne ureditve.</span>
-        </h1>
-
-        <p class="hero-description">
-            Celovite storitve za domove, dvorišča in objekte.
-            Notranje ureditve, čiščenje, zemeljska in gradbena dela
-            ter izvedba projektov na ključ – na enem mestu.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#storitve" class="btn btn-primary">
-                Oglejte si storitve →
-            </a>
-
-            <a href="#kontakt" class="btn btn-outline">
-                Pošljite povpraševanje
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+<main>
 
 
+<!-- =======================================================
+     HOME
+======================================================= -->
 
-<!-- =========================================================
-     STORITVE
-========================================================= -->
+<section id="home" class="view active">
 
-<section class="services" id="storitve">
+    <div class="hero">
 
-    <div class="container">
+        <div class="container hero-grid">
 
-        <div class="section-heading reveal">
+            <div>
 
-            <div class="section-number">
-                Naše storitve
-            </div>
-
-            <h2>
-                Vse, kar potrebujete.
-                <span style="color:var(--green)">
-                    Na enem mestu.
-                </span>
-            </h2>
-
-            <p>
-                Od posameznega opravila do celovite izvedbe.
-                Naše storitve so zasnovane tako, da vam
-                poenostavimo celoten proces.
-            </p>
-
-        </div>
-
-
-        <div class="service-grid">
-
-
-            <!-- 01 -->
-
-            <a href="#notranje" class="service-card reveal">
-
-                <div
-                    class="service-image"
-                    style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85')">
+                <div class="eyebrow">
+                    ASFALT-BETON D.O.O.
                 </div>
 
-                <div class="service-overlay"></div>
-
-                <div class="service-content">
-
-                    <div class="service-number">
-                        01 / NOTRANJE
-                    </div>
-
-                    <h3>
-                        Notranje ureditve
-                    </h3>
-
-                    <p>
-                        Beljenje, pleskanje, polaganje ploščic,
-                        rušitve, praznjenje prostorov in odvoz.
-                    </p>
-
-                    <div class="service-link">
-                        Oglejte si storitve
-                        <span>→</span>
-                    </div>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- 02 -->
-
-            <a href="#ciscenje" class="service-card reveal">
-
-                <div
-                    class="service-image"
-                    style="background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85')">
-                </div>
-
-                <div class="service-overlay"></div>
-
-                <div class="service-content">
-
-                    <div class="service-number">
-                        02 / ČIŠČENJE
-                    </div>
-
-                    <h3>
-                        Čiščenje in pranje
-                    </h3>
-
-                    <p>
-                        Visokotlačno pranje, čiščenje objektov,
-                        dvorišč, fasad in zunanjih površin.
-                    </p>
-
-                    <div class="service-link">
-                        Oglejte si storitve
-                        <span>→</span>
-                    </div>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- 03 -->
-
-            <a href="#dvorisca" class="service-card reveal">
-
-                <div
-                    class="service-image"
-                    style="background-image:url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=85')">
-                </div>
-
-                <div class="service-overlay"></div>
-
-                <div class="service-content">
-
-                    <div class="service-number">
-                        03 / OKOLICA
-                    </div>
-
-                    <h3>
-                        Dvorišča in okolica
-                    </h3>
-
-                    <p>
-                        Ureditev dvorišč, tlakovanje, robniki,
-                        odvodnjavanje in ureditev okolice.
-                    </p>
-
-                    <div class="service-link">
-                        Oglejte si storitve
-                        <span>→</span>
-                    </div>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- 04 -->
-
-            <a href="#zemeljska" class="service-card reveal">
-
-                <div
-                    class="service-image"
-                    style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85')">
-                </div>
-
-                <div class="service-overlay"></div>
-
-                <div class="service-content">
-
-                    <div class="service-number">
-                        04 / GRADNJA
-                    </div>
-
-                    <h3>
-                        Zemeljska in gradbena dela
-                    </h3>
-
-                    <p>
-                        Izkopi, priprava terena, ravnanje,
-                        utrjevanje, nasipi, tamponiranje in rušitve.
-                    </p>
-
-                    <div class="service-link">
-                        Oglejte si storitve
-                        <span>→</span>
-                    </div>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- 05 -->
-
-            <a href="#na-kljuc" class="service-card reveal">
-
-                <div
-                    class="service-image"
-                    style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=85')">
-                </div>
-
-                <div class="service-overlay"></div>
-
-                <div class="service-content">
-
-                    <div class="service-number">
-                        05 / CELOVITO
-                    </div>
-
-                    <h3>
-                        Storitve na ključ
-                    </h3>
-
-                    <p>
-                        Ena ekipa za celoten projekt –
-                        od priprave in izvedbe do čiščenja in končne ureditve.
-                    </p>
-
-                    <div class="service-link">
-                        Spoznajte izvedbo
-                        <span>→</span>
-                    </div>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PODROBNE STORITVE
-========================================================= -->
-
-<section class="detail">
-
-<div class="container">
-
-
-<!-- NOTRANJE -->
-
-<div class="detail-block" id="notranje">
-
-    <div class="detail-top">
-
-        <div class="detail-image reveal">
-
-            <img
-                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85"
-                alt="Notranje ureditve">
-
-        </div>
-
-
-        <div class="reveal">
-
-            <div class="detail-label">
-                01 / Notranje ureditve
-            </div>
-
-            <h3>
-                Uredimo notranjost
-                od začetka do konca.
-            </h3>
-
-            <p class="detail-intro">
-                Poskrbimo za različna pripravljalna,
-                obnovitvena in zaključna dela.
-                Od odstranitve stare opreme do beljenja,
-                polaganja ploščic, čiščenja in odvoza.
-            </p>
-
-            <div class="detail-list">
-
-                <div>Beljenje in pleskanje</div>
-
-                <div>Polaganje ploščic</div>
-
-                <div>Rušitvena dela</div>
-
-                <div>Priprava prostorov</div>
-
-                <div>Praznjenje prostorov</div>
-
-                <div>Odvoz krame</div>
-
-                <div>Odvoz starega pohištva</div>
-
-                <div>Čiščenje po delih</div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ČIŠČENJE -->
-
-<div class="detail-block" id="ciscenje">
-
-    <div class="detail-top">
-
-        <div class="detail-image reveal">
-
-            <img
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85"
-                alt="Čiščenje in pranje">
-
-        </div>
-
-
-        <div class="reveal">
-
-            <div class="detail-label">
-                02 / Čiščenje in pranje
-            </div>
-
-            <h3>
-                Čiste površine.
-                Urejen videz.
-            </h3>
-
-            <p class="detail-intro">
-                Z visokotlačnim pranjem in čiščenjem
-                odstranimo umazanijo, mah, alge,
-                obloge in sledi gradbenih del.
-            </p>
-
-            <div class="detail-list">
-
-                <div>Visokotlačno pranje</div>
-
-                <div>Pranje dvorišč</div>
-
-                <div>Pranje tlakovcev</div>
-
-                <div>Pranje betona</div>
-
-                <div>Čiščenje fasad</div>
-
-                <div>Čiščenje teras</div>
-
-                <div>Čiščenje po obnovah</div>
-
-                <div>Odstranjevanje mahu in alg</div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- DVORIŠČA -->
-
-<div class="detail-block" id="dvorisca">
-
-    <div class="detail-top">
-
-        <div class="detail-image reveal">
-
-            <img
-                src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=85"
-                alt="Ureditev dvorišča">
-
-        </div>
-
-
-        <div class="reveal">
-
-            <div class="detail-label">
-                03 / Dvorišča in okolica
-            </div>
-
-            <h3>
-                Od neurejene površine
-                do urejenega prostora.
-            </h3>
-
-            <p class="detail-intro">
-                Uredimo zunanje površine tako,
-                da postanejo funkcionalne, urejene
-                in pripravljene za vsakodnevno uporabo.
-            </p>
-
-            <div class="detail-list">
-
-                <div>Ureditev dvorišč</div>
-
-                <div>Priprava površin</div>
-
-                <div>Ravnanje terena</div>
-
-                <div>Tlakovanje</div>
-
-                <div>Robniki</div>
-
-                <div>Ureditev dovozov</div>
-
-                <div>Odvodnjavanje</div>
-
-                <div>Drenaže</div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ZEMELJSKA -->
-
-<div class="detail-block" id="zemeljska">
-
-    <div class="detail-top">
-
-        <div class="detail-image reveal">
-
-            <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85"
-                alt="Zemeljska in gradbena dela">
-
-        </div>
-
-
-        <div class="reveal">
-
-            <div class="detail-label">
-                04 / Zemeljska in gradbena dela
-            </div>
-
-            <h3>
-                Dobra izvedba
-                se začne pri pripravi.
-            </h3>
-
-            <p class="detail-intro">
-                Izvajamo različna zemeljska in
-                pripravljalna dela za stanovanjske,
-                poslovne in druge objekte.
-            </p>
-
-            <div class="detail-list">
-
-                <div>Strojni izkopi</div>
-
-                <div>Izkopi za temelje</div>
-
-                <div>Izkopi za kanale</div>
-
-                <div>Izkopi za drenažo</div>
-
-                <div>Ravnanje terena</div>
-
-                <div>Izravnava</div>
-
-                <div>Utrjevanje</div>
-
-                <div>Nasipavanje</div>
-
-                <div>Tamponiranje</div>
-
-                <div>Rušitvena dela</div>
-
-                <div>Odvoz zemljine</div>
-
-                <div>Odvoz ruševin</div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     STORITVE NA KLJUČ
-========================================================= -->
-
-<section class="turnkey" id="na-kljuc">
-
-    <div class="container">
-
-        <div class="turnkey-intro reveal">
-
-            <div class="section-number">
-                05 / Storitve na ključ
-            </div>
-
-            <h2>
-                Ena ekipa.
-                <span>Celoten projekt.</span>
-            </h2>
-
-            <p>
-                Namesto več različnih izvajalcev lahko več faz
-                projekta združite na enem mestu.
-                Od ogleda in priprave do izvedbe,
-                čiščenja in končne ureditve.
-            </p>
-
-        </div>
-
-
-        <div class="steps">
-
-            <div class="step reveal">
-                <div class="step-number">01</div>
-                <h4>Ogled in dogovor</h4>
-                <p>
-                    Pregledamo stanje, vaše želje
-                    in obseg potrebnih del.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">02</div>
-                <h4>Priprava</h4>
-                <p>
-                    Določimo potrebne korake
-                    in pripravimo izvedbo.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">03</div>
-                <h4>Odstranitev</h4>
-                <p>
-                    Po potrebi izvedemo rušitve,
-                    odstranitve in praznjenje.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">04</div>
-                <h4>Odvoz</h4>
-                <p>
-                    Poskrbimo za odvoz krame,
-                    zemljine in materiala.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">05</div>
-                <h4>Izvedba</h4>
-                <p>
-                    Izvedemo dogovorjena
-                    gradbena in druga dela.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">06</div>
-                <h4>Čiščenje</h4>
-                <p>
-                    Po končanem delu uredimo
-                    delovno območje.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">07</div>
-                <h4>Končna ureditev</h4>
-                <p>
-                    Projekt zaključimo in pripravimo
-                    prostor za uporabo.
-                </p>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">08</div>
-                <h4>Končni pregled</h4>
-                <p>
-                    Skupaj pregledamo izvedeno delo
-                    in zaključimo projekt.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="project-examples">
-
-            <div class="example reveal">
-
-                <div class="example-icon">🏠</div>
-
-                <h4>Prenova prostora</h4>
-
-                <p>
-                    Praznjenje → rušenje → odvoz →
-                    priprava → beljenje → ploščice →
-                    čiščenje → končna ureditev.
-                </p>
-
-            </div>
-
-
-            <div class="example reveal">
-
-                <div class="example-icon">🌳</div>
-
-                <h4>Ureditev dvorišča</h4>
-
-                <p>
-                    Ogled → izkop → odvoz →
-                    priprava terena → utrjevanje →
-                    robniki → tlakovanje → čiščenje.
-                </p>
-
-            </div>
-
-
-            <div class="example reveal">
-
-                <div class="example-icon">🧼</div>
-
-                <h4>Ureditev objekta</h4>
-
-                <p>
-                    Odstranitev → odvoz → čiščenje →
-                    sanacija → ureditev →
-                    končno čiščenje.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     ZAKAJ MI
-========================================================= -->
-
-<section class="why" id="o-nas">
-
-    <div class="container">
-
-        <div class="section-heading reveal">
-
-            <div class="section-number">
-                Zakaj Asfalt-beton
-            </div>
-
-            <h2>
-                Več storitev.
-                <span style="color:var(--green)">
-                    Manj skrbi.
-                </span>
-            </h2>
-
-            <p>
-                Naš cilj je preprost – stranki ponuditi
-                praktično in celovito rešitev ter čim bolj
-                poenostaviti celoten proces izvedbe.
-            </p>
-
-        </div>
-
-
-        <div class="why-grid">
-
-            <div class="why-card reveal">
-
-                <div class="why-icon">01</div>
-
-                <h3>
-                    Več storitev na enem mestu
-                </h3>
-
-                <p>
-                    Različna dela lahko združimo v en projekt,
-                    zato je usklajevanja manj.
-                </p>
-
-            </div>
-
-
-            <div class="why-card reveal">
-
-                <div class="why-icon">✓</div>
-
-                <h3>
-                    Jasen dogovor
-                </h3>
-
-                <p>
-                    Pred začetkom se dogovorimo o obsegu
-                    in načinu izvedbe.
-                </p>
-
-            </div>
-
-
-            <div class="why-card reveal">
-
-                <div class="why-icon">⚙</div>
-
-                <h3>
-                    Praktičen pristop
-                </h3>
-
-                <p>
-                    Osredotočeni smo na učinkovito izvedbo
-                    in dejansko rešitev problema.
-                </p>
-
-            </div>
-
-
-            <div class="why-card reveal">
-
-                <div class="why-icon">🚛</div>
-
-                <h3>
-                    Odvoz po potrebi
-                </h3>
-
-                <p>
-                    Poskrbimo lahko tudi za odstranitev
-                    in odvoz nastalega materiala.
-                </p>
-
-            </div>
-
-
-            <div class="why-card reveal">
-
-                <div class="why-icon">🧹</div>
-
-                <h3>
-                    Urejen zaključek
-                </h3>
-
-                <p>
-                    Po opravljenem delu poskrbimo,
-                    da je območje urejeno.
-                </p>
-
-            </div>
-
-
-            <div class="why-card reveal">
-
-                <div class="why-icon">🏡</div>
-
-                <h3>
-                    Celovite rešitve
-                </h3>
-
-                <p>
-                    Od posameznega opravila do celotnega
-                    projekta na ključ.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     GALERIJA
-========================================================= -->
-
-<section class="gallery" id="galerija">
-
-    <div class="container">
-
-        <div class="section-heading reveal">
-
-            <div class="section-number">
-                Galerija
-            </div>
-
-            <h2>
-                Delo pove
-                <span style="color:var(--green)">
-                    največ.
-                </span>
-            </h2>
-
-            <p>
-                Tukaj bodo kasneje vaše prave fotografije
-                izvedenih projektov.
-            </p>
-
-        </div>
-
-
-        <div class="gallery-grid">
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85"
-                    alt="Gradbena dela">
-
-                <div class="gallery-overlay">
-                    <span>Gradbena dela</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85"
-                    alt="Notranja ureditev">
-
-                <div class="gallery-overlay">
-                    <span>Notranja ureditev</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=85"
-                    alt="Urejanje okolice">
-
-                <div class="gallery-overlay">
-                    <span>Urejanje okolice</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=85"
-                    alt="Čiščenje">
-
-                <div class="gallery-overlay">
-                    <span>Čiščenje in pranje</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=85"
-                    alt="Zemeljska dela">
-
-                <div class="gallery-overlay">
-                    <span>Zemeljska dela</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CTA
-========================================================= -->
-
-<section class="cta">
-
-    <div class="container">
-
-        <div class="cta-box reveal">
-
-            <h2>
-                Imate projekt?
-                <span>Pogovorimo se.</span>
-            </h2>
-
-            <p>
-                Povejte nam, kaj potrebujete.
-                Skupaj bomo našli najboljšo rešitev
-                za vaš objekt, dvorišče ali prostor.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#kontakt" class="btn btn-primary">
-                    Pošlji povpraševanje →
-                </a>
-
-                <a href="#storitve" class="btn btn-outline">
-                    Oglej si storitve
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     KONTAKT
-========================================================= -->
-
-<section class="contact" id="kontakt">
-
-    <div class="container">
-
-        <div class="section-heading reveal">
-
-            <div class="section-number">
-                Kontakt
-            </div>
-
-            <h2>
-                Začnimo
-                <span style="color:var(--green)">
-                    projekt.
-                </span>
-            </h2>
-
-            <p>
-                Izpolnite obrazec in opišite, kaj potrebujete.
-                Kontaktirali vas bomo za nadaljnji dogovor.
-            </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-            <div class="contact-info reveal">
-
-                <h3>
-                    Asfalt-beton d.o.o.
-                </h3>
+                <h1>
+                    OD PRVEGA KORAKA
+                    <span>DO KONČNE UREDITVE.</span>
+                </h1>
 
                 <p>
                     Gradbena, notranja, zunanja in čistilna dela
-                    ter celovite rešitve na ključ.
+                    na enem mestu. Izberite področje, ki ga potrebujete,
+                    in si oglejte konkretne storitve.
                 </p>
 
+                <div class="hero-actions">
 
-                <div class="contact-item">
+                    <button
+                        class="btn btn-green"
+                        onclick="showView('services')">
+                        OGLEJTE SI STORITVE →
+                    </button>
 
-                    <div class="contact-icon">
-                        ☎
-                    </div>
-
-                    <div>
-
-                        <small>
-                            Telefon
-                        </small>
-
-                        <strong>
-                            Dodajte telefonsko številko
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        ✉
-                    </div>
-
-                    <div>
-
-                        <small>
-                            E-pošta
-                        </small>
-
-                        <strong>
-                            Dodajte e-pošto
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        📍
-                    </div>
-
-                    <div>
-
-                        <small>
-                            Lokacija
-                        </small>
-
-                        <strong>
-                            Slovenija
-                        </strong>
-
-                    </div>
+                    <button
+                        class="btn btn-dark"
+                        onclick="showView('contact')">
+                        POŠLJI POVPRAŠEVANJE
+                    </button>
 
                 </div>
 
             </div>
 
 
+            <div class="hero-image">
 
-            <form
-                class="contact-form reveal"
-                onsubmit="sendForm(event)"
-            >
+                <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85"
+                    alt="Gradbena dela">
+
+                <div class="hero-badge">
+                    <strong>05</strong>
+                    <span>glavnih področij storitev</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        IZBERITE PODROČJE
+                    </div>
+
+                    <h2>
+                        Kaj potrebujete?
+                    </h2>
+
+                </div>
+
+                <p>
+                    Ne iščite po dolgem seznamu. Izberite področje,
+                    ki ustreza vašemu projektu, nato pa izberite
+                    konkretno storitev.
+                </p>
+
+            </div>
+
+
+            <div class="category-grid">
+
+
+                <!-- 01 -->
+
+                <article
+                    class="category-card reveal"
+                    onclick="openCategory('interior')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1200&q=85"
+                        alt="Notranje ureditve">
+
+                    <div class="category-content">
+
+                        <div class="category-number">
+                            01 / NOTRANJOST
+                        </div>
+
+                        <h3>
+                            🏠 Notranje ureditve
+                        </h3>
+
+                        <p>
+                            Beljenje, pleskanje, ploščice, rušitvena
+                            dela ter praznjenje in odvoz.
+                        </p>
+
+                        <div class="category-open">
+                            RAZISKI STORITVE →
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article
+                    class="category-card reveal"
+                    onclick="openCategory('cleaning')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85"
+                        alt="Čiščenje">
+
+                    <div class="category-content">
+
+                        <div class="category-number">
+                            02 / ČISTOČA
+                        </div>
+
+                        <h3>
+                            🧼 Čiščenje in pranje
+                        </h3>
+
+                        <p>
+                            Visokotlačno pranje, dvorišča, tlakovci,
+                            beton, fasade in čiščenje objektov.
+                        </p>
+
+                        <div class="category-open">
+                            RAZISKI STORITVE →
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article
+                    class="category-card reveal"
+                    onclick="openCategory('yard')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=85"
+                        alt="Ureditev dvorišča">
+
+                    <div class="category-content">
+
+                        <div class="category-number">
+                            03 / ZUNANJOST
+                        </div>
+
+                        <h3>
+                            🌳 Dvorišča in okolica
+                        </h3>
+
+                        <p>
+                            Tlakovanje, robniki, odvodnjavanje,
+                            dovozne poti in ureditev okolice.
+                        </p>
+
+                        <div class="category-open">
+                            RAZISKI STORITVE →
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article
+                    class="category-card reveal"
+                    onclick="openCategory('construction')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85"
+                        alt="Gradbena dela">
+
+                    <div class="category-content">
+
+                        <div class="category-number">
+                            04 / TEREN
+                        </div>
+
+                        <h3>
+                            🏗️ Zemeljska in gradbena dela
+                        </h3>
+
+                        <p>
+                            Izkopi, priprava terena, utrjevanje,
+                            nasipi, rušitve in odvoz materiala.
+                        </p>
+
+                        <div class="category-open">
+                            RAZISKI STORITVE →
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article
+                    class="category-card reveal"
+                    onclick="openCategory('turnkey')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=85"
+                        alt="Storitve na ključ">
+
+                    <div class="category-content">
+
+                        <div class="category-number">
+                            05 / CELOVITA REŠITEV
+                        </div>
+
+                        <h3>
+                            🏡 Storitve na ključ
+                        </h3>
+
+                        <p>
+                            Od priprave, odstranitve in odvoza do izvedbe,
+                            čiščenja in končne ureditve.
+                        </p>
+
+                        <div class="category-open">
+                            RAZISKI STORITVE →
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SERVICES SELECTOR
+======================================================= -->
+
+<section id="services" class="view">
+
+    <div class="container section">
+
+        <div class="section-head">
+
+            <div>
+
+                <div class="eyebrow">
+                    NAŠA PONUDBA
+                </div>
+
+                <h2>
+                    Izberite področje
+                </h2>
+
+            </div>
+
+            <p>
+                Vsako področje je ločeno. Izberite ga in nato
+                izberite točno storitev, ki jo potrebujete.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <article class="category-card" onclick="openCategory('interior')">
+
+                <img src="https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1200&q=85">
+
+                <div class="category-content">
+
+                    <div class="category-number">01</div>
+
+                    <h3>🏠 Notranje ureditve</h3>
+
+                    <p>
+                        Ureditev, prenova in priprava notranjih prostorov.
+                    </p>
+
+                    <div class="category-open">
+                        IZBERI →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="category-card" onclick="openCategory('cleaning')">
+
+                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85">
+
+                <div class="category-content">
+
+                    <div class="category-number">02</div>
+
+                    <h3>🧼 Čiščenje in pranje</h3>
+
+                    <p>
+                        Čiščenje zunanjih in notranjih površin.
+                    </p>
+
+                    <div class="category-open">
+                        IZBERI →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="category-card" onclick="openCategory('yard')">
+
+                <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=85">
+
+                <div class="category-content">
+
+                    <div class="category-number">03</div>
+
+                    <h3>🌳 Dvorišča in okolica</h3>
+
+                    <p>
+                        Celovita ureditev zunanjih površin.
+                    </p>
+
+                    <div class="category-open">
+                        IZBERI →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="category-card" onclick="openCategory('construction')">
+
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85">
+
+                <div class="category-content">
+
+                    <div class="category-number">04</div>
+
+                    <h3>🏗️ Zemeljska in gradbena dela</h3>
+
+                    <p>
+                        Dela na terenu, priprava in izvedba.
+                    </p>
+
+                    <div class="category-open">
+                        IZBERI →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="category-card" onclick="openCategory('turnkey')">
+
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=85">
+
+                <div class="category-content">
+
+                    <div class="category-number">05</div>
+
+                    <h3>🏡 Storitve na ključ</h3>
+
+                    <p>
+                        Celovita izvedba projekta na enem mestu.
+                    </p>
+
+                    <div class="category-open">
+                        IZBERI →
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CATEGORY: INTERIOR
+======================================================= -->
+
+<section id="category-interior" class="view">
+
+<div class="container">
+
+    <div class="page-top">
+
+        <button class="back-btn" onclick="showView('services')">
+            ← NAZAJ NA STORITVE
+        </button>
+
+    </div>
+
+
+    <div class="category-intro">
+
+        <div>
+
+            <div class="eyebrow">
+                01 / NOTRANJE UREDITVE
+            </div>
+
+            <h1>
+                Notranje
+                <span>ureditve.</span>
+            </h1>
+
+            <p>
+                Poskrbimo za različna dela v notranjosti objektov –
+                od priprave prostora in odstranitve starega materiala
+                do beljenja, pleskanja, polaganja ploščic ter
+                končnega čiščenja.
+            </p>
+
+        </div>
+
+        <div class="category-intro-image">
+
+            <img src="https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1400&q=85">
+
+        </div>
+
+    </div>
+
+
+    <div class="select-label">
+        IZBERITE STORITEV
+    </div>
+
+
+    <div class="service-grid">
+
+        <article class="service-card" onclick="openService('painting')">
+
+            <img src="https://images.unsplash.com/photo-1562259949-e8e768a2c99b?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Beljenje in pleskanje</h3>
+
+                <p>
+                    Osvežitev in ureditev sten, stropov ter notranjih prostorov.
+                </p>
+
+                <div class="service-arrow">
+                    ODPRETI STORITEV →
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('tiles')">
+
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Polaganje ploščic</h3>
+
+                <p>
+                    Priprava površin in polaganje ploščic v različnih prostorih.
+                </p>
+
+                <div class="service-arrow">
+                    ODPRETI STORITEV →
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('demolition')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Rušitvena dela</h3>
+
+                <p>
+                    Odstranitev starih elementov in priprava prostora na novo izvedbo.
+                </p>
+
+                <div class="service-arrow">
+                    ODPRETI STORITEV →
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('emptying')">
+
+            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Praznjenje in odvoz</h3>
+
+                <p>
+                    Praznjenje prostorov, odstranitev opreme in odvoz materiala.
+                </p>
+
+                <div class="service-arrow">
+                    ODPRETI STORITEV →
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CATEGORY: CLEANING
+======================================================= -->
+
+<section id="category-cleaning" class="view">
+
+<div class="container">
+
+    <div class="page-top">
+
+        <button class="back-btn" onclick="showView('services')">
+            ← NAZAJ NA STORITVE
+        </button>
+
+    </div>
+
+
+    <div class="category-intro">
+
+        <div>
+
+            <div class="eyebrow">
+                02 / ČIŠČENJE
+            </div>
+
+            <h1>
+                Čiščenje
+                <span>in pranje.</span>
+            </h1>
+
+            <p>
+                Temeljito čiščenje površin in objektov, kjer običajno
+                klasično čiščenje ni dovolj. Od visokotlačnega pranja
+                do odstranjevanja mahu, alg in trdovratne umazanije.
+            </p>
+
+        </div>
+
+        <div class="category-intro-image">
+
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=85">
+
+        </div>
+
+    </div>
+
+
+    <div class="select-label">
+        IZBERITE STORITEV
+    </div>
+
+
+    <div class="service-grid">
+
+        <article class="service-card" onclick="openService('pressure')">
+
+            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Visokotlačno pranje</h3>
+
+                <p>
+                    Pranje različnih zunanjih površin z močnim vodnim curkom.
+                </p>
+
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('yards-cleaning')">
+
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Pranje dvorišč</h3>
+
+                <p>
+                    Osvežitev in temeljito čiščenje dvoriščnih površin.
+                </p>
+
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('pavers')">
+
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Pranje tlakovcev</h3>
+
+                <p>
+                    Odstranjevanje umazanije, mahu in drugih oblog.
+                </p>
+
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('concrete-cleaning')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Pranje betona</h3>
+
+                <p>
+                    Čiščenje betonskih površin in odstranjevanje umazanije.
+                </p>
+
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('facade')">
+
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Čiščenje fasad</h3>
+
+                <p>
+                    Čiščenje zunanjih površin in odstranjevanje oblog.
+                </p>
+
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('after-work')">
+
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+
+                <h3>Čiščenje po delih</h3>
+
+                <p>
+                    Končno čiščenje prostora po gradbenih in drugih delih.
+                </p>
+
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CATEGORY: YARD
+======================================================= -->
+
+<section id="category-yard" class="view">
+
+<div class="container">
+
+    <div class="page-top">
+
+        <button class="back-btn" onclick="showView('services')">
+            ← NAZAJ NA STORITVE
+        </button>
+
+    </div>
+
+
+    <div class="category-intro">
+
+        <div>
+
+            <div class="eyebrow">
+                03 / ZUNANJOST
+            </div>
+
+            <h1>
+                Dvorišča
+                <span>in okolica.</span>
+            </h1>
+
+            <p>
+                Ureditev zunanjih površin od priprave terena do
+                končnega videza dvorišča, dovozov in okolice objekta.
+            </p>
+
+        </div>
+
+        <div class="category-intro-image">
+
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1400&q=85">
+
+        </div>
+
+    </div>
+
+
+    <div class="select-label">
+        IZBERITE STORITEV
+    </div>
+
+
+    <div class="service-grid">
+
+        <article class="service-card" onclick="openService('yard-arrangement')">
+
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Ureditev dvorišč</h3>
+                <p>Celovita priprava in ureditev zunanjih površin.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('paving')">
+
+            <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Tlakovanje</h3>
+                <p>Ureditev pohodnih, dovoznih in drugih površin.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('curbs')">
+
+            <img src="https://images.unsplash.com/photo-1599685315640-9ce4d7e9a4cc?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Robniki</h3>
+                <p>Ureditev robov, prehodov in zaključkov površin.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('drainage')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Odvodnjavanje in drenaže</h3>
+                <p>Priprava rešitev za učinkovito odvajanje vode.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('driveways')">
+
+            <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Dovozi in parkirne površine</h3>
+                <p>Priprava in ureditev funkcionalnih zunanjih površin.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('ground-leveling')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Priprava in izravnava terena</h3>
+                <p>Ravnanje, priprava in ureditev podlage.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CATEGORY: CONSTRUCTION
+======================================================= -->
+
+<section id="category-construction" class="view">
+
+<div class="container">
+
+    <div class="page-top">
+
+        <button class="back-btn" onclick="showView('services')">
+            ← NAZAJ NA STORITVE
+        </button>
+
+    </div>
+
+
+    <div class="category-intro">
+
+        <div>
+
+            <div class="eyebrow">
+                04 / TEREN
+            </div>
+
+            <h1>
+                Zemeljska in
+                <span>gradbena dela.</span>
+            </h1>
+
+            <p>
+                Priprava terena, izkopi, utrjevanje, nasipi, rušitve
+                in druga dela, potrebna za pripravo prostora na nadaljnjo
+                izvedbo.
+            </p>
+
+        </div>
+
+        <div class="category-intro-image">
+
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85">
+
+        </div>
+
+    </div>
+
+
+    <div class="select-label">
+        IZBERITE STORITEV
+    </div>
+
+
+    <div class="service-grid">
+
+        <article class="service-card" onclick="openService('excavation')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Izkopi</h3>
+                <p>Izkopi za različne potrebe pri pripravi objekta in terena.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('terrain')">
+
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Priprava terena</h3>
+                <p>Priprava površine pred nadaljnjo izvedbo del.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('compaction')">
+
+            <img src="https://images.unsplash.com/photo-1590644365607-1c5a0e39692d?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Utrjevanje</h3>
+                <p>Priprava stabilne in primerne podlage.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('backfill')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Nasipi in tamponiranje</h3>
+                <p>Priprava in urejanje slojev podlage.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('demolition-ground')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Rušitvena dela</h3>
+                <p>Odstranitev objektov, konstrukcij ali posameznih elementov.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('material-removal')">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Odvoz materiala</h3>
+                <p>Odvoz zemljine, ruševin in gradbenega materiala.</p>
+                <div class="service-arrow">ODPRETI STORITEV →</div>
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CATEGORY: TURNKEY
+======================================================= -->
+
+<section id="category-turnkey" class="view">
+
+<div class="container">
+
+    <div class="page-top">
+
+        <button class="back-btn" onclick="showView('services')">
+            ← NAZAJ NA STORITVE
+        </button>
+
+    </div>
+
+
+    <div class="category-intro">
+
+        <div>
+
+            <div class="eyebrow">
+                05 / CELOVITA REŠITEV
+            </div>
+
+            <h1>
+                Storitve
+                <span>na ključ.</span>
+            </h1>
+
+            <p>
+                Ko ne želite iskati več različnih izvajalcev,
+                lahko posamezne faze projekta povežemo v celovito
+                izvedbo – od priprave in odstranitve do končnega
+                čiščenja in ureditve.
+            </p>
+
+        </div>
+
+        <div class="category-intro-image">
+
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=85">
+
+        </div>
+
+    </div>
+
+
+    <div class="turnkey-banner">
+
+        <h2>
+            Ena organizacija. Več faz. En projekt.
+        </h2>
+
+        <p>
+            Storitev na ključ je namenjena projektom, kjer je potrebno
+            kombinirati več različnih del. Obseg izvedbe se prilagodi
+            konkretnemu projektu.
+        </p>
+
+    </div>
+
+
+    <div class="select-label">
+        IZBERITE CELOVITO STORITEV
+    </div>
+
+
+    <div class="service-grid">
+
+        <article class="service-card" onclick="openService('turnkey-space')">
+
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Prenova prostora</h3>
+                <p>
+                    Od praznjenja in rušenja do priprave, izvedbe in čiščenja.
+                </p>
+                <div class="service-arrow">OGLEJ SI →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('turnkey-yard')">
+
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Ureditev dvorišča</h3>
+                <p>
+                    Od izkopa in priprave terena do končne ureditve.
+                </p>
+                <div class="service-arrow">OGLEJ SI →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('turnkey-building')">
+
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Ureditev objekta</h3>
+                <p>
+                    Povezovanje več storitev za celovito ureditev objekta.
+                </p>
+                <div class="service-arrow">OGLEJ SI →</div>
+            </div>
+
+        </article>
+
+
+        <article class="service-card" onclick="openService('turnkey-renovation')">
+
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=500&q=80">
+
+            <div>
+                <h3>Sanacija in obnova</h3>
+                <p>
+                    Priprava, odstranjevanje, izvedba in zaključna ureditev.
+                </p>
+                <div class="service-arrow">OGLEJ SI →</div>
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SERVICE DETAIL VIEW
+======================================================= -->
+
+<section id="service-detail" class="view">
+
+<div class="container">
+
+    <div class="page-top">
+
+        <button
+            class="back-btn"
+            id="detailBackButton"
+            onclick="goBack()">
+            ← NAZAJ
+        </button>
+
+    </div>
+
+
+    <div class="detail-hero">
+
+        <div class="detail-image">
+
+            <img
+                id="detailImage"
+                src=""
+                alt="Storitev">
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div
+                class="eyebrow"
+                id="detailCategory">
+            </div>
+
+            <h1 id="detailTitle">
+            </h1>
+
+            <p id="detailDescription">
+            </p>
+
+            <button
+                class="btn btn-green"
+                onclick="showView('contact')">
+                POVPRAŠEVANJE ZA TO STORITEV →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="detail-layout">
+
+        <div class="info-box">
+
+            <h3>
+                Kaj <span>nudimo</span>
+            </h3>
+
+            <ul
+                class="check-list"
+                id="detailIncludes">
+            </ul>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <h3>
+                Zakaj <span>mi</span>?
+            </h3>
+
+            <ul
+                class="check-list"
+                id="detailWhy">
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="detail-cta">
+
+        <div>
+
+            <h3>
+                Imate konkreten projekt?
+            </h3>
+
+            <p>
+                Pošljite nam opis, fotografijo ali osnovne informacije
+                o projektu in preverite možnosti izvedbe.
+            </p>
+
+        </div>
+
+        <button
+            class="btn btn-green"
+            onclick="showView('contact')">
+            POŠLJI POVPRAŠEVANJE →
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     GALERIJA
+======================================================= -->
+
+<section id="gallery" class="view">
+
+<div class="container section">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="eyebrow">
+                NAŠE DELO
+            </div>
+
+            <h2>
+                Galerija
+            </h2>
+
+        </div>
+
+        <p>
+            Primeri različnih vrst del. Fotografije lahko kasneje
+            v celoti zamenjamo z vašimi dejanskimi projekti.
+        </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=900&q=85">
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     O NAS
+======================================================= -->
+
+<section id="about" class="view">
+
+<div class="container section">
+
+    <div class="about-grid">
+
+        <div class="about-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85"
+                alt="Asfalt-beton">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <div class="eyebrow">
+                ASFALT-BETON D.O.O.
+            </div>
+
+            <h1>
+                Praktične rešitve.
+                <span>Urejena izvedba.</span>
+            </h1>
+
+            <p>
+                Naš cilj je ponuditi čim bolj pregleden način naročanja
+                različnih del – od posamezne storitve do celovite
+                ureditve projekta.
+            </p>
+
+            <p>
+                Namesto nepreglednega seznama storitev lahko obiskovalec
+                izbere področje, konkretno storitev in nato pošlje
+                povpraševanje.
+            </p>
+
+
+            <div class="about-points">
+
+                <div class="about-point">
+                    <strong>01</strong>
+                    <span>Več storitev na enem mestu</span>
+                </div>
+
+                <div class="about-point">
+                    <strong>02</strong>
+                    <span>Jasno predstavljene možnosti</span>
+                </div>
+
+                <div class="about-point">
+                    <strong>03</strong>
+                    <span>Praktičen pristop k projektu</span>
+                </div>
+
+                <div class="about-point">
+                    <strong>04</strong>
+                    <span>Možnost celovite izvedbe</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     KONTAKT
+======================================================= -->
+
+<section id="contact" class="view">
+
+<div class="container section">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="eyebrow">
+                STOPIMO V STIK
+            </div>
+
+            <h2>
+                Pošljite povpraševanje
+            </h2>
+
+        </div>
+
+        <p>
+            Opišite, kaj potrebujete. Za boljšo predstavo lahko
+            kasneje dodamo tudi možnost nalaganja fotografij.
+        </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+
+        <div class="contact-box">
+
+            <h2>
+                Kontakt
+            </h2>
+
+            <p>
+                Kontaktne podatke tukaj zamenjamo z vašimi dejanskimi
+                podatki podjetja.
+            </p>
+
+
+            <div class="contact-item">
+
+                <small>TELEFON</small>
+
+                <span>
+                    +386 XX XXX XX XX
+                </span>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>E-POŠTA</small>
+
+                <span>
+                    info@asfalt-beton.si
+                </span>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>SPLET</small>
+
+                <span>
+                    asfalt-beton.si
+                </span>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>DELOVNO PODROČJE</small>
+
+                <span>
+                    Slovenija
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <form id="contactForm">
 
                 <div class="form-row">
 
-                    <div class="input-group">
-
-                        <label>
-                            Ime in priimek
-                        </label>
-
-                        <input
-                            type="text"
-                            placeholder="Vaše ime"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>
-                            Telefon
-                        </label>
-
-                        <input
-                            type="tel"
-                            placeholder="Vaša telefonska številka"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label>
-                        E-pošta
-                    </label>
+                    <input
+                        type="text"
+                        placeholder="Ime in priimek"
+                        required>
 
                     <input
-                        type="email"
-                        placeholder="vas@email.si"
-                        required
-                    >
+                        type="tel"
+                        placeholder="Telefon"
+                        required>
 
                 </div>
 
 
-                <div class="input-group">
-
-                    <label>
-                        Storitev
-                    </label>
-
-                    <select required>
-
-                        <option value="">
-                            Izberite storitev
-                        </option>
-
-                        <option>
-                            Notranje ureditve
-                        </option>
-
-                        <option>
-                            Čiščenje in pranje
-                        </option>
-
-                        <option>
-                            Dvorišča in ureditev okolice
-                        </option>
-
-                        <option>
-                            Zemeljska in gradbena dela
-                        </option>
-
-                        <option>
-                            Storitve na ključ
-                        </option>
-
-                        <option>
-                            Drugo
-                        </option>
-
-                    </select>
-
-                </div>
+                <input
+                    type="email"
+                    placeholder="E-pošta"
+                    required>
 
 
-                <div class="input-group">
+                <select required>
 
-                    <label>
-                        Opišite projekt
-                    </label>
+                    <option value="">
+                        Izberite področje
+                    </option>
 
-                    <textarea
-                        placeholder="Na kratko opišite, kaj potrebujete..."
-                        required
-                    ></textarea>
+                    <option>
+                        Notranje ureditve
+                    </option>
 
-                </div>
+                    <option>
+                        Čiščenje in pranje
+                    </option>
+
+                    <option>
+                        Dvorišča in okolica
+                    </option>
+
+                    <option>
+                        Zemeljska in gradbena dela
+                    </option>
+
+                    <option>
+                        Storitve na ključ
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    placeholder="Opišite, kaj potrebujete..."
+                    required></textarea>
 
 
                 <button
-                    type="submit"
-                    class="btn btn-primary"
-                    style="border:0;width:100%;"
-                >
-                    Pošlji povpraševanje →
+                    class="btn btn-green"
+                    type="submit">
+
+                    POŠLJI POVPRAŠEVANJE →
+
                 </button>
 
             </form>
@@ -2721,164 +2809,820 @@ footer {
 
     </div>
 
+</div>
+
 </section>
+
 
 </main>
 
 
 
-<!-- =========================================================
+<!-- =======================================================
      FOOTER
-========================================================= -->
+======================================================= -->
 
 <footer>
 
-    <div class="footer-inner">
+<div class="container footer-inner">
 
-        <div class="footer-copy">
-            © 2026 Asfalt-beton d.o.o. · Vse pravice pridržane.
-        </div>
-
-        <div class="footer-links">
-
-            <a href="#domov">
-                Domov
-            </a>
-
-            <a href="#storitve">
-                Storitve
-            </a>
-
-            <a href="#kontakt">
-                Kontakt
-            </a>
-
-        </div>
-
+    <div>
+        © <span id="year"></span>
+        <span class="footer-green">Asfalt-beton d.o.o.</span>
+        — Vse pravice pridržane.
     </div>
+
+    <div>
+        Gradbena · notranja · zunanja · čistilna dela
+    </div>
+
+</div>
 
 </footer>
 
 
+<div class="toast" id="toast">
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+    <strong>Hvala!</strong><br>
+
+    Povpraševanje je pripravljeno.
+    Obrazec lahko kasneje povežemo z vašim e-poštnim naslovom.
+
+</div>
+
+
 
 <script>
 
-/* HEADER SCROLL */
+/* =========================================================
+   PODATKI O STORITVAH
+========================================================= */
 
-const header = document.getElementById("header");
+const services = {
 
-window.addEventListener("scroll", () => {
+    painting:{
+        category:"01 / NOTRANJE UREDITVE",
+        title:"Beljenje in pleskanje",
+        description:"Beljenje in pleskanje sta pomemben del osvežitve ali prenove notranjega prostora. Dela se lahko prilagodijo stanovanju, hiši, poslovnemu prostoru ali posameznemu prostoru.",
+        image:"https://images.unsplash.com/photo-1562259949-e8e768a2c99b?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava prostora",
+            "Zaščita površin",
+            "Priprava sten in stropov",
+            "Beljenje in pleskanje",
+            "Osnovna ureditev po izvedbi"
+        ],
+        why:[
+            "Jasno opredeljen obseg dela",
+            "Možnost povezovanja z drugimi storitvami",
+            "Urejen zaključek dela",
+            "Praktična rešitev glede na prostor"
+        ]
+    },
 
-    if (window.scrollY > 30) {
+    tiles:{
+        category:"01 / NOTRANJE UREDITVE",
+        title:"Polaganje ploščic",
+        description:"Polaganje ploščic za različne notranje površine. Pri izvedbi je pomembna ustrezna priprava podlage in natančen zaključek.",
+        image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava podlage",
+            "Razporeditev in priprava površine",
+            "Polaganje ploščic",
+            "Zaključna obdelava",
+            "Čiščenje po izvedbi"
+        ],
+        why:[
+            "Celovit pristop",
+            "Možnost priprave prostora pred polaganjem",
+            "Povezava z drugimi deli",
+            "Urejen zaključek"
+        ]
+    },
 
-        header.classList.add("scrolled");
+    demolition:{
+        category:"01 / NOTRANJE UREDITVE",
+        title:"Rušitvena dela",
+        description:"Odstranjevanje starih elementov, oblog in drugih delov prostora pred prenovo ali nadaljnjo izvedbo.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava prostora",
+            "Odstranjevanje elementov",
+            "Rušenje po dogovorjenem obsegu",
+            "Ločevanje materiala po potrebi",
+            "Priprava prostora za nadaljnja dela"
+        ],
+        why:[
+            "Organizirana izvedba",
+            "Možnost odvoza materiala",
+            "Povezava s pripravo prostora",
+            "Možnost nadaljnje izvedbe"
+        ]
+    },
 
-    } else {
+    emptying:{
+        category:"01 / NOTRANJE UREDITVE",
+        title:"Praznjenje in odvoz",
+        description:"Praznjenje prostorov, odstranitev starega pohištva, opreme, materiala in drugih predmetov ter priprava prostora na nadaljnjo uporabo.",
+        image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Praznjenje prostorov",
+            "Odstranitev stare opreme",
+            "Odvoz gradbenega materiala",
+            "Odvoz starega pohištva po dogovoru",
+            "Končna ureditev prostora"
+        ],
+        why:[
+            "Več storitev na enem mestu",
+            "Manj organizacije za naročnika",
+            "Možnost kombiniranja z rušitvami",
+            "Urejen zaključek"
+        ]
+    },
 
-        header.classList.remove("scrolled");
+    pressure:{
+        category:"02 / ČIŠČENJE IN PRANJE",
+        title:"Visokotlačno pranje",
+        description:"Visokotlačno čiščenje je primerno za odstranjevanje trdovratne umazanije z različnih zunanjih površin.",
+        image:"https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pranje zunanjih površin",
+            "Odstranjevanje umazanije",
+            "Čiščenje težje dostopnih delov",
+            "Priprava površine na nadaljnjo uporabo",
+            "Končni pregled površine"
+        ],
+        why:[
+            "Praktična rešitev za večje površine",
+            "Možnost različnih vrst čiščenja",
+            "Temeljit pristop",
+            "Možnost povezave z ureditvijo okolice"
+        ]
+    },
 
+    "yards-cleaning":{
+        category:"02 / ČIŠČENJE IN PRANJE",
+        title:"Pranje dvorišč",
+        description:"Čiščenje dvorišč in zunanjih površin za bolj urejen in čist videz okolice objekta.",
+        image:"https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pranje dvorišč",
+            "Odstranjevanje umazanije",
+            "Čiščenje robov in prehodov",
+            "Odstranjevanje oblog po potrebi",
+            "Zaključni pregled"
+        ],
+        why:[
+            "Celovita obravnava površine",
+            "Možnost kombiniranja z drugimi deli",
+            "Urejen rezultat",
+            "Prilagoditev konkretnemu dvorišču"
+        ]
+    },
+
+    pavers:{
+        category:"02 / ČIŠČENJE IN PRANJE",
+        title:"Pranje tlakovcev",
+        description:"Čiščenje tlakovcev z odstranjevanjem umazanije, mahu in drugih površinskih oblog.",
+        image:"https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pranje tlakovcev",
+            "Odstranjevanje površinske umazanije",
+            "Odstranjevanje mahu po potrebi",
+            "Čiščenje robov",
+            "Končna ureditev"
+        ],
+        why:[
+            "Specializirano čiščenje zunanjih površin",
+            "Temeljit pristop",
+            "Možnost ureditve celotnega dvorišča",
+            "Pregleden dogovor"
+        ]
+    },
+
+    "concrete-cleaning":{
+        category:"02 / ČIŠČENJE IN PRANJE",
+        title:"Pranje betona",
+        description:"Čiščenje betonskih površin, kjer se sčasoma naberejo umazanija, prah in različne obloge.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pranje betonskih površin",
+            "Odstranjevanje umazanije",
+            "Čiščenje zunanjih površin",
+            "Priprava površine",
+            "Zaključni pregled"
+        ],
+        why:[
+            "Praktičen pristop",
+            "Primerno za različne površine",
+            "Možnost večjega obsega",
+            "Povezava z drugimi storitvami"
+        ]
+    },
+
+    facade:{
+        category:"02 / ČIŠČENJE IN PRANJE",
+        title:"Čiščenje fasad",
+        description:"Čiščenje zunanjih površin objekta in odstranjevanje vidne umazanije ter oblog glede na vrsto površine.",
+        image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pregled površine",
+            "Čiščenje fasadne površine",
+            "Odstranjevanje umazanije",
+            "Odstranjevanje oblog po potrebi",
+            "Zaključna kontrola"
+        ],
+        why:[
+            "Prilagoditev vrsti površine",
+            "Temeljit pristop",
+            "Možnost povezovanja z drugimi deli",
+            "Jasna predstavitev obsega"
+        ]
+    },
+
+    "after-work":{
+        category:"02 / ČIŠČENJE IN PRANJE",
+        title:"Čiščenje po izvedenih delih",
+        description:"Zaključno čiščenje prostora po gradbenih, obnovitvenih ali drugih delih.",
+        image:"https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Odstranitev ostankov dela",
+            "Čiščenje površin",
+            "Odstranitev prahu in umazanije",
+            "Osnovna ureditev prostora",
+            "Priprava na uporabo"
+        ],
+        why:[
+            "Urejen zaključek projekta",
+            "Možnost izvedbe skupaj z drugimi deli",
+            "Manj skrbi za naročnika",
+            "Celovitejša rešitev"
+        ]
+    },
+
+    "yard-arrangement":{
+        category:"03 / DVORIŠČA IN OKOLICA",
+        title:"Ureditev dvorišč",
+        description:"Ureditev dvorišča glede na namen, stanje terena in željeni končni videz.",
+        image:"https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pregled obstoječega stanja",
+            "Priprava površin",
+            "Ravnanje in izravnava",
+            "Ureditev posameznih delov",
+            "Zaključna ureditev"
+        ],
+        why:[
+            "Možnost celovite izvedbe",
+            "Povezovanje več različnih del",
+            "Praktična rešitev glede na teren",
+            "Jasen dogovor o obsegu"
+        ]
+    },
+
+    paving:{
+        category:"03 / DVORIŠČA IN OKOLICA",
+        title:"Tlakovanje",
+        description:"Ureditev tlakovanih površin za dvorišča, dovoze, poti in druge zunanje površine.",
+        image:"https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava podlage",
+            "Ureditev terena",
+            "Priprava slojev",
+            "Polaganje tlakovcev",
+            "Zaključni robovi in ureditev"
+        ],
+        why:[
+            "Možnost priprave celotnega terena",
+            "Povezava z robniki in drenažo",
+            "Celovit pristop",
+            "Urejen zaključek"
+        ]
+    },
+
+    curbs:{
+        category:"03 / DVORIŠČA IN OKOLICA",
+        title:"Robniki",
+        description:"Ureditev robnikov za jasne zaključke in ločevanje različnih površin.",
+        image:"https://images.unsplash.com/photo-1599685315640-9ce4d7e9a4cc?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava trase",
+            "Priprava podlage",
+            "Postavitev robnikov",
+            "Ureditev zaključkov",
+            "Končna izravnava"
+        ],
+        why:[
+            "Natančen zaključek površin",
+            "Možnost povezovanja s tlakovanjem",
+            "Urejena izvedba",
+            "Prilagoditev projektu"
+        ]
+    },
+
+    drainage:{
+        category:"03 / DVORIŠČA IN OKOLICA",
+        title:"Odvodnjavanje in drenaže",
+        description:"Priprava rešitev za odvajanje vode na območjih, kjer je potrebno izboljšati odvodnjavanje.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava trase",
+            "Izkop",
+            "Priprava podlage",
+            "Izvedba dogovorjene rešitve",
+            "Zasip in ureditev površine"
+        ],
+        why:[
+            "Povezava z zemeljskimi deli",
+            "Celovit pristop",
+            "Priprava terena na enem mestu",
+            "Možnost kombiniranja z ureditvijo dvorišča"
+        ]
+    },
+
+    driveways:{
+        category:"03 / DVORIŠČA IN OKOLICA",
+        title:"Dovozi in parkirne površine",
+        description:"Priprava in ureditev funkcionalnih zunanjih površin za dostop, parkiranje ali uporabo okoli objekta.",
+        image:"https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava terena",
+            "Izravnava",
+            "Tamponiranje",
+            "Utrjevanje",
+            "Končna ureditev površine"
+        ],
+        why:[
+            "Celovita priprava",
+            "Možnost različnih zaključnih izvedb",
+            "Povezava z izkopi in odvozom",
+            "Praktična rešitev za teren"
+        ]
+    },
+
+    "ground-leveling":{
+        category:"03 / DVORIŠČA IN OKOLICA",
+        title:"Priprava in izravnava terena",
+        description:"Ravnanje in priprava terena pred nadaljnjimi deli oziroma končno ureditvijo.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Pregled terena",
+            "Odstranitev odvečnega materiala po potrebi",
+            "Ravnanje",
+            "Izravnava",
+            "Priprava za nadaljnja dela"
+        ],
+        why:[
+            "Osnova za kakovostno nadaljevanje projekta",
+            "Povezava z izkopi",
+            "Možnost odvoza materiala",
+            "Celovit pristop"
+        ]
+    },
+
+    excavation:{
+        category:"04 / ZEMELJSKA IN GRADBENA DELA",
+        title:"Izkopi",
+        description:"Izkopi za različne potrebe pri pripravi objekta, dvorišča, kanalov, temeljev ali drenaž.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava območja",
+            "Izkop po dogovorjenem obsegu",
+            "Ureditev izkopanega materiala",
+            "Možnost odvoza",
+            "Priprava za nadaljnja dela"
+        ],
+        why:[
+            "Možnost povezovanja z drugimi zemeljskimi deli",
+            "Celovita priprava",
+            "Možnost odvoza",
+            "Jasen dogovor o obsegu"
+        ]
+    },
+
+    terrain:{
+        category:"04 / ZEMELJSKA IN GRADBENA DELA",
+        title:"Priprava terena",
+        description:"Priprava zemljišča in površine pred gradnjo, ureditvijo dvorišča ali drugimi deli.",
+        image:"https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Odstranitev odvečnega materiala",
+            "Ravnanje",
+            "Izravnava",
+            "Priprava podlage",
+            "Ureditev površine"
+        ],
+        why:[
+            "Praktičen pristop",
+            "Povezava z izkopi",
+            "Možnost odvoza",
+            "Priprava na nadaljnjo izvedbo"
+        ]
+    },
+
+    compaction:{
+        category:"04 / ZEMELJSKA IN GRADBENA DELA",
+        title:"Utrjevanje",
+        description:"Priprava stabilne podlage za nadaljnjo izvedbo zunanjih in gradbenih del.",
+        image:"https://images.unsplash.com/photo-1590644365607-1c5a0e39692d?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava površine",
+            "Ureditev slojev",
+            "Utrjevanje",
+            "Kontrola površine",
+            "Priprava za nadaljnja dela"
+        ],
+        why:[
+            "Pomembna priprava podlage",
+            "Povezava s tamponiranjem",
+            "Možnost celovite izvedbe",
+            "Pregleden obseg dela"
+        ]
+    },
+
+    backfill:{
+        category:"04 / ZEMELJSKA IN GRADBENA DELA",
+        title:"Nasipi in tamponiranje",
+        description:"Priprava in ureditev slojev podlage za nadaljnjo izvedbo zunanjih površin.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava površine",
+            "Nasipavanje",
+            "Razporeditev materiala",
+            "Utrjevanje",
+            "Priprava končne podlage"
+        ],
+        why:[
+            "Povezava z izkopi",
+            "Možnost priprave celotnega terena",
+            "Celovita izvedba",
+            "Urejen zaključek"
+        ]
+    },
+
+    "demolition-ground":{
+        category:"04 / ZEMELJSKA IN GRADBENA DELA",
+        title:"Rušitvena dela",
+        description:"Rušenje in odstranjevanje objektov, konstrukcij ali posameznih elementov po dogovorjenem obsegu.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava območja",
+            "Rušenje",
+            "Odstranjevanje materiala",
+            "Ureditev območja",
+            "Možnost odvoza"
+        ],
+        why:[
+            "Možnost kombiniranja z odvozom",
+            "Praktična izvedba",
+            "Ureditev območja po delu",
+            "Možnost nadaljnje priprave"
+        ]
+    },
+
+    "material-removal":{
+        category:"04 / ZEMELJSKA IN GRADBENA DELA",
+        title:"Odvoz materiala",
+        description:"Odvoz zemljine, ruševin in drugega materiala, ki nastane pri izvedbi del.",
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava materiala za odvoz",
+            "Nakladanje po dogovoru",
+            "Odvoz",
+            "Ureditev območja",
+            "Zaključna priprava površine"
+        ],
+        why:[
+            "Manj organizacije za naročnika",
+            "Povezava z rušitvami in izkopi",
+            "Celovitejša izvedba",
+            "Urejen zaključek"
+        ]
+    },
+
+    "turnkey-space":{
+        category:"05 / STORITVE NA KLJUČ",
+        title:"Prenova prostora",
+        description:"Povezovanje več različnih del pri prenovi prostora – od praznjenja in rušenja do priprave, izvedbe in končnega čiščenja.",
+        image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Praznjenje prostora",
+            "Rušitvena dela",
+            "Odvoz materiala",
+            "Priprava prostora",
+            "Beljenje ali druga izvedba",
+            "Končno čiščenje"
+        ],
+        why:[
+            "Več faz projekta na enem mestu",
+            "Manj usklajevanja različnih izvajalcev",
+            "Pregleden potek",
+            "Celovitejša rešitev"
+        ]
+    },
+
+    "turnkey-yard":{
+        category:"05 / STORITVE NA KLJUČ",
+        title:"Ureditev dvorišča",
+        description:"Celovita ureditev zunanjega prostora od priprave terena do končnega videza dvorišča.",
+        image:"https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Ogled in priprava",
+            "Izkop",
+            "Odvoz",
+            "Priprava terena",
+            "Tamponiranje in utrjevanje",
+            "Robniki in tlakovanje po dogovoru",
+            "Končna ureditev"
+        ],
+        why:[
+            "Več faz v enem projektu",
+            "Enostavnejša organizacija",
+            "Možnost kombiniranja storitev",
+            "Celovit zaključek"
+        ]
+    },
+
+    "turnkey-building":{
+        category:"05 / STORITVE NA KLJUČ",
+        title:"Ureditev objekta",
+        description:"Povezovanje različnih del pri celoviti ureditvi objekta glede na potrebe konkretnega projekta.",
+        image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Odstranitev starega materiala",
+            "Praznjenje",
+            "Odvoz",
+            "Čiščenje",
+            "Pripravljalna dela",
+            "Ureditev po dogovoru"
+        ],
+        why:[
+            "Celovit pristop",
+            "Manj usklajevanja",
+            "Možnost kombiniranja različnih storitev",
+            "Prilagoditev projektu"
+        ]
+    },
+
+    "turnkey-renovation":{
+        category:"05 / STORITVE NA KLJUČ",
+        title:"Sanacija in obnova",
+        description:"Povezovanje pripravljalnih, odstranitvenih, izvedbenih in zaključnih del pri obnovi prostora ali objekta.",
+        image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=85",
+        includes:[
+            "Priprava območja",
+            "Odstranjevanje starega",
+            "Odvoz materiala",
+            "Priprava površin",
+            "Obnovitvena dela",
+            "Zaključno čiščenje"
+        ],
+        why:[
+            "Celovita rešitev",
+            "Možnost kombiniranja storitev",
+            "Pregleden obseg projekta",
+            "Urejen zaključek"
+        ]
     }
 
-});
+};
 
 
-/* MOBILE MENU */
+/* =========================================================
+   VIEW NAVIGATION
+========================================================= */
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", () => {
-
-    navLinks.classList.toggle("active");
-
-});
+let previousView = "services";
 
 
-/* CLOSE MOBILE MENU */
+function showView(viewId){
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+    document.querySelectorAll(".view").forEach(view=>{
+        view.classList.remove("active");
+    });
 
-    link.addEventListener("click", () => {
+    const target = document.getElementById(viewId);
 
-        navLinks.classList.remove("active");
+    if(target){
+        target.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
+    document.getElementById("navLinks").classList.remove("open");
+
+    setTimeout(()=>{
+        revealElements();
+    },100);
+}
+
+
+/* =========================================================
+   CATEGORY OPEN
+========================================================= */
+
+function openCategory(category){
+
+    previousView = "services";
+
+    showView("category-" + category);
+}
+
+
+/* =========================================================
+   SERVICE OPEN
+========================================================= */
+
+function openService(serviceId){
+
+    const service = services[serviceId];
+
+    if(!service){
+        return;
+    }
+
+    const currentActive =
+        document.querySelector(".view.active");
+
+    if(currentActive){
+        previousView = currentActive.id;
+    }
+
+    document.getElementById("detailCategory").textContent =
+        service.category;
+
+    document.getElementById("detailTitle").textContent =
+        service.title;
+
+    document.getElementById("detailDescription").textContent =
+        service.description;
+
+    document.getElementById("detailImage").src =
+        service.image;
+
+    document.getElementById("detailImage").alt =
+        service.title;
+
+
+    const includes =
+        document.getElementById("detailIncludes");
+
+    includes.innerHTML = "";
+
+    service.includes.forEach(item=>{
+
+        const li = document.createElement("li");
+
+        li.textContent = item;
+
+        includes.appendChild(li);
 
     });
 
-});
+
+    const why =
+        document.getElementById("detailWhy");
+
+    why.innerHTML = "";
+
+    service.why.forEach(item=>{
+
+        const li = document.createElement("li");
+
+        li.textContent = item;
+
+        why.appendChild(li);
+
+    });
 
 
-/* SCROLL ANIMATION */
-
-const observer = new IntersectionObserver(
-
-    (entries) => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("visible");
-
-                observer.unobserve(entry.target);
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold: 0.12
-    }
-
-);
+    showView("service-detail");
+}
 
 
-document.querySelectorAll(".reveal").forEach(element => {
+/* =========================================================
+   BACK
+========================================================= */
 
-    observer.observe(element);
+function goBack(){
 
-});
-
-
-/* CONTACT FORM */
-
-function sendForm(event) {
-
-    event.preventDefault();
-
-    alert(
-        "Hvala za povpraševanje! Kontaktni obrazec bo v naslednjem koraku povezan z vašim e-poštnim naslovom."
-    );
+    showView(previousView || "services");
 
 }
 
 
-/* SMOOTH SCROLL */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+function toggleMenu(){
 
-    anchor.addEventListener("click", function(e) {
+    document
+        .getElementById("navLinks")
+        .classList.toggle("open");
 
-        const target = document.querySelector(
-            this.getAttribute("href")
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+function revealElements(){
+
+    const elements =
+        document.querySelectorAll(
+            ".view.active .reveal"
         );
 
-        if (target) {
+    const observer =
+        new IntersectionObserver(
+            entries=>{
 
-            e.preventDefault();
+                entries.forEach(entry=>{
 
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+                    if(entry.isIntersecting){
 
-        }
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    elements.forEach(element=>{
+        observer.observe(element);
+    });
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+document
+    .getElementById("contactForm")
+    .addEventListener("submit",function(event){
+
+        event.preventDefault();
+
+        const toast =
+            document.getElementById("toast");
+
+        toast.classList.add("show");
+
+        this.reset();
+
+        setTimeout(()=>{
+
+            toast.classList.remove("show");
+
+        },4500);
 
     });
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+document
+    .getElementById("year")
+    .textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   INITIAL REVEAL
+========================================================= */
+
+setTimeout(()=>{
+    revealElements();
+},300);
+
+
+/* =========================================================
+   ESCAPE = HOME
+========================================================= */
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+
+        showView("home");
+
+    }
 
 });
 
