@@ -1,0 +1,2766 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPLETNA PRODAJA | Asfalt-beton d.o.o.</title>
+
+<meta name="description"
+content="Profesionalni sistemi ROMEX® in ISATEC® za fugiranje, sanacijo, utrjevanje in ureditev zunanjih površin.">
+
+<style>
+
+:root{
+    --green:#35d06f;
+    --green2:#159447;
+    --green3:#72f09a;
+
+    --black:#060806;
+    --dark:#0b0f0c;
+    --dark2:#101610;
+    --card:#141a16;
+    --card2:#181f1a;
+
+    --white:#fff;
+    --muted:#aab5ad;
+    --line:rgba(255,255,255,.09);
+
+    --danger:#ff6868;
+
+    --shadow:0 30px 80px rgba(0,0,0,.45);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(53,208,111,.08),transparent 30%),
+        radial-gradient(circle at 85% 25%,rgba(53,208,111,.05),transparent 30%),
+        var(--black);
+    color:var(--white);
+    line-height:1.6;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(6,8,6,.92);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+    max-width:1400px;
+    margin:auto;
+
+    min-height:82px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:12px 28px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo img{
+    width:54px;
+    height:54px;
+    object-fit:contain;
+}
+
+.logo-text strong{
+    display:block;
+    font-size:17px;
+    letter-spacing:.8px;
+}
+
+.logo-text span{
+    display:block;
+    font-size:11px;
+    color:var(--green);
+    letter-spacing:2px;
+    margin-top:2px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+nav a{
+    padding:10px 14px;
+    border-radius:9px;
+    color:#dce4df;
+    font-size:14px;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:var(--green);
+    background:rgba(53,208,111,.08);
+}
+
+.back-site{
+    border:1px solid rgba(53,208,111,.4);
+    color:var(--green)!important;
+}
+
+.mobile-menu{
+    display:none;
+
+    border:1px solid var(--line);
+    background:var(--card);
+    color:white;
+
+    width:44px;
+    height:44px;
+    border-radius:10px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    max-width:1400px;
+    margin:auto;
+
+    min-height:580px;
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+
+    gap:60px;
+
+    padding:80px 28px 70px;
+}
+
+.hero-label{
+    color:var(--green);
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(42px,6vw,78px);
+    line-height:1.02;
+    letter-spacing:-3px;
+
+    max-width:850px;
+
+    margin-bottom:24px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    max-width:700px;
+    color:var(--muted);
+    font-size:18px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:32px;
+}
+
+.btn{
+    border:0;
+    border-radius:11px;
+
+    padding:15px 21px;
+
+    font-weight:bold;
+    transition:.25s;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.btn-primary{
+    background:var(--green);
+    color:#061009;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(53,208,111,.22);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--line);
+    color:white;
+}
+
+.btn-secondary:hover{
+    border-color:rgba(53,208,111,.5);
+    color:var(--green);
+}
+
+.hero-product{
+    position:relative;
+
+    min-height:420px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(145deg,rgba(53,208,111,.08),rgba(255,255,255,.015)),
+        var(--card);
+
+    border:1px solid var(--line);
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+}
+
+.hero-product::before{
+    content:"";
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:rgba(53,208,111,.11);
+    filter:blur(50px);
+}
+
+.hero-product img{
+    position:relative;
+    z-index:2;
+
+    width:80%;
+    max-width:470px;
+
+    max-height:390px;
+
+    object-fit:contain;
+
+    transition:.5s;
+}
+
+.hero-product:hover img{
+    transform:scale(1.05) rotate(-1deg);
+}
+
+/* ================= INFO ================= */
+
+.info-strip{
+    max-width:1400px;
+    margin:auto;
+
+    padding:0 28px 35px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.info-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:15px;
+
+    padding:22px;
+
+    transition:.25s;
+}
+
+.info-box:hover{
+    transform:translateY(-4px);
+    border-color:rgba(53,208,111,.35);
+}
+
+.info-box strong{
+    display:block;
+    color:var(--green);
+    margin-bottom:5px;
+}
+
+.info-box span{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    max-width:1400px;
+    margin:auto;
+    padding:85px 28px;
+}
+
+.section-head{
+    margin-bottom:35px;
+}
+
+.eyebrow{
+    color:var(--green);
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:bold;
+    margin-bottom:9px;
+}
+
+.section h2{
+    font-size:42px;
+    letter-spacing:-1px;
+}
+
+.section-intro{
+    color:var(--muted);
+    max-width:760px;
+    margin-top:10px;
+}
+
+/* ================= FILTER ================= */
+
+.shop-controls{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.search{
+    position:relative;
+}
+
+.search input{
+    width:100%;
+
+    background:var(--card);
+    border:1px solid var(--line);
+
+    color:white;
+
+    border-radius:12px;
+    padding:15px 18px;
+
+    outline:none;
+}
+
+.search input:focus{
+    border-color:var(--green);
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    background:var(--card);
+    border:1px solid var(--line);
+    color:#cfd7d2;
+
+    border-radius:10px;
+
+    padding:11px 15px;
+
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filter:hover,
+.filter.active{
+    background:rgba(53,208,111,.1);
+    color:var(--green);
+    border-color:rgba(53,208,111,.4);
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.product-card{
+    position:relative;
+
+    background:
+        linear-gradient(160deg,rgba(255,255,255,.025),transparent),
+        var(--card);
+
+    border:1px solid var(--line);
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(53,208,111,.42);
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.product-image{
+    height:250px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+        radial-gradient(circle at center,rgba(53,208,111,.07),transparent 65%);
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+
+    transition:.35s;
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.06);
+}
+
+.product-content{
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.product-category{
+    color:var(--green);
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.8px;
+    margin-bottom:8px;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-size:21px;
+    line-height:1.15;
+    margin-bottom:10px;
+}
+
+.product-short{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.55;
+
+    min-height:62px;
+}
+
+.product-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+
+    margin-top:18px;
+}
+
+.meta-box{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:9px;
+
+    padding:9px;
+
+    font-size:11px;
+    color:#aeb8b1;
+}
+
+.meta-box strong{
+    display:block;
+    color:#eaf0ec;
+    margin-top:2px;
+}
+
+.product-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.price{
+    color:var(--green);
+    font-size:17px;
+    font-weight:bold;
+}
+
+.details-btn{
+    flex:1;
+
+    border:1px solid rgba(53,208,111,.35);
+    background:rgba(53,208,111,.07);
+
+    color:var(--green);
+
+    border-radius:9px;
+
+    padding:11px;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.details-btn:hover{
+    background:var(--green);
+    color:#061009;
+}
+
+/* ================= BANNER ================= */
+
+.feature-banner{
+    max-width:1400px;
+    margin:20px auto 0;
+
+    padding:0 28px;
+}
+
+.feature-inner{
+    position:relative;
+    overflow:hidden;
+
+    border:1px solid rgba(53,208,111,.2);
+    background:
+        linear-gradient(110deg,rgba(53,208,111,.11),rgba(255,255,255,.025)),
+        var(--card);
+
+    border-radius:24px;
+
+    padding:45px;
+}
+
+.feature-inner h3{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.feature-inner p{
+    color:var(--muted);
+    max-width:800px;
+}
+
+/* ================= CALCULATOR ================= */
+
+.calculator{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.calc-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px;
+}
+
+.calc-card h3{
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    color:#cbd3ce;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    background:#0c110e;
+    color:white;
+
+    border:1px solid var(--line);
+    border-radius:9px;
+
+    padding:13px;
+
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:var(--green);
+}
+
+.calc-result{
+    margin-top:20px;
+
+    border-radius:13px;
+
+    padding:20px;
+
+    background:rgba(53,208,111,.07);
+    border:1px solid rgba(53,208,111,.2);
+}
+
+.calc-result strong{
+    color:var(--green);
+    font-size:25px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(14px);
+}
+
+.modal.open{
+    display:flex;
+}
+
+.modal-box{
+    width:min(1180px,100%);
+    max-height:92vh;
+
+    overflow:auto;
+
+    background:
+        linear-gradient(145deg,rgba(53,208,111,.045),transparent),
+        #101510;
+
+    border:1px solid rgba(255,255,255,.11);
+
+    border-radius:24px;
+
+    box-shadow:0 40px 120px rgba(0,0,0,.65);
+
+    position:relative;
+
+    animation:modalIn .25s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.98);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.close-modal{
+    position:absolute;
+    top:16px;
+    right:16px;
+
+    width:43px;
+    height:43px;
+
+    border-radius:50%;
+
+    border:1px solid var(--line);
+    background:rgba(0,0,0,.35);
+
+    color:white;
+
+    font-size:22px;
+
+    z-index:10;
+}
+
+.close-modal:hover{
+    background:var(--green);
+    color:#061009;
+}
+
+.modal-top{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    min-height:520px;
+}
+
+.modal-image{
+    min-height:500px;
+
+    padding:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at center,rgba(53,208,111,.11),transparent 65%);
+}
+
+.modal-image img{
+    width:100%;
+    height:100%;
+    max-height:500px;
+
+    object-fit:contain;
+}
+
+.modal-info{
+    padding:55px 50px 45px 20px;
+}
+
+.modal-category{
+    color:var(--green);
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.modal-title{
+    font-size:42px;
+    line-height:1.05;
+    letter-spacing:-1.2px;
+
+    margin-bottom:20px;
+}
+
+.modal-description{
+    color:#c4cdc7;
+    font-size:16px;
+    line-height:1.75;
+    margin-bottom:28px;
+}
+
+.selector-title{
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin:18px 0 9px;
+}
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.option{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+
+    color:#d8dfdb;
+
+    border-radius:8px;
+
+    padding:10px 14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.option:hover,
+.option.selected{
+    border-color:var(--green);
+    background:rgba(53,208,111,.1);
+    color:var(--green);
+}
+
+.modal-price{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-top:30px;
+
+    padding-top:22px;
+
+    border-top:1px solid var(--line);
+}
+
+.modal-price strong{
+    color:var(--green);
+    font-size:24px;
+}
+
+.modal-tech{
+    padding:0 50px 50px;
+}
+
+.modal-tech-title{
+    font-size:22px;
+    margin-bottom:18px;
+}
+
+.tech-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.tech-item{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:10px;
+
+    padding:14px 16px;
+}
+
+.tech-item span{
+    display:block;
+    color:#8f9c94;
+    font-size:11px;
+    margin-bottom:3px;
+}
+
+.tech-item strong{
+    font-size:14px;
+    color:#e9efeb;
+}
+
+.application-box{
+    margin-top:22px;
+
+    background:rgba(53,208,111,.055);
+    border:1px solid rgba(53,208,111,.15);
+
+    border-radius:14px;
+
+    padding:22px;
+}
+
+.application-box h4{
+    color:var(--green);
+    margin-bottom:8px;
+}
+
+.application-box p{
+    color:#bac5be;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid var(--line);
+
+    margin-top:50px;
+
+    background:#050705;
+}
+
+.footer-inner{
+    max-width:1400px;
+    margin:auto;
+
+    padding:35px 28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.footer-inner p{
+    color:#7f8a83;
+    font-size:13px;
+}
+
+.footer-brand{
+    color:var(--green);
+    font-weight:bold;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1100px){
+
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:850px){
+
+    .header-inner{
+        padding:10px 16px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    nav.mobile-open{
+        display:flex;
+
+        position:absolute;
+        left:12px;
+        right:12px;
+        top:75px;
+
+        background:#0b0f0c;
+
+        border:1px solid var(--line);
+        border-radius:14px;
+
+        padding:10px;
+
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    nav.mobile-open a{
+        width:100%;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        gap:30px;
+
+        padding:55px 18px 40px;
+    }
+
+    .hero h1{
+        font-size:45px;
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-product{
+        min-height:330px;
+    }
+
+    .info-strip{
+        grid-template-columns:1fr;
+        padding:0 18px 20px;
+    }
+
+    .section{
+        padding:60px 18px;
+    }
+
+    .section h2{
+        font-size:32px;
+    }
+
+    .shop-controls{
+        grid-template-columns:1fr;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product-image{
+        height:200px;
+        padding:18px;
+    }
+
+    .product-content{
+        padding:16px;
+    }
+
+    .product-name{
+        font-size:18px;
+    }
+
+    .product-short{
+        font-size:12px;
+    }
+
+    .product-meta{
+        grid-template-columns:1fr;
+    }
+
+    .feature-banner{
+        padding:0 18px;
+    }
+
+    .feature-inner{
+        padding:28px;
+    }
+
+    .calculator{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        padding:10px;
+    }
+
+    .modal-top{
+        grid-template-columns:1fr;
+    }
+
+    .modal-image{
+        min-height:300px;
+        padding:30px;
+    }
+
+    .modal-info{
+        padding:30px 25px;
+    }
+
+    .modal-title{
+        font-size:32px;
+    }
+
+    .modal-tech{
+        padding:0 25px 30px;
+    }
+
+    .tech-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(max-width:520px){
+
+    .logo img{
+        width:45px;
+        height:45px;
+    }
+
+    .logo-text strong{
+        font-size:14px;
+    }
+
+    .logo-text span{
+        font-size:9px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero-buttons{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .btn{
+        width:100%;
+        padding:12px 9px;
+        font-size:12px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .product-image{
+        height:150px;
+        padding:10px;
+    }
+
+    .product-content{
+        padding:12px;
+    }
+
+    .product-category{
+        font-size:8px;
+    }
+
+    .product-name{
+        font-size:15px;
+    }
+
+    .product-short{
+        display:none;
+    }
+
+    .product-meta{
+        display:none;
+    }
+
+    .product-bottom{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .details-btn{
+        width:100%;
+    }
+
+    .price{
+        text-align:center;
+    }
+
+    .modal-price{
+        flex-direction:column;
+        align-items:stretch;
+        gap:15px;
+    }
+
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+    width:9px;
+}
+
+::-webkit-scrollbar-track{
+    background:#070907;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#26342a;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--green2);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="header-inner">
+
+<a href="index.html" class="logo">
+
+<img src="logo.png" alt="Asfalt-beton d.o.o.">
+
+<div class="logo-text">
+<strong>ASFALT-BETON d.o.o.</strong>
+<span>SPLETNA PRODAJA</span>
+</div>
+
+</a>
+
+<button class="mobile-menu" onclick="toggleMenu()">☰</button>
+
+<nav id="nav">
+
+<a href="index.html" class="back-site">← GLAVNA STRAN</a>
+<a href="#izdelki">IZDELKI</a>
+<a href="#kalkulator">KALKULATOR</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div>
+
+<div class="hero-label">
+ROMEX® • ISATEC® • PROFESIONALNI SISTEMI
+</div>
+
+<h1>
+Profesionalne rešitve za
+<span>urejene površine.</span>
+</h1>
+
+<p>
+Izbrani sistemi ROMEX® in ISATEC® za fugiranje,
+sanacijo, utrjevanje in profesionalno ureditev
+tlakovanih ter drugih zunanjih površin.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#izdelki" class="btn btn-primary">
+POGLEJ IZDELKE →
+</a>
+
+<a href="#kalkulator" class="btn btn-secondary">
+IZRAČUN PORABE
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-product">
+
+<img
+src="https://api.romex.de/assets/e00b23a8-74f2-4406-b481-8b394e71cf82/rompox-fugensand-np-basalt-25kg.png?quality=90&width=700"
+alt="ROMPOX FUGENSAND NP">
+
+</div>
+
+</section>
+
+
+<!-- ================= INFO ================= -->
+
+<section class="info-strip">
+
+<div class="info-box">
+
+<strong>PROFESIONALNI SISTEMI</strong>
+
+<span>
+Izbrani proizvodi za fugiranje, sanacijo in utrjevanje površin.
+</span>
+
+</div>
+
+<div class="info-box">
+
+<strong>ORIGINALNI IZDELKI</strong>
+
+<span>
+Prikazani sistemi temeljijo na originalnih ROMEX® podatkih.
+</span>
+
+</div>
+
+<div class="info-box">
+
+<strong>IZBIRA PO POTREBI</strong>
+
+<span>
+Izberi izdelek, barvo in pakiranje tam, kjer je možnost uradno na voljo.
+</span>
+
+</div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="section" id="izdelki">
+
+<div class="section-head">
+
+<div class="eyebrow">
+PRODAJNI PROGRAM
+</div>
+
+<h2>Profesionalni izdelki</h2>
+
+<p class="section-intro">
+Izberi sistem glede na vrsto površine, širino fuge,
+obremenitev in način uporabe.
+</p>
+
+</div>
+
+
+<div class="shop-controls">
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Išči izdelek..."
+oninput="renderProducts()"
+>
+
+</div>
+
+<div class="filters">
+
+<button class="filter active" onclick="setFilter('VSE',this)">
+VSE
+</button>
+
+<button class="filter" onclick="setFilter('FUGIRANJE',this)">
+FUGIRANJE
+</button>
+
+<button class="filter" onclick="setFilter('SANACIJA',this)">
+SANACIJA
+</button>
+
+<button class="filter" onclick="setFilter('DEKO',this)">
+DEKO
+</button>
+
+<button class="filter" onclick="setFilter('OSTALO',this)">
+OSTALO
+</button>
+
+</div>
+
+</div>
+
+
+<div class="products" id="products"></div>
+
+</section>
+
+
+<!-- ================= FEATURE ================= -->
+
+<section class="feature-banner">
+
+<div class="feature-inner">
+
+<h3>
+Od izbire sistema do pravilne izvedbe.
+</h3>
+
+<p>
+Vsak izdelek ima svojo namembnost. Zato so pri
+posameznih sistemih prikazani tehnični podatki,
+priporočene uporabe, barve in pakiranja, kjer so
+uradno določeni.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= CALCULATOR ================= -->
+
+<section class="section" id="kalkulator">
+
+<div class="section-head">
+
+<div class="eyebrow">
+IZRAČUN
+</div>
+
+<h2>Izračun porabe</h2>
+
+<p class="section-intro">
+Vnesi osnovne mere površine in preveri okvirno količino.
+Končna poraba je odvisna od dimenzije kamna, širine in
+globine fuge ter načina izvedbe.
+</p>
+
+</div>
+
+
+<div class="calculator">
+
+<div class="calc-card">
+
+<h3>Podatki površine</h3>
+
+<div class="form-group">
+
+<label>Površina (m²)</label>
+
+<input
+type="number"
+id="area"
+value="20"
+min="0"
+step="0.1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Širina fuge (mm)</label>
+
+<input
+type="number"
+id="jointWidth"
+value="5"
+min="1"
+step="1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Globina fuge (mm)</label>
+
+<input
+type="number"
+id="jointDepth"
+value="30"
+min="1"
+step="1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Izdelek</label>
+
+<select id="calcProduct">
+
+<option value="1.68">
+ROMPOX® D1
+</option>
+
+<option value="1.54">
+ROMPOX® EASY
+</option>
+
+<option value="1.52">
+ROMPOX® DRAIN
+</option>
+
+<option value="1.76">
+ROMPOX® D2000
+</option>
+
+<option value="1.68">
+ROMPOX® D3000
+</option>
+
+<option value="1.72">
+ROMPOX® D4000
+</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-primary" onclick="calculate()">
+IZRAČUNAJ
+</button>
+
+</div>
+
+
+<div class="calc-card">
+
+<h3>Okvirni rezultat</h3>
+
+<div class="calc-result">
+
+<div>
+Potrebna količina:
+</div>
+
+<strong id="calcResult">
+— kg
+</strong>
+
+<p style="color:#9ca89f;margin-top:10px;font-size:13px;">
+Izračun je informativen. Dejanska poraba se določi
+glede na konkretno površino in geometrijo fug.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="modal" onclick="modalBackground(event)">
+
+<div class="modal-box">
+
+<button class="close-modal" onclick="closeModal()">
+×
+</button>
+
+<div class="modal-top">
+
+<div class="modal-image">
+
+<img id="modalImage" src="" alt="">
+
+</div>
+
+
+<div class="modal-info">
+
+<div class="modal-category" id="modalCategory"></div>
+
+<h2 class="modal-title" id="modalTitle"></h2>
+
+<p class="modal-description" id="modalDescription"></p>
+
+
+<div id="colorArea"></div>
+
+<div id="packArea"></div>
+
+
+<div class="modal-price">
+
+<strong id="modalPrice">
+KMALU
+</strong>
+
+<button class="btn btn-primary" onclick="requestProduct()">
+POVPRAŠEVANJE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="modal-tech">
+
+<h3 class="modal-tech-title">
+Tehnični podatki
+</h3>
+
+<div class="tech-grid" id="modalTech"></div>
+
+
+<div class="application-box">
+
+<h4>
+Priporočena uporaba
+</h4>
+
+<p id="modalApplication"></p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-inner">
+
+<p>
+© 2026 <span class="footer-brand">Asfalt-beton d.o.o.</span>
+</p>
+
+<p>
+ROMEX® • ISATEC® • Profesionalni sistemi
+</p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   IZDELKI
+========================================================= */
+
+const products = [
+
+{
+id:1,
+
+name:"ROMPOX® FUGENSAND NP",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/e00b23a8-74f2-4406-b481-8b394e71cf82/rompox-fugensand-np-basalt-25kg.png?quality=90&width=700",
+
+short:"Vodoprepusten fugirni pesek za ozke fuge in tlakovana območja.",
+
+description:
+"ROMPOX® FUGENSAND NP je modificiran 1-komponentni sistem na osnovi naravnih surovin. Namenjen je predvsem ozkim fugam pri tlakovcih in drugih tesno položenih površinah. Material je pripravljen za uporabo, vodoprepusten in pomaga zmanjševati rast plevela. V kombinaciji z ROMPOX® D7000 JOINT STRENGTHENER ga je mogoče trajno utrditi.",
+
+colors:["NEUTRAL","STONE GREY","BASALT"],
+
+packs:["25 kg"],
+
+application:
+"Okolica hiše, komercialne površine, tlakovci, tesno položene plošče, občutljivi in prevlečeni kamni ter nevezane konstrukcije.",
+
+tech:[
+["Tip","Modificiran 1-komponentni fugirni pesek"],
+["Širina fuge","od 1 mm; priporočeno do 5 mm"],
+["Vodoprepustnost","3,2 × 10⁻³ m/s"],
+["Približna prepustnost","19,2 l/min/m²"],
+["Nasipna gostota","1,55 kg/dm³"],
+["Lastnosti","Pripravljen za uporabo"],
+["Odpornost","Zmrzal in odtaljevalne soli"],
+["Rok skladiščenja","24 mesecev"]
+]
+
+},
+
+
+{
+id:2,
+
+name:"ROMPOX® D7000",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/9dee551b-9d66-48e5-b98a-98234628c8f0/rompox-d7000-fugenfestiger-produktgruppe.png?quality=90&width=700",
+
+short:"Polimerno tekoče sredstvo za naknadno utrjevanje peska in površin.",
+
+description:
+"ROMPOX® D7000 JOINT STRENGTHENER je posebno tekoče sredstvo za naknadno utrjevanje fugirnih peskov in nevezanih površin z zadostno vsebnostjo finih delcev. Namenjeno je zmanjševanju izpiranja, erozije, rasti plevela, prašenja in površinske obrabe.",
+
+colors:[],
+
+packs:[],
+
+application:
+"Za fugirne peske, prometne površine, nevezane konstrukcije, sanacijo razpokanih fug, ravne strehe, kapne robove in utrjevanje ROMPOX® FUGENSAND NP.",
+
+tech:[
+["Tip","Posebno polimerno tekoče sredstvo"],
+["Širina fuge","od 1 mm"],
+["Namen","Naknadno utrjevanje fugirnega peska"],
+["Vodoprepustnost","Fuge ostanejo vodoprepustne"],
+["Lastnosti","Zmanjšuje rast plevela"],
+["Lastnosti","Zmanjšuje površinsko obrabo"],
+["Uporaba","Tudi za DIY uporabnike"],
+["Rok skladiščenja","12 mesecev"]
+]
+
+},
+
+
+{
+id:3,
+
+name:"ROMPOX® ECOFINE",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/e7862969-1e5f-4bdc-83e7-551759d3f03b/rompox-ecofine-produktgruppe.png?quality=90&width=700",
+
+short:"Enokomponentna fugirna rešitev za moderne zunanje površine.",
+
+description:
+"ROMPOX® ECOFINE je sodoben 1-komponentni fugirni sistem za tlakovana in druge zunanje površine. Namenjen je uporabnikom, ki želijo pripravljeno fugirno rešitev z dobro vodoprepustnostjo in enostavno obdelavo.",
+
+colors:["NEUTRAL","STONE GREY","BASALT"],
+
+packs:["25 kg"],
+
+application:
+"Zunanje tlakovane površine, okolica objektov, vrtne površine in druge primerne površine skladno z zahtevami sistema.",
+
+tech:[
+["Tip","1-komponentni fugirni sistem"],
+["Obdelava","Pripravljen sistem"],
+["Vodoprepustnost","Visoka"],
+["Rast plevela","Zmanjšuje možnost rasti"],
+["Odpornost","Zmrzal in odtaljevalne soli"],
+["Vzdrževanje","Primerno za zunanje površine"],
+["Sistem","ROMEX® fugirni sistem"],
+["Skladiščenje","Glede na originalni tehnični list"]
+]
+
+},
+
+
+{
+id:4,
+
+name:"ROMPOX® EASY",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/c43946c6-100c-4548-aa15-53abb4637a7a/rompox-easy-produktgruppe.png?quality=90&width=700",
+
+short:"Pripravljen 1-komponentni sistem za enostavno fugiranje.",
+
+description:
+"ROMPOX® EASY je pripravljen 1-komponentni sistem na osnovi polibutadiena. Zasnovan je za enostavno obdelavo in je primeren tudi za DIY uporabnike. Omogoča vodoprepustne fuge, odporne proti zmrzali in odtaljevalnim solem ter visokotlačnemu pranju.",
+
+colors:["SAND-NEUTRAL","SAND-STONE GREY","SAND-BASALT"],
+
+packs:["25 kg"],
+
+application:
+"Okolica hiše, površine z obremenitvijo do 3,5 t, tlakovci, naravni kamen ter občutljivi in prevlečeni kamni.",
+
+tech:[
+["Tip","1-komponentni polibutadien sistem"],
+["Širina fuge","od 5 mm"],
+["Posebnost","3 mm mogoče z večjim trudom"],
+["Obremenitev","do 3,5 t"],
+["Tlačna trdnost","7,1 N/mm²"],
+["Upogibna trdnost","3,4 N/mm²"],
+["Vodoprepustnost","7,5 × 10⁻⁴ m/s"],
+["Približna prepustnost","2,3 l/min/m²"],
+["Gostota","1,54 kg/dm³"]
+]
+
+},
+
+
+{
+id:5,
+
+name:"ROMPOX® D1",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/68c03a73-5a44-4916-aaa1-2ccf5d5370e3/rompox-d1-produktgruppe.png?quality=90&width=700",
+
+short:"2-komponentna epoksi fugirna masa za srednje obremenjene površine.",
+
+description:
+"ROMPOX® D1 je kakovosten 2-komponentni epoksi fugirni sistem za zasebne in komercialne površine. Zaradi dobre tekočnosti, samokompaktnosti in visoke trdnosti je posebej primeren za poligonalne in nepravilno oblikovane plošče, dovoze, dostopne poti ter obnovo starih tlakovanih površin.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["25 kg","27,5 kg"],
+
+application:
+"Okolica hiše, komercialne površine, srednje prometno obremenjene površine, poligonalne plošče, betonski tlakovci in plošče, tesno položene plošče, 2 cm keramične ploščice ter naravni kamen.",
+
+tech:[
+["Tip","2-komponentna epoksi fugirna masa"],
+["Širina fuge","od 3 mm"],
+["Obremenitev","do 7,5 t"],
+["Tlačna trdnost","25,8 N/mm²"],
+["Upogibna trdnost","12 N/mm²"],
+["Modul elastičnosti","8.000 N/mm²"],
+["Vodoprepustnost","2,3 l/min/m²"],
+["Gostota","1,68 kg/dm³"],
+["Lastnosti","Samokompaktna, visoka tekočnost"]
+]
+
+},
+
+
+{
+id:6,
+
+name:"ROMPOX® DRAIN / DRÄN",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/4467bcb3-1f25-4bb6-85cf-6f91cfa7254c/rompox-draen-neutral-25kg.png?quality=90&width=700",
+
+short:"Epoksi sistem za vodoprepustno fugiranje in delo z ozkimi fugami.",
+
+description:
+"ROMPOX® DRAIN je 2-komponentni epoksi sistem za fugiranje tlakovcev in plošč. Sistem omogoča vnos mase v fuge z vodo ter je primeren tudi za ozke fuge in delo pri nižjih temperaturah oziroma rahlem rosenju. Zasnovan je tako, da na površini ostane zelo malo oziroma praktično nič smolnega filma.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["25 kg"],
+
+application:
+"Naravni kamen, betonski tlakovci, klinker in plošče. Primeren za površine do približno 3,5 t in plošče do 40 × 40 cm.",
+
+tech:[
+["Tip","2-komponentni epoksi sistem"],
+["Širina fuge","od 3 mm"],
+["Obremenitev","do 3,5 t"],
+["Velikost plošč","do 40 × 40 cm"],
+["Tlačna trdnost","25 N/mm²"],
+["Upogibna trdnost","10 N/mm²"],
+["Vodoprepustnost","približno 4,5 l/min/m²"],
+["Gostota","1,52 kg/dm³"],
+["Posebnost","Primerno tudi za rahlo rosenje"]
+]
+
+},
+
+
+{
+id:7,
+
+name:"ROMPOX® D2000",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/355f2ae4-325a-4d7f-8129-1b86fac0951a/rompox-d2000-27.5kg-gebinde.png?quality=90&width=700",
+
+short:"Visoko zmogljiv sistem za močno obremenjene javne površine.",
+
+description:
+"ROMPOX® D2000 je 2-komponentni vodno emulgirljiv epoksi sistem za močno uporabljene javne površine. Namenjen je trgovom, cestam, potem, žlebovom in sanaciji starih tlakovanih površin. Odlikujejo ga visoka pretočnost, samokompaktnost, vodoprepustnost in hitra ponovna odprtost površine.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["27,5 kg"],
+
+application:
+"Javne površine z močnejšo uporabo, trgi, ceste, poti, žlebovi, betonski tlakovci in plošče ter naravni kamen.",
+
+tech:[
+["Tip","2-komponentni vodno emulgirljiv epoksi sistem"],
+["Širina fuge","od 5 mm"],
+["Tlačna trdnost","51,9 N/mm²"],
+["Upogibna trdnost","15,4 N/mm²"],
+["Modul elastičnosti","11.200 N/mm²"],
+["Gostota","1,76 kg/dm³"],
+["Vodoprepustnost","približno 0,03 l/min/m²"],
+["Posebnost","Odporen na vozila za čiščenje ulic"],
+["Rok skladiščenja","24 mesecev"]
+]
+
+},
+
+
+{
+id:8,
+
+name:"ROMPOX® D3000",
+
+category:"SANACIJA",
+filter:"SANACIJA",
+
+image:"https://api.romex.de/assets/534b332c-48b6-4fd1-92db-c35f85c4b8f9/Rompox-D3000-Eimer-25kg.png?quality=90&width=700",
+
+short:"Sanacijska fugirna masa za hitro obnovo poškodovanih cementnih fug.",
+
+description:
+"ROMPOX® D3000 je 2-komponentna epoksi fugirna suspenzija za sanacijo starih in poškodovanih cementnih fug. Zaradi zelo dobre tekočnosti, fine granulacije in visoke oprijemljivosti na robove se lahko nova masa poveže z obstoječimi nepoškodovanimi deli fug, zato ni nujno odstraniti vseh starih fug.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["27,5 kg"],
+
+application:
+"Javne površine, zelo prometno obremenjene površine, sanacija poškodovanih cementnih površin, starih tlakov, betonskih tlakovcev in plošč ter naravnega kamna.",
+
+tech:[
+["Tip","2-komponentna epoksi sanacijska masa"],
+["Širina poškodbe","od 3 mm"],
+["Globina poškodbe","od 10 mm"],
+["Obremenitev","do 25 t"],
+["Tlačna trdnost","34,5 N/mm²"],
+["Upogibna trdnost","12,2 N/mm²"],
+["Modul elastičnosti","7.800 N/mm²"],
+["Vodoprepustnost","2,3 l/min/m²"],
+["Gostota","1,68 kg/dm³"]
+]
+
+},
+
+
+{
+id:9,
+
+name:"ROMPOX® TRAFFIC V2",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/7a11e1bb-f4c2-48f4-8f9a-f5ad89401933/rompox-verkehr-v2-28kg-gebinde.png?quality=90&width=700",
+
+short:"Profesionalni sistem za prometno obremenjene površine.",
+
+description:
+"ROMPOX® TRAFFIC V2 je profesionalni sistem za zahtevnejše prometne površine. Namenjen je projektom, kjer je poleg vodoprepustnosti potrebna tudi višja odpornost na prometne obremenitve.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["28 kg"],
+
+application:
+"Prometno obremenjene površine, javne površine, dovozi in druge površine, kjer je potrebna profesionalna rešitev.",
+
+tech:[
+["Tip","Profesionalni fugirni sistem"],
+["Uporaba","Prometno obremenjene površine"],
+["Lastnost","Visoka odpornost"],
+["Lastnost","Vodoprepustnost"],
+["Vzdrževanje","Odporen na zahtevnejše čiščenje"],
+["Sistem","ROMEX® profesionalni sistem"],
+["Pakiranje","28 kg"],
+["Skladiščenje","Po originalnem tehničnem listu"]
+]
+
+},
+
+
+{
+id:10,
+
+name:"ROMPOX® D4000",
+
+category:"SANACIJA",
+filter:"SANACIJA",
+
+image:"https://api.romex.de/assets/86e766ac-ba5e-45c1-9403-228134faee43/rompox-d4000-basalt-asphalt-17.5kg.png?quality=90&width=700",
+
+short:"Visoko trdna 2-komponentna masa za hitra cestna in betonska popravila.",
+
+description:
+"ROMPOX® D4000 je visokotrdnostna 2-komponentna epoksi sanacijska masa za vzdrževalna in obnovitvena dela. Uporablja se za konstrukcijsko zapiranje razpok, popravila asfaltnih površin in poškodovanih betonskih elementov. Zaradi dobre reaktivnosti je površino mogoče v kratkem času ponovno odpreti za promet.",
+
+colors:["STONE GREY-CONCRETE","SAND-NEUTRAL","BASALT-ASPHALT"],
+
+packs:["17,5 kg"],
+
+application:
+"Komercialne in javne površine, popravila robov, odkrušenih delov, lukenj, razpok, poškodb asfalta, betonskih elementov in robnikov.",
+
+tech:[
+["Tip","2-komponentna epoksi sanacijska masa"],
+["Globina","od 10 mm"],
+["Obremenitev","do 40 t"],
+["Tlačna trdnost","47,3 N/mm²"],
+["Upogibna trdnost","18,3 N/mm²"],
+["Modul elastičnosti","8.700 N/mm²"],
+["Gostota","1,72 kg/dm³"],
+["Temperatura uporabe","od 5 °C"],
+["Posebnost","Hitra ponovna odprtost za promet"]
+]
+
+},
+
+
+{
+id:11,
+
+name:"ROMPOX® D4000 HR",
+
+category:"SANACIJA",
+filter:"SANACIJA",
+
+image:"https://api.romex.de/assets/86b0eaa1-3ea2-4e10-a1d5-2aae3a2cb05d/rompox-d4000-hr-neutral-17.5kg.png?quality=90&width=700",
+
+short:"Hitro reaktivna sanacijska masa za zahtevna popravila tudi pri nizkih temperaturah.",
+
+description:
+"ROMPOX® D4000 HR je visokotrdnostna 2-komponentna epoksi sanacijska masa z zelo hitro reakcijo. Posebnost sistema je možnost obdelave tudi pri temperaturah do -10 °C. Namenjena je hitrim popravilom asfaltnih in betonskih površin ter mestnih prometnih površin.",
+
+colors:["NEUTRAL"],
+
+packs:["17,5 kg"],
+
+application:
+"Komercialne in javne površine, robovi, odkruški, luknje, poškodbe cest, razpoke, betonski elementi in robniki.",
+
+tech:[
+["Tip","2-komponentna epoksi sanacijska masa"],
+["Globina","od 10 mm"],
+["Temperatura uporabe","do -10 °C"],
+["Tlačna trdnost","51,2 N/mm²"],
+["Upogibna trdnost","19,4 N/mm²"],
+["Modul elastičnosti","8.900 N/mm²"],
+["Gostota","1,73 kg/dm³"],
+["Posebnost","Zelo hitra reakcija"],
+["Promet","Zelo hitra ponovna odprtost"]
+]
+
+},
+
+
+{
+id:12,
+
+name:"ISATEC® FLEX",
+
+category:"OSTALO",
+filter:"OSTALO",
+
+image:"https://api.romex.de/assets/983147dd-6e00-4794-9fec-b2466a412122/isatec-flex-steingrau-25kg-eimer.png?quality=90&width=700",
+
+short:"Visoko elastična fugirna masa za konstrukcije z večjim premikanjem.",
+
+description:
+"ISATEC® FLEX je 2-komponentna viskoelastična specialna fugirna masa, razvita za površine, kjer se konstrukcija oziroma podlaga lahko premika. Zaradi visoke razteznosti in dobrega oprijema na robove lahko sledi premikom v nevezani konstrukciji.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["25 kg"],
+
+application:
+"Javne površine, trgi, ceste in poti, betonski tlakovci in plošče, naravni kamen ter nevezane konstrukcije. Za višje obremenitve se uporablja skupaj z ISATEC® STOP.",
+
+tech:[
+["Tip","2-komponentna viskoelastična specialna fugirna masa"],
+["Širina fuge","od 5 mm"],
+["Razteznost","do 9,9 %"],
+["Zaključek fuge","do 3 cm"],
+["Obremenitev","do Bk3.2 z ISATEC® STOP"],
+["Upogibna trdnost","1,28 N/mm²"],
+["Vodoprepustnost","približno 0,4 l/min/m²"],
+["Gostota","1,41 kg/dm³"],
+["Rok skladiščenja","12 mesecev"]
+]
+
+},
+
+
+{
+id:13,
+
+name:"ROMPOX® 301 CEM-PF",
+
+category:"FUGIRANJE",
+filter:"FUGIRANJE",
+
+image:"https://api.romex.de/assets/1479e30d-d95b-4a1a-af3f-2e5854d78b43/rompox-301-cem-pf-zementfugenmoertel-25kg.png?quality=90&width=700",
+
+short:"Cementna fugirna rešitev za klasične in zahtevne zunanje površine.",
+
+description:
+"ROMPOX® 301 CEM-PF je cementna fugirna malta za profesionalno izvedbo fug pri tlakovanih in zunanjih površinah. Namenjena je projektom, kjer je prednost klasičen cementni sistem in ustrezna mehanska odpornost.",
+
+colors:["STONE GREY","NEUTRAL","BASALT"],
+
+packs:["25 kg"],
+
+application:
+"Profesionalno fugiranje primernih tlakovanih površin, plošč in drugih zunanjih konstrukcij skladno s tehničnimi zahtevami sistema.",
+
+tech:[
+["Tip","Cementna fugirna malta"],
+["Pakiranje","25 kg"],
+["Uporaba","Zunanje tlakovane površine"],
+["Sistem","ROMEX® profesionalni sistem"],
+["Izvedba","Za profesionalno fugiranje"],
+["Vzdrževanje","Glede na vrsto površine"],
+["Barvne možnosti","Po originalnem programu"],
+["Skladiščenje","Po originalnem tehničnem listu"]
+]
+
+},
+
+
+{
+id:14,
+
+name:"ROMPOX® 201 DEKO UV",
+
+category:"DEKO",
+filter:"DEKO",
+
+image:"https://api.romex.de/assets/140ce39e-bd74-45d8-b892-6f7a86e45544/Rompox201DEKOUV1%2C25kgFlaschengebinde.png?quality=90&width=700",
+
+short:"UV stabilno vezivo za prod in drobljenec, tudi za svetle kamne.",
+
+description:
+"ROMPOX® 201 DEKO UV je modificiran 2-komponentni sistem za vezavo pranega, suhega proda in drobljenca. Sistem je 100 % UV stabilen, ima nizko viskoznost in zelo visoko vodoprepustnost. Primeren je za številne barve in vrste proda, tudi svetle kamne.",
+
+colors:[],
+
+packs:["1,25 kg","30 kg"],
+
+application:
+"Vrtne poti, gredice, zaščitni pasovi ob objektih, zasebni dovozi in parkirišča, javne pešpoti, drevesne rešetke ter druge površine iz proda in drobljenca.",
+
+tech:[
+["Tip","2-komponentno vezivo"],
+["UV obstojnost","100 % UV stabilno"],
+["Globina površine","od 20 mm"],
+["Tlačna trdnost","14,7 N/mm²"],
+["Upogibna trdnost","5,5 N/mm²"],
+["Vodoprepustnost","335 l/min/m²"],
+["Uporaba","Pran, suh prod in drobljenec"],
+["Odpornost","Zmrzal, odtaljevalne soli, visokotlačno pranje"],
+["Pakiranje","1,25 kg / 30 kg"]
+]
+
+},
+
+
+{
+id:15,
+
+name:"ROMPOX® 202 DEKO EP",
+
+category:"DEKO",
+filter:"DEKO",
+
+image:"https://api.romex.de/assets/b39829a8-0111-4085-a558-db912615a400/rompox-202-deko-ep-profi-deko-3kg.png?quality=90&width=700",
+
+short:"2-komponentno vezivo za temen prod in drobljenec.",
+
+description:
+"ROMPOX® 202 DEKO EP je 2-komponentno vezivo za prod in drobljenec, namenjeno predvsem temnim kamnom. Sistem je zelo vodoprepusten in namenjen izdelavi dekorativnih, pohodnih in manj obremenjenih površin.",
+
+colors:[],
+
+packs:["3 kg","30 kg"],
+
+application:
+"Zasebni dovozi in parkirišča, javne pešpoti ter dekorativne površine iz temnega proda oziroma drobljenca.",
+
+tech:[
+["Tip","2-komponentno vezivo za prod/drobljenec"],
+["Material","Temen prod in drobljenec"],
+["Globina sloja","več kot 20 mm"],
+["Obremenitev","lahki promet do 3 t"],
+["Vodoprepustnost","Zelo visoka"],
+["Uporaba","Dekorativne in pohodne površine"],
+["Pakiranje","3 kg / 30 kg"],
+["Pomembno","Primerno predvsem za temne kamne"]
+]
+
+},
+
+
+{
+id:16,
+
+name:"ROMPOX® 203 DEKO FIX",
+
+category:"DEKO",
+filter:"DEKO",
+
+image:"https://api.romex.de/assets/0f9f61b9-5e75-4ec2-a6bb-b2e20de22986/Rompox203DekoFixProduktfamilie.png?quality=90&width=700",
+
+short:"Pripravljeno vodno 1-komponentno vezivo za dekorativni prod in drobljenec.",
+
+description:
+"ROMPOX® 203 DEKO FIX je vodno 1-komponentno vezivo, pripravljeno za uporabo. Namenjeno je enostavni stabilizaciji proda, gramoza in drobljenca na dekorativnih in manj obremenjenih površinah. Površina ostane vodoprepustna in ohrani naraven videz kamna.",
+
+colors:[],
+
+packs:["1 L","5 L"],
+
+application:
+"Robovi pohodnih plošč, široke prodnate fuge, zaščitni pasovi ob objektih, obrobe teras, gredice, dekorativne površine, pokrovi za rastline, robovi ribnikov zunaj vode in ravne strehe.",
+
+tech:[
+["Tip","Vodno 1-komponentno vezivo"],
+["Priprava","Pripravljeno za uporabo"],
+["Temperatura uporabe","od 7 °C"],
+["Poraba – pršenje","200–250 ml/m² na nanos"],
+["Število nanosov","3 nanosi pri načinu pršenja"],
+["Mešanje","1 L na 25 kg proda/drobljenca"],
+["Vodoprepustnost","Da"],
+["Skladiščenje","12 mesecev"],
+["Pomembno","Ni za dovoze, pogosto uporabljene površine ali pod pohištvom"]
+]
+
+}
+
+];
+
+
+/* =========================================================
+   SPREMENLJIVKE
+========================================================= */
+
+let currentFilter = "VSE";
+
+let selectedColor = "";
+let selectedPack = "";
+
+let currentProduct = null;
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function renderProducts(){
+
+    const container = document.getElementById("products");
+
+    const search =
+        document.getElementById("search").value
+        .toLowerCase()
+        .trim();
+
+    let list = products.filter(product => {
+
+        const filterOK =
+            currentFilter === "VSE" ||
+            product.filter === currentFilter;
+
+        const searchOK =
+            !search ||
+            product.name.toLowerCase().includes(search) ||
+            product.description.toLowerCase().includes(search) ||
+            product.category.toLowerCase().includes(search);
+
+        return filterOK && searchOK;
+
+    });
+
+
+    if(!list.length){
+
+        container.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                padding:50px;
+                text-align:center;
+                background:var(--card);
+                border:1px solid var(--line);
+                border-radius:15px;
+                color:var(--muted);
+            ">
+                Ni najdenega izdelka.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = list.map(product => `
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                >
+
+            </div>
+
+
+            <div class="product-content">
+
+                <div class="product-category">
+                    ${product.category}
+                </div>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+                <p class="product-short">
+                    ${product.short}
+                </p>
+
+
+                <div class="product-meta">
+
+                    ${
+                        product.colors.length
+                        ?
+                        `
+                        <div class="meta-box">
+                            BARVE
+                            <strong>
+                                ${product.colors.length}
+                            </strong>
+                        </div>
+                        `
+                        :
+                        `
+                        <div class="meta-box">
+                            SISTEM
+                            <strong>
+                                PROFESIONALNI
+                            </strong>
+                        </div>
+                        `
+                    }
+
+
+                    ${
+                        product.packs.length
+                        ?
+                        `
+                        <div class="meta-box">
+                            PAKIRANJE
+                            <strong>
+                                ${product.packs[0]}
+                            </strong>
+                        </div>
+                        `
+                        :
+                        `
+                        <div class="meta-box">
+                            PODATKI
+                            <strong>
+                                PO SISTEMU
+                            </strong>
+                        </div>
+                        `
+                    }
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        KMALU
+                    </div>
+
+                    <button
+                        class="details-btn"
+                        onclick="openProduct(${product.id})"
+                    >
+                        PODROBNOSTI →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function setFilter(filter,button){
+
+    currentFilter = filter;
+
+    document.querySelectorAll(".filter")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderProducts();
+
+}
+
+
+/* =========================================================
+   OPEN PRODUCT
+========================================================= */
+
+function openProduct(id){
+
+    const product =
+        products.find(item => item.id === id);
+
+    if(!product) return;
+
+    currentProduct = product;
+
+    selectedColor =
+        product.colors.length
+        ? product.colors[0]
+        : "";
+
+    selectedPack =
+        product.packs.length
+        ? product.packs[0]
+        : "";
+
+
+    document.getElementById("modalImage").src =
+        product.image;
+
+    document.getElementById("modalImage").alt =
+        product.name;
+
+
+    document.getElementById("modalCategory").textContent =
+        product.category;
+
+
+    document.getElementById("modalTitle").textContent =
+        product.name;
+
+
+    document.getElementById("modalDescription").textContent =
+        product.description;
+
+
+    document.getElementById("modalApplication").textContent =
+        product.application;
+
+
+    /* COLORS */
+
+    const colorArea =
+        document.getElementById("colorArea");
+
+    if(product.colors.length){
+
+        colorArea.innerHTML = `
+
+            <div class="selector-title">
+                IZBERI BARVO
+            </div>
+
+            <div class="options">
+
+                ${product.colors.map((color,index)=>`
+
+                    <button
+                        class="option ${index===0 ? "selected":""}"
+                        onclick="selectColor(this,'${color}')"
+                    >
+                        ${color}
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+        `;
+
+    }else{
+
+        colorArea.innerHTML = "";
+
+    }
+
+
+    /* PACKS */
+
+    const packArea =
+        document.getElementById("packArea");
+
+    if(product.packs.length){
+
+        packArea.innerHTML = `
+
+            <div class="selector-title">
+                IZBERI PAKIRANJE
+            </div>
+
+            <div class="options">
+
+                ${product.packs.map((pack,index)=>`
+
+                    <button
+                        class="option ${index===0 ? "selected":""}"
+                        onclick="selectPack(this,'${pack}')"
+                    >
+                        ${pack}
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+        `;
+
+    }else{
+
+        packArea.innerHTML = "";
+
+    }
+
+
+    /* TECHNICAL DATA */
+
+    const tech =
+        document.getElementById("modalTech");
+
+    tech.innerHTML =
+        product.tech.map(item=>`
+
+            <div class="tech-item">
+
+                <span>
+                    ${item[0]}
+                </span>
+
+                <strong>
+                    ${item[1]}
+                </strong>
+
+            </div>
+
+        `).join("");
+
+
+    document.getElementById("modal").classList.add("open");
+
+    document.body.style.overflow="hidden";
+
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+function selectColor(button,color){
+
+    selectedColor = color;
+
+    button.parentElement
+        .querySelectorAll(".option")
+        .forEach(item =>
+            item.classList.remove("selected")
+        );
+
+    button.classList.add("selected");
+
+}
+
+
+function selectPack(button,pack){
+
+    selectedPack = pack;
+
+    button.parentElement
+        .querySelectorAll(".option")
+        .forEach(item =>
+            item.classList.remove("selected")
+        );
+
+    button.classList.add("selected");
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(){
+
+    document.getElementById("modal")
+        .classList.remove("open");
+
+    document.body.style.overflow="";
+
+}
+
+
+function modalBackground(event){
+
+    if(event.target.id === "modal"){
+        closeModal();
+    }
+
+}
+
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+        closeModal();
+    }
+
+});
+
+
+/* =========================================================
+   POVPRAŠEVANJE
+========================================================= */
+
+function requestProduct(){
+
+    if(!currentProduct) return;
+
+    const text =
+        "Pozdravljeni, zanima me izdelek " +
+        currentProduct.name +
+        (selectedColor
+            ? " | barva: " + selectedColor
+            : "") +
+        (selectedPack
+            ? " | pakiranje: " + selectedPack
+            : "") +
+        ".";
+
+
+    alert(
+        text +
+        "\n\nCena in razpoložljivost se trenutno preverita individualno."
+    );
+
+}
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+function calculate(){
+
+    const area =
+        parseFloat(
+            document.getElementById("area").value
+        ) || 0;
+
+    const width =
+        parseFloat(
+            document.getElementById("jointWidth").value
+        ) || 0;
+
+    const depth =
+        parseFloat(
+            document.getElementById("jointDepth").value
+        ) || 0;
+
+    const density =
+        parseFloat(
+            document.getElementById("calcProduct").value
+        ) || 1.6;
+
+
+    /*
+        Okvirna geometrijska ocena.
+
+        Številka je informativna in ni
+        uradni ROMEX kalkulator.
+    */
+
+    const volume =
+        area *
+        (width / 1000) *
+        (depth / 1000);
+
+
+    const kg =
+        volume *
+        density *
+        1000;
+
+
+    document.getElementById("calcResult")
+        .textContent =
+        kg.toFixed(1) + " kg";
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu(){
+
+    document.getElementById("nav")
+        .classList.toggle("mobile-open");
+
+}
+
+
+document.querySelectorAll("nav a")
+.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        document.getElementById("nav")
+            .classList.remove("mobile-open");
+
+    });
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
+
+renderProducts();
+
+calculate();
+
+</script>
+
+</body>
+</html>
